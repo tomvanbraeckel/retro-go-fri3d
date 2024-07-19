@@ -14,6 +14,7 @@ void app_main(void)
         gbc_main();
     else if (strcmp(app->configNs, "nes") == 0)
         nes_main();
+/*
     else if (strcmp(app->configNs, "pce") == 0)
         pce_main();
     else if (strcmp(app->configNs, "sms") == 0)
@@ -30,6 +31,7 @@ void app_main(void)
     else if (strcmp(app->configNs, "lnx") == 0)
         lynx_main();
 #endif
+*/
     else
         launcher_main();
 
