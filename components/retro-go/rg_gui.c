@@ -511,6 +511,7 @@ void rg_gui_draw_icons(void)
     if (battery.present)
     {
         right += 22;
+        right += 44; // rounded corners make battery icon invisible without more margin on the right
 
         int width = 16;
         int height = icon_height;
