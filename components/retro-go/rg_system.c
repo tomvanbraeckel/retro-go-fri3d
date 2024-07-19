@@ -606,6 +606,9 @@ void rg_system_load_time(void)
 
 void rg_system_save_time(void)
 {
+    RG_LOGI("Saving time is disabled to avoid wear on the internal flash.\n");
+    return;
+
     time_t time_sec = time(NULL);
     FILE *fp;
     // We always save to storage in case the RTC disappears.
