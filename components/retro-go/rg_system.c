@@ -684,7 +684,7 @@ static void shutdown_cleanup(void)
     rg_audio_deinit();                        // Disable sound ASAP to avoid audio garbage
     rg_system_save_time();                    // RTC might save to storage, do it before
     rg_storage_deinit();                      // Unmount storage
-    rg_input_wait_for_key(RG_KEY_ALL, 0, -1); // Wait for all keys to be released (boot is sensitive to GPIO0,32,33)
+    // The MENU+START(SELECT) keypress stays active so can't do this: rg_input_wait_for_key(RG_KEY_ALL, 0, -1); // Wait for all keys to be released (boot is sensitive to GPIO0,32,33)
     rg_input_deinit();                        // Now we can shutdown input
     rg_i2c_deinit();                          // Must be after input, sound, and rtc
     rg_display_deinit();                      // Do this very last to reduce flicker time
@@ -735,6 +735,11 @@ void rg_system_exit(void)
 void rg_system_switch_app(const char *partition, const char *name, const char *args, uint32_t flags)
 {
     RG_LOGI("Switching to app %s (%s)", partition ?: "-", name ?: "-");
+
+    if (partition == RG_APP_FACTORY) {
+        RG_LOGW("Fri3D Camp 2024 Badge has no factory partition, switching to MicroPython OTA (0 or 1) partition!");
+        rg_system_boot_micropython();
+    }
 
     if (app.initialized)
     {
