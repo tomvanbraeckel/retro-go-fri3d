@@ -1,0 +1,15 @@
+# Partition table for MicroPython with OTA support using 16MB flash
+# Notes: the offset of the partition table itself is set in
+# $IDF_PATH/components/partition_table/Kconfig.projbuild.
+# app partitions should be aligned at 0x10000 (64k block)
+# otadata size should be 0x2000
+# Name,   Type, SubType, Offset,   Size,     Flags
+nvs,      data, nvs,     0x9000,   0x14000,
+otadata,  data, ota,     0x1d000,   0x2000,
+coredump, data, coredump,0x1f000,   0x11000,
+ota_0,    app,  ota_0,   0x30000,  0x400000,
+ota_1,    app,  ota_1,   0x430000, 0x400000,
+launcher, app, ota_2, 0x830000, 1M
+retro-core, app, ota_3, 0x930000, 640K
+prboom-go, app, ota_4, 0x9D0000, 896K
+vfs, data, fat, 0xAB0000, 5440K
