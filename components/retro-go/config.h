@@ -45,7 +45,7 @@
 #endif
 
 #ifndef RG_PROJECT_NAME
-#define RG_PROJECT_NAME "Retro-Go"
+#define RG_PROJECT_NAME "Retro-Go Fri3D"
 #endif
 
 #ifndef RG_PROJECT_APP
@@ -66,11 +66,11 @@
 #endif
 
 #ifndef RG_PROJECT_WEBSITE
-#define RG_PROJECT_WEBSITE "https://github.com/ducalex/retro-go"
+#define RG_PROJECT_WEBSITE "https://github.com/tomvanbraeckel/retro-go-fri3d"
 #endif
 
 #ifndef RG_PROJECT_RELEASES_URL
-#define RG_PROJECT_RELEASES_URL "https://api.github.com/repos/ducalex/retro-go/releases"
+#define RG_PROJECT_RELEASES_URL "https://api.github.com/repos/tomvanbraeckel/retro-go-fri3d/releases" // Update download is disabled (for now) in the launcher/main/main.c menu because it needs a free space check (otherwise it could fill up the storage, especially internal flash) and there's no factory app to boot to (so the launcher might need to do the update).
 #endif
 
 #ifndef RG_BUILD_VERSION
