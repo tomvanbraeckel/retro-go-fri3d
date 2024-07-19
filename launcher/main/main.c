@@ -203,9 +203,11 @@ static void show_about_menu(void)
 {
     const rg_gui_option_t options[] = {
         {0, "Build CRC cache", NULL, RG_DIALOG_FLAG_NORMAL, &prebuild_cache_cb},
+/* Update download is disabled on Fri3D 2024 (for now) in the menu because it needs a free space check (otherwise it could fill up the storage, especially internal flash) and there's no factory app to boot to (so the launcher might need to do the update).
     #ifdef RG_ENABLE_NETWORKING
         {0, "Check for updates", NULL, RG_DIALOG_FLAG_NORMAL, &updater_cb},
     #endif
+*/
         RG_DIALOG_END,
     };
     rg_gui_about_menu(options);
