@@ -1,4 +1,5 @@
 #include <rg_system.h>
+#include <esp_flash.h>
 #include "gui.h"
 
 #ifdef RG_ENABLE_NETWORKING
@@ -12,15 +13,17 @@
 #define DOWNLOAD_LOCATION RG_STORAGE_ROOT "/espgbc/firmware"
 #endif
 
+#define NAMELENGTH 64
+
 typedef struct
 {
-    char name[32];
+    char name[NAMELENGTH];
     char url[256];
 } asset_t;
 
 typedef struct
 {
-    char name[32];
+    char name[NAMELENGTH];
     char date[32];
     asset_t *assets;
     size_t assets_count;
@@ -31,20 +34,23 @@ static int download_file(const char *url, const char *filename)
     RG_ASSERT(url && filename, "bad param");
 
     rg_http_req_t *req = NULL;
-    FILE *fp = NULL;
+    //FILE *fp = NULL;
     void *buffer = NULL;
     int received = 0;
     int len;
     int ret = -1;
 
-    RG_LOGI("Downloading: '%s' to '%s'", url, filename);
+    //RG_LOGI("Downloading: '%s' to '%s'", url, filename);
+    RG_LOGI("Downloading: '%s' to internal flash at offset 0, thus overwriting everything. Don't interrupt this process!", url);
     rg_gui_draw_dialog("Connecting...", NULL, 0);
 
     if (!(req = rg_network_http_open(url, NULL)))
         goto cleanup;
 
+/*
     if (!(fp = fopen(filename, "wb")))
         goto cleanup;
+*/
 
     if (!(buffer = malloc(16 * 1024)))
         goto cleanup;
@@ -53,8 +59,15 @@ static int download_file(const char *url, const char *filename)
 
     while ((len = rg_network_http_read(req, buffer, 16 * 1024)) > 0)
     {
+	esp_err_t err = esp_flash_erase_region(NULL, received, len); // start and len must be multiple of chip->drv->sector_size field (typically 4096 bytes)
+	if (err)
+            RG_LOGW("esp_flash_erase_region(NULL,%d,%d) returned %d", received, len, err);
+        err = esp_flash_write(NULL, buffer, received, len);
+	if (err)
+            RG_LOGW("esp_flash_write(NULL,%d,%d) returned %d", received, len, err);
         received += len;
-        fwrite(buffer, 1, len, fp);
+        RG_LOGI("Update download received total of %d bytes ", received);
+        //fwrite(buffer, 1, len, fp);
         sprintf(buffer, "Received %d / %d", received, req->content_length);
         rg_gui_draw_dialog(buffer, NULL, 0);
     }
@@ -67,7 +80,7 @@ static int download_file(const char *url, const char *filename)
 cleanup:
     rg_network_http_close(req);
     free(buffer);
-    fclose(fp);
+    //fclose(fp);
 
     return ret;
 }
@@ -156,7 +169,7 @@ void updater_show_dialog(void)
         char *name = cJSON_GetStringValue(cJSON_GetObjectItem(release_json, "name"));
         char *date = cJSON_GetStringValue(cJSON_GetObjectItem(release_json, "published_at"));
 
-        snprintf(releases[i].name, 32, "%s", name ?: "N/A");
+        snprintf(releases[i].name, NAMELENGTH, "%s", name ?: "N/A");
         snprintf(releases[i].date, 32, "%s", date ?: "N/A");
 
         cJSON *assets_json = cJSON_GetObjectItem(release_json, "assets");
@@ -169,10 +182,10 @@ void updater_show_dialog(void)
             cJSON *asset_json = cJSON_GetArrayItem(assets_json, j);
             char *name = cJSON_GetStringValue(cJSON_GetObjectItem(asset_json, "name"));
             char *url = cJSON_GetStringValue(cJSON_GetObjectItem(asset_json, "browser_download_url"));
-            if (name && url)
+            if (name && url && rg_extension_match(name, "img")) // only show files with name url and extension *.img so users don't accidentally write some other release file over the internal flash
             {
                 asset_t *asset = &releases[i].assets[releases[i].assets_count++];
-                snprintf(asset->name, 32, "%s", name);
+                snprintf(asset->name, NAMELENGTH, "%s", name);
                 snprintf(asset->url, 256, "%s", url);
             }
         }
