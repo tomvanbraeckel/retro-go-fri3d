@@ -1,5 +1,4 @@
 #include <rg_system.h>
-#include <esp_flash.h>
 #include "gui.h"
 #include "updater_to_flash.h"
 
