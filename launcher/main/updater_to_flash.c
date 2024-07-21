@@ -6,8 +6,6 @@
 #include <string.h>
 #include <cJSON.h>
 
-#define NAMELENGTH 64
-
 bool download_file_to_flash(const char *url, const char *filename)
 {
     RG_ASSERT(url && filename, "bad param");
