@@ -34,23 +34,20 @@ static int download_file(const char *url, const char *filename)
     RG_ASSERT(url && filename, "bad param");
 
     rg_http_req_t *req = NULL;
-    //FILE *fp = NULL;
+    FILE *fp = NULL;
     void *buffer = NULL;
     int received = 0;
     int len;
     int ret = -1;
 
-    //RG_LOGI("Downloading: '%s' to '%s'", url, filename);
-    RG_LOGI("Downloading: '%s' to internal flash at offset 0, thus overwriting everything. Don't interrupt this process!", url);
+    RG_LOGI("Downloading: '%s' to '%s'", url, filename);
     rg_gui_draw_dialog("Connecting...", NULL, 0);
 
     if (!(req = rg_network_http_open(url, NULL)))
         goto cleanup;
 
-/*
     if (!(fp = fopen(filename, "wb")))
         goto cleanup;
-*/
 
     if (!(buffer = malloc(16 * 1024)))
         goto cleanup;
@@ -59,15 +56,8 @@ static int download_file(const char *url, const char *filename)
 
     while ((len = rg_network_http_read(req, buffer, 16 * 1024)) > 0)
     {
-	esp_err_t err = esp_flash_erase_region(NULL, received, len); // start and len must be multiple of chip->drv->sector_size field (typically 4096 bytes)
-	if (err)
-            RG_LOGW("esp_flash_erase_region(NULL,%d,%d) returned %d", received, len, err);
-        err = esp_flash_write(NULL, buffer, received, len);
-	if (err)
-            RG_LOGW("esp_flash_write(NULL,%d,%d) returned %d", received, len, err);
         received += len;
-        RG_LOGI("Update download received total of %d bytes ", received);
-        //fwrite(buffer, 1, len, fp);
+        fwrite(buffer, 1, len, fp);
         sprintf(buffer, "Received %d / %d", received, req->content_length);
         rg_gui_draw_dialog(buffer, NULL, 0);
     }
@@ -80,7 +70,7 @@ static int download_file(const char *url, const char *filename)
 cleanup:
     rg_network_http_close(req);
     free(buffer);
-    //fclose(fp);
+    fclose(fp);
 
     return ret;
 }
