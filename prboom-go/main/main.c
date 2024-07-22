@@ -549,7 +549,9 @@ void app_main()
 
     if ((fp = fopen(app->romPath, "rb")))
     {
-        if (fgetc(fp) == 'P')
+        char firstChar = fgetc(fp);
+        char secondChar = fgetc(fp);
+        if (firstChar == 'P' && secondChar == 'W')
             pwad = app->romPath;
         else
             iwad = app->romPath;
