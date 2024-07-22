@@ -186,7 +186,7 @@ bool rg_input_read_gamepad_raw(uint32_t *out)
 #endif
 
     if (state & RG_KEY_START && state & RG_KEY_SELECT) {
-        RG_LOGW("START and SELECT (labelled 'Menu') pressed at the same time, booting into MicroPython!");
+        RG_LOGW("START and SELECT (labelled 'Menu') pressed at the same time, booting into Main Menu!");
         rg_system_boot_micropython();
     }
 

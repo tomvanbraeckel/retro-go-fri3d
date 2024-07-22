@@ -250,7 +250,7 @@ static void enter_recovery_mode(void)
 
     const rg_gui_option_t options[] = {
         {0, "Reset all settings", NULL, RG_DIALOG_FLAG_NORMAL, NULL},
-        {1, "Reboot to MicroPython (START+MENU)", NULL, RG_DIALOG_FLAG_NORMAL, NULL},
+        {1, "Reboot to Main Menu (START+MENU)", NULL, RG_DIALOG_FLAG_NORMAL, NULL},
         {2, "Reboot to launcher", NULL, RG_DIALOG_FLAG_NORMAL, NULL},
         RG_DIALOG_END,
     };
@@ -737,7 +737,7 @@ void rg_system_switch_app(const char *partition, const char *name, const char *a
     RG_LOGI("Switching to app %s (%s)", partition ?: "-", name ?: "-");
 
     if (partition == RG_APP_FACTORY) {
-        RG_LOGW("Fri3D Camp 2024 Badge has no factory partition, switching to MicroPython OTA (0 or 1) partition!");
+        RG_LOGW("Fri3D Camp 2024 Badge has no factory partition, switching to OTA (0 or 1) partition!");
         rg_system_boot_micropython();
     }
 
