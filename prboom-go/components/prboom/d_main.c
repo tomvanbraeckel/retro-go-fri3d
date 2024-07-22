@@ -41,6 +41,8 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+#include <rg_system.h>
+
 #include "doomdef.h"
 #include "doomtype.h"
 #include "doomstat.h"
@@ -541,12 +543,25 @@ bool D_AddFile(const char *file)
     return false;
   }
 
-  wadfiles[numwadfiles++] = (wadfile_info_t){
-      .name = strdup(file),
-      .handle = NULL,
-      .data = NULL,
-      .size = 0,
-  };
+  if (rg_extension_match(file, "zip"))
+  {
+    wadfile_info_t wad = {0};
+    if (rg_storage_unzip_file(file, NULL, &wad.data, &wad.size))
+    {
+      wad.name = strdup(file);
+      // Some of the code expects to see .wad in the name
+      strcpy(wad.name + strlen(wad.name) - 3, "wad");
+      wadfiles[numwadfiles++] = wad;
+      return true;
+    }
+  } else {
+      wadfiles[numwadfiles++] = (wadfile_info_t){
+          .name = strdup(file),
+          .handle = NULL,
+          .data = NULL,
+          .size = 0,
+      };
+  }
 
   return true;
 }
