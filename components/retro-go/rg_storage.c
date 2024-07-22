@@ -424,7 +424,7 @@ bool rg_storage_read_file(const char *path, void **data_out, size_t *data_len)
         return false;
     }
 
-    size_t data_align = 0x2000;
+    size_t data_align = 0x4000;
     size_t file_size;
     void *file_data;
 
@@ -452,30 +452,6 @@ bool rg_storage_read_file(const char *path, void **data_out, size_t *data_len)
 
     *data_out = file_data;
     *data_len = file_size;
-    return true;
-}
-
-bool rg_storage_write_file(const char *path, const void *data_ptr, size_t data_len, bool atomic)
-{
-    RG_ASSERT(data_ptr, "Bad param");
-    CHECK_PATH(path);
-
-    // TODO: If atomic is true we should write to a temp file and only replace the target on success
-    FILE *fp = fopen(path, "wb");
-    if (!fp)
-    {
-        RG_LOGE("Fopen failed");
-        return false;
-    }
-
-    if (!fwrite(data_ptr, data_len, 1, fp))
-    {
-        RG_LOGE("Fwrite failed");
-        fclose(fp);
-        return false;
-    }
-
-    fclose(fp);
     return true;
 }
 
@@ -509,16 +485,16 @@ bool rg_storage_unzip_file(const char *zip_path, const char *filter, void **data
     RG_ASSERT(data_out && data_len, "Bad param");
     CHECK_PATH(zip_path);
 
-    zip_header_t header = {0};
-    size_t data_align = 0x2000;
-    int header_pos = 0;
-
     FILE *fp = fopen(zip_path, "rb");
     if (!fp)
     {
         RG_LOGE("Fopen failed");
         return false;
     }
+
+    zip_header_t header = {0};
+    size_t data_align = 0x4000;
+    int header_pos = 0;
 
     // Very inefficient, we should read a block at a time and search it for a header. But I'm lazy.
     // Thankfully the header is usually found on the very first read :)
