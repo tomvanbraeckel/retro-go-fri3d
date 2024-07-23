@@ -1450,7 +1450,7 @@ void rg_gui_debug_menu(const rg_gui_option_t *extra_options)
         {0, "Blit time ", frame_time,   RG_DIALOG_FLAG_NORMAL, NULL},
         RG_DIALOG_SEPARATOR,
         {0, "Overclock", "-", RG_DIALOG_FLAG_NORMAL, &overclock_update_cb},
-        {1, "Reboot to Main Menu (START+MENU)", NULL, RG_DIALOG_FLAG_NORMAL, NULL},
+        {1, "Switch to Main Menu (START+MENU)", NULL, RG_DIALOG_FLAG_NORMAL, NULL},
         {2, "Clear cache    ", NULL, RG_DIALOG_FLAG_NORMAL, NULL},
         {3, "Save screenshot", NULL, RG_DIALOG_FLAG_NORMAL, NULL},
         {4, "Save trace", NULL, RG_DIALOG_FLAG_NORMAL, NULL},
