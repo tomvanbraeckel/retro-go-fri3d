@@ -75,7 +75,7 @@
 #endif
 
 #ifndef RG_PROJECT_RELEASES_URL
-#define RG_PROJECT_RELEASES_URL "https://api.github.com/repos/tomvanbraeckel/retro-go-fri3d/releases" // Update download is disabled (for now) in the launcher/main/main.c menu because it needs a free space check (otherwise it could fill up the storage, especially internal flash) and there's no factory app to boot to (so the launcher might need to do the update).
+#define RG_PROJECT_RELEASES_URL "https://api.github.com/repos/tomvanbraeckel/retro-go-fri3d/releases"
 #endif
 
 #ifndef RG_BUILD_VERSION
