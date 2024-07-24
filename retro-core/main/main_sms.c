@@ -135,7 +135,9 @@ void sms_main(void)
             RG_PANIC("ROM file loading failed!");
     }
     else if (!load_rom_file(app->romPath))
+    {
         RG_PANIC("ROM file loading failed!");
+    }
 
     bitmap.width = SMS_WIDTH;
     bitmap.height = SMS_HEIGHT;
