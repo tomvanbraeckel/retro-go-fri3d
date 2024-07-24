@@ -205,18 +205,7 @@ extern "C" void lynx_main(void)
     app->tickRate = 60;
 
     // Init emulator
-    if (rg_extension_match(app->romPath, "zip"))
-    {
-        void *data;
-        size_t size;
-        if (!rg_storage_unzip_file(app->romPath, NULL, &data, &size))
-            RG_PANIC("ROM file unzipping failed!");
-        lynx = new CSystem((UBYTE*)data, size, MIKIE_PIXEL_FORMAT_16BPP_565_BE, app->sampleRate);
-    }
-    else
-    {
-        lynx = new CSystem(app->romPath, MIKIE_PIXEL_FORMAT_16BPP_565_BE, app->sampleRate);
-    }
+    lynx = new_lynx();
 
     if (lynx->mFileType == HANDY_FILETYPE_ILLEGAL)
     {
