@@ -82,7 +82,7 @@ static void network_event_handler(void *arg, esp_event_base_t event_base, int32_
             RG_LOGI("Connected! IP: %s, RSSI: %d", network.ip_addr, network.rssi);
             rg_system_event(RG_EVENT_NETWORK_CONNECTED, NULL);
 
-            sntp_stop();
+            esp_sntp_stop();
             sntp_init();
         }
         else if (event_id == IP_EVENT_AP_STAIPASSIGNED)
