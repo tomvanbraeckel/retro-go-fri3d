@@ -18,7 +18,7 @@
 // Audio
 #define RG_AUDIO_USE_BUZZER_PIN     46
 #define RG_AUDIO_USE_INT_DAC        0   // 0 = Disable, 1 = GPIO25, 2 = GPIO26, 3 = Both
-#define RG_AUDIO_USE_EXT_DAC        0   // 0 = Disable, 1 = Enable
+#define RG_AUDIO_USE_EXT_DAC        1   // 0 = Disable, 1 = Enable
 
 // Video
 #define RG_SCREEN_DRIVER            0   // 0 = ILI9341 but also works on ST7789 with below RG_SCREEN_INIT()
@@ -111,3 +111,14 @@
 #define RG_GPIO_SDSPI_CLK           RG_GPIO_LCD_CLK
 #define RG_GPIO_SDSPI_CS            GPIO_NUM_14
 
+// External I2S DAC
+// Issue: Setting audio out to external DAC (which is not connected) causes constant right-arrow-like behavior
+#define RG_GPIO_SND_I2S_BCK         GPIO_NUM_2
+#define RG_GPIO_SND_I2S_WS          GPIO_NUM_47
+#define RG_GPIO_SND_I2S_DATA        GPIO_NUM_16
+//#define RG_GPIO_SND_AMP_ENABLE      GPIO_NUM_4
+
+// Tested this, same result:
+//#define RG_GPIO_SND_I2S_BCK         GPIO_NUM_40
+//#define RG_GPIO_SND_I2S_WS          GPIO_NUM_40
+//#define RG_GPIO_SND_I2S_DATA        GPIO_NUM_40
