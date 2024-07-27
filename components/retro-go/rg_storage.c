@@ -551,10 +551,6 @@ bool rg_storage_unzip_file(const char *zip_path, const char *filter, void **data
         return false;
     }
 
-    zip_header_t header = {0};
-    size_t data_align = 0x4000;
-    int header_pos = 0;
-
     // Very inefficient, we should read a block at a time and search it for a header. But I'm lazy.
     // Thankfully the header is usually found on the very first read :)
     for (header_pos = 0; !feof(fp) && header_pos < 0x10000; ++header_pos)
