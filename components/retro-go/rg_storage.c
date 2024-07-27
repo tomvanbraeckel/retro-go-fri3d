@@ -541,12 +541,9 @@ bool rg_storage_unzip_file(const char *zip_path, const char *filter, void **data
     RG_ASSERT(data_out && data_len, "Bad param");
     CHECK_PATH(zip_path);
 
-<<<<<<< HEAD
-=======
     zip_header_t header = {0};
     int header_pos = 0;
 
->>>>>>> dev
     FILE *fp = fopen(zip_path, "rb");
     if (!fp)
     {
