@@ -412,10 +412,31 @@ bool rg_storage_scandir(const char *path, rg_scandir_cb_t *callback, void *arg, 
     return true;
 }
 
-bool rg_storage_read_file(const char *path, void **data_out, size_t *data_len)
+int64_t rg_storage_get_free_space(const char *path)
+{
+    // Here we should translate the provided VFS path to the matching filesystem driver and drive
+    // But we don't. Instead we just assume it's drive 0 of the fatfs driver. Yay laziness.
+#ifdef ESP_PLATFORM
+    DWORD nclst;
+    FATFS *fatfs;
+    if (f_getfree("0:", &nclst, &fatfs) == FR_OK)
+    {
+        return (int64_t)nclst * fatfs->csize * fatfs->ssize;
+    }
+#endif
+
+    return -1;
+}
+
+bool rg_storage_read_file(const char *path, void **data_out, size_t *data_len, uint32_t flags)
 {
     RG_ASSERT(data_out && data_len, "Bad param");
     CHECK_PATH(path);
+
+    size_t output_buffer_align = RG_MAX(0x1000, (flags & 0xF) * 0x2000);
+    size_t output_buffer_size;
+    void *output_buffer;
+    size_t file_size;
 
     FILE *fp = fopen(path, "rb");
     if (!fp)
@@ -424,38 +445,45 @@ bool rg_storage_read_file(const char *path, void **data_out, size_t *data_len)
         return false;
     }
 
-    size_t data_align = 0x4000;
-    size_t file_size;
-    void *file_data;
-
     fseek(fp, 0, SEEK_END);
     file_size = ftell(fp);
     fseek(fp, 0, SEEK_SET);
 
-    file_data = malloc(((file_size & ~data_align) + data_align));
-    if (!file_data)
+    if (flags & RG_FILE_USER_BUFFER)
+    {
+        output_buffer_size = RG_MIN(*data_len, file_size);
+        output_buffer = *data_out;
+    }
+    else
+    {
+        output_buffer_size = file_size;
+        output_buffer = malloc((output_buffer_size + (output_buffer_align - 1)) & ~(output_buffer_align - 1));
+    }
+
+    if (!output_buffer)
     {
         RG_LOGE("Memory allocation failed");
         fclose(fp);
         return false;
     }
 
-    if (!fread(file_data, file_size, 1, fp))
+    if (!fread(output_buffer, output_buffer_size, 1, fp))
     {
         RG_LOGE("File read failed");
-        free(file_data);
         fclose(fp);
+        if (!(flags & RG_FILE_USER_BUFFER))
+            free(output_buffer);
         return false;
     }
 
     fclose(fp);
 
-    *data_out = file_data;
-    *data_len = file_size;
+    *data_out = output_buffer;
+    *data_len = output_buffer_size;
     return true;
 }
 
-bool rg_storage_write_file(const char *path, const void *data_ptr, size_t data_len, bool atomic)
+bool rg_storage_write_file(const char *path, const void *data_ptr, size_t data_len, uint32_t flags)
 {
     RG_ASSERT(data_ptr, "Bad param");
     CHECK_PATH(path);
@@ -507,12 +535,18 @@ typedef struct __attribute__((packed))
     // uint8_t compressed_data[];
 } zip_header_t;
 
-bool rg_storage_unzip_file(const char *zip_path, const char *filter, void **data_out, size_t *data_len)
+bool rg_storage_unzip_file(const char *zip_path, const char *filter, void **data_out, size_t *data_len, uint32_t flags)
 {
 #if RG_ZIP_SUPPORT
     RG_ASSERT(data_out && data_len, "Bad param");
     CHECK_PATH(zip_path);
 
+<<<<<<< HEAD
+=======
+    zip_header_t header = {0};
+    int header_pos = 0;
+
+>>>>>>> dev
     FILE *fp = fopen(zip_path, "rb");
     if (!fp)
     {
@@ -526,7 +560,7 @@ bool rg_storage_unzip_file(const char *zip_path, const char *filter, void **data
 
     // Very inefficient, we should read a block at a time and search it for a header. But I'm lazy.
     // Thankfully the header is usually found on the very first read :)
-    for (header_pos = 0; !feof(fp); ++header_pos)
+    for (header_pos = 0; !feof(fp) && header_pos < 0x10000; ++header_pos)
     {
         fseek(fp, header_pos, SEEK_SET);
         fread(&header, sizeof(header), 1, fp);
@@ -548,11 +582,23 @@ bool rg_storage_unzip_file(const char *zip_path, const char *filter, void **data
 
     size_t stream_offset = header_pos + 30 + header.filename_size + header.extra_field_size;
     size_t stream_remaining = header.compressed_size;
-    size_t output_buffer_size = header.uncompressed_size;
+    size_t output_buffer_align = RG_MAX(0x1000, (flags & 0xF) * 0x2000);
+    size_t output_buffer_size;
     size_t output_buffer_pos = 0;
-    size_t read_buffer_size = 0x8000;
+    uint8_t *output_buffer = NULL;
 
-    uint8_t *output_buffer = malloc((output_buffer_size + (data_align - 1)) & ~(data_align - 1));
+    if (flags & RG_FILE_USER_BUFFER)
+    {
+        output_buffer_size = RG_MIN(*data_len, header.uncompressed_size);
+        output_buffer = *data_out;
+    }
+    else
+    {
+        output_buffer_size = header.uncompressed_size;
+        output_buffer = malloc((output_buffer_size + (output_buffer_align - 1)) & ~(output_buffer_align - 1));
+    }
+
+    size_t read_buffer_size = 0x8000;
     uint8_t *read_buffer = malloc(read_buffer_size);
     tinfl_decompressor *decomp = malloc(sizeof(tinfl_decompressor));
 
@@ -571,9 +617,8 @@ bool rg_storage_unzip_file(const char *zip_path, const char *filter, void **data
         size_t output_size = output_buffer_size - output_buffer_pos;
         if (fseek(fp, stream_offset, SEEK_SET) != 0 || fread(read_buffer, input_size, 1, fp) != 1)
         {
-            RG_LOGE("Read error");
-            status = TINFL_STATUS_FAILED;
-            break;
+            RG_LOGE("Read error: %d", errno);
+            goto _fail;
         }
         stream_offset += input_size;
         stream_remaining -= input_size;
@@ -583,7 +628,8 @@ bool rg_storage_unzip_file(const char *zip_path, const char *filter, void **data
         output_buffer_pos += output_size;
     } while (status == TINFL_STATUS_NEEDS_MORE_INPUT);
 
-    if (status != TINFL_STATUS_DONE)
+    // With user-provided buffer we might not reach TINFL_STATUS_DONE, but it doesn't mean we've failed
+    if (status < TINFL_STATUS_DONE || output_buffer_pos != output_buffer_size) // (status != TINFL_STATUS_DONE)
     {
         RG_LOGE("Decompression failed! ret: %d", (int)status);
         goto _fail;
@@ -598,7 +644,8 @@ bool rg_storage_unzip_file(const char *zip_path, const char *filter, void **data
     return true;
 
 _fail:
-    free(output_buffer);
+    if (!(flags & RG_FILE_USER_BUFFER))
+        free(output_buffer);
     free(read_buffer);
     free(decomp);
     fclose(fp);

@@ -514,10 +514,14 @@ static void event_handler(int event, void *arg)
 
 bool is_iwad(const char *path)
 {
-    FILE *fp = fopen(path, "rb");
-    bool valid = fp && fgetc(fp) == 'I' && fgetc(fp) == 'W';
-    fclose(fp);
-    return valid;
+    char header[16] = {0};
+    void *data = &header;
+    size_t data_len = 16;
+    if (rg_extension_match(path, "zip"))
+        rg_storage_unzip_file(path, NULL, &data, &data_len, RG_FILE_USER_BUFFER);
+    else
+        rg_storage_read_file(path, &data, &data_len, RG_FILE_USER_BUFFER);
+    return header[0] == 'I' && header[1] == 'W';
 }
 
 void app_main()
@@ -545,18 +549,11 @@ void app_main()
 
     const char *iwad = NULL;
     const char *pwad = NULL;
-    FILE *fp;
 
-    if ((fp = fopen(app->romPath, "rb")))
-    {
-        char firstChar = fgetc(fp);
-        char secondChar = fgetc(fp);
-        if (firstChar == 'P' && secondChar == 'W')
-            pwad = app->romPath;
-        else
-            iwad = app->romPath;
-        fclose(fp);
-    }
+    if (is_iwad(app->romPath))
+        iwad = app->romPath;
+    else
+        pwad = app->romPath;
 
     if (!iwad)
     {
