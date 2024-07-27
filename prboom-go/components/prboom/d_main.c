@@ -40,6 +40,9 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#ifdef RETRO_GO
+#include <rg_system.h>
+#endif
 
 #include <rg_system.h>
 
@@ -543,26 +546,27 @@ bool D_AddFile(const char *file)
     return false;
   }
 
-  if (rg_extension_match(file, "zip"))
-  {
-    wadfile_info_t wad = {0};
-    if (rg_storage_unzip_file(file, NULL, &wad.data, &wad.size))
-    {
-      wad.name = strdup(file);
-      // Some of the code expects to see .wad in the name
-      strcpy(wad.name + strlen(wad.name) - 3, "wad");
-      wadfiles[numwadfiles++] = wad;
-      return true;
-    }
-  } else {
-      wadfiles[numwadfiles++] = (wadfile_info_t){
-          .name = strdup(file),
-          .handle = NULL,
-          .data = NULL,
-          .size = 0,
-      };
-  }
+  wadfile_info_t wadfile = {
+      .name = strdup(file),
+      .handle = NULL,
+      .data = NULL,
+      .size = 0,
+  };
 
+#ifdef RETRO_GO
+  // I'd prefer to do this in retro-go's prboom's main.c, but this is easier for now...
+  if (rg_extension_match(file, "zip")) {
+    if (rg_storage_unzip_file(file, NULL, (void **)&wadfile.data, &wadfile.size, 0)) {
+      char *name = (char *)wadfile.name;
+      size_t len = strlen(name);
+      name[len - 1] = 'd';
+      name[len - 2] = 'a';
+      name[len - 3] = 'w';
+    }
+  }
+#endif
+
+  wadfiles[numwadfiles++] = wadfile;
   return true;
 }
 

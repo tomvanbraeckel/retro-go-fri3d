@@ -144,7 +144,6 @@ static rg_gui_event_t view_release_cb(rg_gui_option_t *option, rg_gui_event_t ev
             char dest_path[RG_PATH_MAX];
             snprintf(dest_path, RG_PATH_MAX, "%s/%s", DOWNLOAD_LOCATION, release->assets[sel].name);
             gui_redraw();
-            //if (download_file(release->assets[sel].url, dest_path))
             if (download_file_to_flash(release->assets[sel].url, dest_path))
             {
                 if (rg_gui_confirm("Download complete!", "Restart device?", true))
