@@ -112,13 +112,6 @@
 #define RG_GPIO_SDSPI_CS            GPIO_NUM_14
 
 // External I2S DAC
-// Issue: Setting audio out to external DAC (which is not connected) causes constant right-arrow-like behavior
 #define RG_GPIO_SND_I2S_BCK         GPIO_NUM_2
-#define RG_GPIO_SND_I2S_WS          GPIO_NUM_47
+#define RG_GPIO_SND_I2S_WS          GPIO_NUM_47 // also known as LRCK
 #define RG_GPIO_SND_I2S_DATA        GPIO_NUM_16
-//#define RG_GPIO_SND_AMP_ENABLE      GPIO_NUM_4
-
-// Tested this, same result:
-//#define RG_GPIO_SND_I2S_BCK         GPIO_NUM_40
-//#define RG_GPIO_SND_I2S_WS          GPIO_NUM_40
-//#define RG_GPIO_SND_I2S_DATA        GPIO_NUM_40
