@@ -9,7 +9,7 @@
 #include "port.h"
 #include "65c816.h"
 
-#define ROM_NAME_LEN 23
+#define ROM_NAME_LEN 22
 
 /* SNES screen width and height */
 #define SNES_WIDTH            256
@@ -223,10 +223,6 @@ typedef struct
 extern SSettings Settings;
 extern SCPUState CPU;
 extern char String [513];
-
-#ifdef LAGFIX
-extern bool finishedFrame;
-#endif
 
 void S9xSetPause(uint32_t mask);
 void S9xClearPause(uint32_t mask);

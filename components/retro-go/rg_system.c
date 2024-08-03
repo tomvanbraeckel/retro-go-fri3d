@@ -240,9 +240,10 @@ static void system_monitor_task(void *arg)
             }
         }
 
-        if (abs(prevTime - rtcValue) > 60)
+        int seconds = (int)difftime(prevTime, rtcValue);
+        if (abs(seconds) > 60)
         {
-            RG_LOGI("System time suddenly changed %d seconds.", (int)(rtcValue - prevTime));
+            RG_LOGI("System time suddenly changed %d seconds.", seconds);
             rg_system_save_time(); // Not sure if this is thread safe...
         }
         prevTime = rtcValue;
@@ -338,6 +339,7 @@ rg_app_t *rg_system_init(int sampleRate, const rg_handlers_t *handlers, const rg
         .tickTimeout = 3000000,
         .availableMemory = 0,
         .watchdog = true,
+        .isLauncher = false,
     #if RG_BUILD_RELEASE
         .isRelease = true,
         .logLevel = RG_LOG_INFO,
@@ -595,7 +597,6 @@ size_t rg_queue_messages_waiting(rg_queue_t *queue)
 void rg_system_load_time(void)
 {
     time_t time_sec = RG_MAX(rtcValue, RG_BUILD_TIME);
-    FILE *fp;
 #if 0
     if (rg_i2c_read(0x68, 0x00, data, sizeof(data)))
     {
@@ -603,10 +604,10 @@ void rg_system_load_time(void)
     }
     else
 #endif
-    if ((fp = fopen(RG_BASE_PATH_CACHE "/clock.bin", "rb")))
+    void *data_ptr = (void *)&time_sec;
+    size_t data_len = sizeof(time_sec);
+    if (rg_storage_read_file(RG_BASE_PATH_CACHE "/clock.bin", &data_ptr, &data_len, RG_FILE_USER_BUFFER))
     {
-        fread(&time_sec, sizeof(time_sec), 1, fp);
-        fclose(fp);
         RG_LOGI("Time loaded from storage\n");
     }
 #ifdef ESP_PLATFORM
@@ -622,12 +623,9 @@ void rg_system_save_time(void)
     return;
 
     time_t time_sec = time(NULL);
-    FILE *fp;
     // We always save to storage in case the RTC disappears.
-    if ((fp = fopen(RG_BASE_PATH_CACHE "/clock.bin", "wb")))
+    if (rg_storage_write_file(RG_BASE_PATH_CACHE "/clock.bin", (void *)&time_sec, sizeof(time_sec), 0))
     {
-        fwrite(&time_sec, sizeof(time_sec), 1, fp);
-        fclose(fp);
         RG_LOGI("System time saved to storage.\n");
     }
 #if 0
@@ -1060,13 +1058,8 @@ static void emu_update_save_slot(uint8_t slot)
     if (slot != last_written)
     {
         char *filename = rg_emu_get_path(RG_PATH_SAVE_STATE + 0xFF, app.romPath);
-        FILE *fp = fopen(filename, "wb");
-        if (fp)
-        {
-            fwrite(&slot, 1, 1, fp);
-            fclose(fp);
+        if (rg_storage_write_file(filename, (void *)&last_written, sizeof(last_written), 0))
             last_written = slot;
-        }
         free(filename);
     }
     app.saveSlot = slot;
@@ -1208,12 +1201,9 @@ uint8_t rg_emu_get_last_used_slot(const char *romPath)
 {
     uint8_t last_used_slot = 0xFF;
     char *filename = rg_emu_get_path(RG_PATH_SAVE_STATE + 0xFF, romPath);
-    FILE *fp = fopen(filename, "rb");
-    if (fp)
-    {
-        fread(&last_used_slot, 1, 1, fp);
-        fclose(fp);
-    }
+    void *data_ptr = (void *)&last_used_slot;
+    size_t data_len = sizeof(last_used_slot);
+    rg_storage_read_file(filename, &data_ptr, &data_len, RG_FILE_USER_BUFFER);
     free(filename);
     return last_used_slot;
 }
@@ -1221,7 +1211,6 @@ uint8_t rg_emu_get_last_used_slot(const char *romPath)
 rg_emu_states_t *rg_emu_get_states(const char *romPath, size_t slots)
 {
     rg_emu_states_t *result = calloc(1, sizeof(rg_emu_states_t) + sizeof(rg_emu_slot_t) * slots);
-    uint8_t last_used_slot = rg_emu_get_last_used_slot(romPath);
 
     for (size_t i = 0; i < slots; i++)
     {
@@ -1239,12 +1228,16 @@ rg_emu_states_t *rg_emu_get_states(const char *romPath, size_t slots)
         {
             if (!result->latest || slot->mtime > result->latest->mtime)
                 result->latest = slot;
-            if (slot->id == last_used_slot)
-                result->lastused = slot;
             result->used++;
         }
         free(preview);
         free(file);
+    }
+    if (result->used)
+    {
+        uint8_t last_used_slot = rg_emu_get_last_used_slot(romPath);
+        if (last_used_slot < slots)
+            result->lastused = &result->slots[last_used_slot];
     }
     if (!result->lastused && result->latest)
         result->lastused = result->latest;

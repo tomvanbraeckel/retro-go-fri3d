@@ -62,27 +62,43 @@ const char *rg_extension(const char *filename)
 {
     if (!filename)
         return NULL;
-
-    const char *ptr = rg_basename(filename);
-    const char *ext = strrchr(ptr, '.');
-    if (!ext)
-        return ptr + strlen(ptr);
-    return ext + 1;
+    const char *ptr = filename + strlen(filename) - 1;
+    while (ptr > filename && *ptr != '/')
+    {
+        if (*ptr == '.')
+            return ptr + 1;
+        ptr--;
+    }
+    return NULL;
 }
 
-bool rg_extension_match(const char *filename, const char *extension)
+bool rg_extension_match(const char *filename, const char *extensions)
 {
-    const char *fileext = rg_extension(filename);
-    if (!fileext || !extension)
+    const char *ext = rg_extension(filename);
+    if (!ext || !extensions)
         return false;
 
-    while (*fileext && *extension)
+    const char *haystack = extensions;
+    while (*haystack)
     {
-        if (toupper(*fileext++) != toupper(*extension++))
-            return false;
+        while (*haystack == ' ')
+            haystack++;
+
+        const char *needle = ext;
+        while (*needle && *haystack && tolower((unsigned char)*needle) == tolower((unsigned char)*haystack))
+        {
+            needle++;
+            haystack++;
+        }
+        if (*needle == 0 && (*haystack == 0 || *haystack == ' '))
+            return true;
+
+        // Fast forward to next extension
+        while (*haystack && *haystack != ' ')
+            haystack++;
     }
 
-    return *fileext == 0 && *extension == 0;
+    return false;
 }
 
 const char *rg_relpath(const char *path)
@@ -178,9 +194,16 @@ IRAM_ATTR uint32_t rg_hash(const char *data, size_t len)
     return hash;
 }
 
-const char *const_string(const char *str)
+typedef struct
 {
-    static const rg_str_t **strings = NULL;
+    uint16_t length;
+    uint16_t unused;
+    char data[];
+} unique_string_t;
+
+const char *rg_unique_string(const char *str)
+{
+    static const unique_string_t **strings = NULL;
     static size_t strings_count = 0;
 
     if (!str)
@@ -196,13 +219,12 @@ const char *const_string(const char *str)
             return strings[i]->data;
     }
 
-    rg_str_t *obj = malloc(sizeof(rg_str_t) + len + 1);
+    unique_string_t *obj = malloc(sizeof(unique_string_t) + len + 1);
 
-    strings = realloc(strings, (strings_count + 1) * sizeof(char *));
+    strings = realloc(strings, (strings_count + 1) * sizeof(unique_string_t *));
     RG_ASSERT(strings && obj, "alloc failed");
 
     memcpy(obj->data, str, len + 1);
-    obj->capacity = len;
     obj->length = len;
 
     strings[strings_count++] = obj;
