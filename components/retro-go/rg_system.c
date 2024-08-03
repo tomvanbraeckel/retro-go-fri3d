@@ -232,9 +232,11 @@ static void system_monitor_task(void *arg)
             // App hasn't ticked in a while, listen for MENU presses to give feedback to the user
             if (rg_input_wait_for_key(RG_KEY_MENU, true, 1000))
             {
-                const char *message = "App unresponsive... Hold MENU to quit!";
+                const char *message = "This hangs. Hold Y-button to quit";
                 // Drawing at this point isn't safe. But the alternative is being frozen...
                 rg_gui_draw_text(RG_GUI_CENTER, RG_GUI_CENTER, 0, message, C_RED, C_BLACK, RG_TEXT_BIGGER);
+                message = "and choose 'Reboot to launcher'.";
+                rg_gui_draw_text(RG_GUI_CENTER, RG_GUI_CENTER+42, 0, message, C_RED, C_BLACK, RG_TEXT_BIGGER);
                 if (!rg_input_wait_for_key(RG_KEY_MENU, false, 2000))
                     RG_PANIC("Application terminated!"); // We're not in a nice state, don't normal exit
             }
