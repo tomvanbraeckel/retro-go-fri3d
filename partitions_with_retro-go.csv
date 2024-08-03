@@ -1,4 +1,4 @@
-# Partition table for Fri3D Camp 2024 Badge with ESP-IDF OTA support using 16MB flash
+# Partition table for Fri3d Camp 2024 Badge with ESP-IDF OTA support using 16MB flash
 #
 # Also present in flash:
 # 0x0 images/bootloader.bin

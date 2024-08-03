@@ -50,7 +50,7 @@
 #endif
 
 #ifndef RG_PROJECT_NAME
-#define RG_PROJECT_NAME "Retro-Go Fri3D"
+#define RG_PROJECT_NAME "Retro-Go Fri3d"
 #endif
 
 #ifndef RG_PROJECT_APP

@@ -1,9 +1,9 @@
-# Fri3D Camp 2024 Badge
+# Fri3d Camp 2024 Badge
 - Status: completed
 - Ref: https://github.com/Fri3dCamp/badge_2024_hw/
 - Ref: https://fri3d.be/
 
-This port developed for the Fri3D Camp 2024 Badge, based on the ESP32-S3 microcontroller.
+This port developed for the Fri3d Camp 2024 Badge, based on the ESP32-S3 microcontroller.
 
 # Hardware info
 
@@ -22,6 +22,8 @@ This port developed for the Fri3D Camp 2024 Badge, based on the ESP32-S3 microco
 - USB-C connector
 - Stemma QT connector
 - Expansion Connector
+
+It also supports a [Communicator" hardware add-on](https://github.com/Fri3dCamp/communicator_2024/) which has an audio DAC, speaker, microphone and keyboard.
 
 
 # Images

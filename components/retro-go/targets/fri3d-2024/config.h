@@ -1,8 +1,8 @@
-/* Configuration for Fri3D Camp 2024 Badge, based on the ESP32-S3.
+/* Configuration for Fri3d Camp 2024 Badge, based on the ESP32-S3.
  *
  * Hardware info: https://github.com/Fri3dCamp/badge_2024_hw
  *
- * Fri3D Camp info: https://fri3d.be/
+ * Fri3d Camp info: https://fri3d.be/
  *
  */
 

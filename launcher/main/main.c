@@ -454,7 +454,7 @@ void app_main(void)
     // needed is a better solution, but that would have to be done for every app. This is a good workaround for now.
     heap_caps_malloc_extmem_enable(1024);
 
-    // If this was started from OTA_0 or OTA_1 on the Fri3D Camp badge,
+    // If this was started from OTA_0 or OTA_1 on the Fri3d Camp badge,
     // then save the rollback partition for when the times comes to go back.
     esp_ota_store_last_boot_app_partition();
 #endif
