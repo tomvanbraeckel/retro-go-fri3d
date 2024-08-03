@@ -8,7 +8,7 @@
 #include <sys/time.h>
 #include <time.h>
 
-#include "bitmaps/image_fri3d_logo.h"
+#include "bitmaps/image_fri3d_logo_round_f200_128px.h"
 #include "fonts/fonts.h"
 
 static struct
