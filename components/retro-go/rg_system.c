@@ -263,7 +263,7 @@ static void enter_recovery_mode(void)
 
     const rg_gui_option_t options[] = {
         {0, "Reset all settings", NULL, RG_DIALOG_FLAG_NORMAL, NULL},
-        {1, "Switch to Main Menu (START+MENU)", NULL, RG_DIALOG_FLAG_NORMAL, NULL},
+        {1, "Boot Fri3d App (START+MENU)", NULL, RG_DIALOG_FLAG_NORMAL, NULL},
         {2, "Reboot to launcher", NULL, RG_DIALOG_FLAG_NORMAL, NULL},
         RG_DIALOG_END,
     };
