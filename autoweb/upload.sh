@@ -1,0 +1,12 @@
+curl 'http://192.168.4.1/sd/retro-go/saves/gbc/homebrew/Chuckie_Egg_DX.zip-255.sav' \
+  -X 'PUT' \
+  -H 'Accept: */*' \
+  -H 'Accept-Language: en-US,en;q=0.9' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Length: 1' \
+  -H 'Content-Type: application/x-spss-sav' \
+  -H 'Origin: http://192.168.4.1' \
+  -H 'Referer: http://192.168.4.1/' \
+  -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36' \
+  --compressed \
+  --insecure
