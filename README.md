@@ -14,8 +14,6 @@ You might need to put the badge in DOWNLOAD mode manually:
 - the badge has now restarted in download mode
 - after the download you might need to reset the badge to boot normally (PRESS the RESET button)
 
-You might need to press START 
-
 From https://github.com/cheops/fri3d-ota/releases:
 
 1. https://github.com/cheops/fri3d-ota/blob/main/ota/fri3d_badge_2024/0.1.3-lv-ota.1%2Bbuild.0/fri3d_badge_2024-0.1.3-lv-ota.1%2Bbuild.0.zip
