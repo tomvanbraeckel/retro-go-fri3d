@@ -14,37 +14,13 @@ You might need to put the badge in DOWNLOAD mode manually:
 - the badge has now restarted in download mode
 - after the download you might need to reset the badge to boot normally (PRESS the RESET button)
 
-From https://github.com/cheops/fri3d-ota/releases:
+With the file "all-in-one_for_webflasher_OVERWRITES_EVERYTHING.zip" from https://github.com/tomvanbraeckel/retro-go-fri3d/releases
 
-1. https://github.com/cheops/fri3d-ota/blob/main/ota/fri3d_badge_2024/0.1.3-lv-ota.1%2Bbuild.0/fri3d_badge_2024-0.1.3-lv-ota.1%2Bbuild.0.zip
+After that, it should boot into the Fri3d App, based on ESP-IDF. If not, you might need the press the RESET button.
 
-From https://github.com/tomvanbraeckel/retro-go-fri3d/releases
+After that, choose "Retro-Go Gaming" in the menu to boot into retro-go-fri3d.
 
-2. add_retro-go_to_fri3d_badge_2024.zip
-
-3. add_homebrew_free_games-WARNING-OVERWRITES-FAT-PARTITION.zip
-
-Then press reset and wait 1 minute for MicroPython to extract the filesystem.
-
-If the GUI shows up asking for an OTA update, choose "cancel" by pressing the A button.
-
-Open a serial console (picocom -b 115200 /dev/ttyACM0) and do:
-
-```
-from esp32 import Partition
-Partition(Partition.RUNNING)
-part = Partition.find(type=Partition.TYPE_APP,subtype=0xff,label="launcher")
-part[0].set_boot()
-machine.reset()
-```
-
-Now it should boot into retro-go!
-
-
-
-
-
-
+That's it!
 
 
 
