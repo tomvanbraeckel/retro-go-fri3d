@@ -14,10 +14,11 @@ You might need to put the badge in DOWNLOAD mode manually:
 - the badge has now restarted in download mode
 - after the download you might need to reset the badge to boot normally (PRESS the RESET button)
 
-After flashing, the device should boot into the Fri3d App, based on ESP-IDF.
-If not, you might need the press the RESET button.
+Now the device should boot into the Fri3d App, based on ESP-IDF.
 
-Then choose "Retro-Go Gaming" in the menu to boot into retro-go-fri3d. That's it!
+Then choose "Retro-Go Gaming" in the menu to boot into retro-go-fri3d.
+
+That's it!
 
 
 
