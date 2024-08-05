@@ -4,7 +4,7 @@ See [the Fri3d 2024 target docs](components/retro-go/targets/fri3d-2024/README.m
 
 # Flashing
 
-Use https://github.com/cheops/fri3d-ota (links to https://fri3d-flasher.vercel.app/ ) to flash the latest file called "[all-in-one_for_webflasher_OVERWRITES_EVERYTHING.zip](https://github.com/tomvanbraeckel/retro-go-fri3d/releases)".
+Use https://github.com/cheops/fri3d-ota (links to https://fri3d-flasher.vercel.app/ ) to flash the latest release file called "[all-in-one_for_webflasher_OVERWRITES_EVERYTHING.zip](https://github.com/tomvanbraeckel/retro-go-fri3d/releases)".
 
 The online flasher app works with chrome based browsers (Chrome, Edge) (not Firefox, Safari).
 
