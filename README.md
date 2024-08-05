@@ -4,7 +4,7 @@ See [the Fri3d 2024 target docs](components/retro-go/targets/fri3d-2024/README.m
 
 # Flashing
 
-Use https://github.com/cheops/fri3d-ota (links to https://fri3d-flasher.vercel.app/ ) to flash.
+Use https://github.com/cheops/fri3d-ota (links to https://fri3d-flasher.vercel.app/ ) to flash the latest file called "[all-in-one_for_webflasher_OVERWRITES_EVERYTHING.zip](https://github.com/tomvanbraeckel/retro-go-fri3d/releases)".
 
 The online flasher app works with chrome based browsers (Chrome, Edge) (not Firefox, Safari).
 
@@ -14,15 +14,10 @@ You might need to put the badge in DOWNLOAD mode manually:
 - the badge has now restarted in download mode
 - after the download you might need to reset the badge to boot normally (PRESS the RESET button)
 
-With the file "all-in-one_for_webflasher_OVERWRITES_EVERYTHING.zip" from https://github.com/tomvanbraeckel/retro-go-fri3d/releases
+After flashing, the device should boot into the Fri3d App, based on ESP-IDF.
+If not, you might need the press the RESET button.
 
-After that, it should boot into the Fri3d App, based on ESP-IDF. If not, you might need the press the RESET button.
-
-After that, choose "Retro-Go Gaming" in the menu to boot into retro-go-fri3d.
-
-That's it!
-
-
+Then choose "Retro-Go Gaming" in the menu to boot into retro-go-fri3d. That's it!
 
 
 
