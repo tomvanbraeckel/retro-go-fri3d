@@ -15,8 +15,11 @@
 #include "wifi.h"
 #include "webui.h"
 #include "updater.h"
+#include "find_games.h"
 
 static rg_app_t *app;
+
+int finding_games = 0;
 
 static rg_gui_event_t toggle_tab_cb(rg_gui_option_t *option, rg_gui_event_t event)
 {
@@ -184,6 +187,43 @@ static rg_gui_event_t updater_cb(rg_gui_option_t *option, rg_gui_event_t event)
     }
     return RG_DIALOG_VOID;
 }
+
+void find_games_task(void *args)
+{
+    RG_LOGI("Launching find_games_task, this can take several minutes if there are lots of games...");
+    rg_task_delay(1000);
+
+    char status_msg[50];
+    snprintf(status_msg, sizeof(status_msg), "Finding games...");
+    rg_gui_draw_dialog(status_msg, NULL, 0);
+
+    find_games_show_dialog("/");
+
+    RG_LOGI("Finished finding games!");
+    snprintf(status_msg, sizeof(status_msg), "Finished finding games!");
+    rg_gui_draw_dialog(status_msg, NULL, 0);
+
+    finding_games = 0;
+}
+
+static rg_gui_event_t find_games_cb(rg_gui_option_t *option, rg_gui_event_t event)
+{
+    if (rg_network_get_info().state != RG_NETWORK_CONNECTED || finding_games == 1)
+    {
+        option->flags = RG_DIALOG_FLAG_DISABLED;
+        return RG_DIALOG_VOID;
+    }
+    if (event == RG_DIALOG_ENTER)
+    {
+	// TODO: explain what will happen and ask confirmation
+        //gui_redraw(); // clear main menu
+        finding_games = 1;
+	rg_task_create("find_games", &find_games_task, NULL, 3 * 1024, RG_TASK_PRIORITY_5, -1);
+	return RG_DIALOG_CANCELLED;
+        //return RG_DIALOG_CLOSE; weird that it closes the dialog, yes, but then rg_gui_draw_dialog() flashes up, same for when finished...
+    }
+    return RG_DIALOG_VOID;
+}
 #endif
 
 static rg_gui_event_t prebuild_cache_cb(rg_gui_option_t *option, rg_gui_event_t event)
@@ -204,6 +244,7 @@ static void show_about_menu(void)
     const rg_gui_option_t options[] = {
         {0, "Build CRC cache", NULL, RG_DIALOG_FLAG_NORMAL, &prebuild_cache_cb},
     #ifdef RG_ENABLE_NETWORKING
+        {0, "Find games", NULL, RG_DIALOG_FLAG_NORMAL, &find_games_cb},
         {0, "Check for updates", NULL, RG_DIALOG_FLAG_NORMAL, &updater_cb},
     #endif
         RG_DIALOG_END,

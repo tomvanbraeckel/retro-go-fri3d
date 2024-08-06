@@ -40,7 +40,7 @@ rg_network_t rg_network_get_info(void);
 
 typedef struct
 {
-
+    char *post_data;
 } rg_http_cfg_t;
 
 typedef struct
