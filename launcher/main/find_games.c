@@ -3,7 +3,7 @@
 
 #ifdef RG_ENABLE_NETWORKING
 
-#define RG_FIND_GAMES_BASE "http://192.168.4.1/"
+#define RG_FIND_GAMES_DOWNLOAD "http://192.168.4.1"
 //#define RG_FIND_GAMES_API "http://192.168.1.16/api"
 #define RG_FIND_GAMES_API "http://192.168.4.1/api"
 
@@ -72,7 +72,10 @@ static bool download_file(const char *url, const char *filename)
     {
         received += len;
         written += fwrite(buffer, 1, len, fp);
-        sprintf(buffer, "Received %d / %d", received, content_length);
+        if (content_length>0)
+            sprintf(buffer, "Received %d / %d of %s", received, content_length, filename);
+        else
+            sprintf(buffer, "Received %d bytes of %s", received, filename);
         rg_gui_draw_dialog(buffer, NULL, 0);
         if (received != written)
             break; // No point in continuing
@@ -108,7 +111,7 @@ static cJSON *fetch_list_json(const char *url, const char *path)
     if (!(http_cfg.post_data = (char*)malloc(1024)))
         goto cleanup_nothing;
 
-    snprintf(http_cfg.post_data, 1024, "{\"cmd\":\"list\",\"arg1\":\"/sd%s\",\"arg2\":\"\"}", path);
+    snprintf(http_cfg.post_data, 1024, "{\"cmd\":\"list\",\"arg1\":\"%s\",\"arg2\":\"\"}", path);
     RG_LOGI("http_cfg.post_data = %s", http_cfg.post_data);
 
     if (!(req = rg_network_http_open(url, &http_cfg)))
@@ -137,42 +140,6 @@ cleanup_nothing:
     return json;
 }
 
-/*
-static rg_gui_event_t view_release_cb(rg_gui_option_t *option, rg_gui_event_t event)
-{
-    if (event == RG_DIALOG_ENTER)
-    {
-        release_t *release = (release_t *)option->arg;
-
-        rg_gui_option_t options[release->assets_count + 4];
-        rg_gui_option_t *opt = options;
-
-        *opt++ = (rg_gui_option_t){0, "Date", release->date, -1, NULL};
-        *opt++ = (rg_gui_option_t){0, "Files:", NULL, -1, NULL};
-
-        for (int i = 0; i < release->assets_count; i++)
-            *opt++ = (rg_gui_option_t){i, release->assets[i].name, NULL, 1, NULL};
-        *opt++ = (rg_gui_option_t)RG_DIALOG_END;
-
-        int sel = rg_gui_dialog(release->name, options, -1);
-        if (sel != RG_DIALOG_CANCELLED)
-        {
-            char dest_path[RG_PATH_MAX];
-            snprintf(dest_path, RG_PATH_MAX, "%s/%s", DOWNLOAD_LOCATION, release->assets[sel].name);
-            gui_redraw();
-            if (download_file_to_flash(release->assets[sel].url, dest_path))
-            {
-                if (rg_gui_confirm("Download complete!", "Restart device?", true))
-                    rg_system_switch_app(RG_APP_UPDATER, NULL, dest_path, 0);
-            }
-        }
-        gui_redraw();
-    }
-
-    return RG_DIALOG_VOID;
-}
-*/
-
 typedef struct StackNode {
     const char *path;
     struct StackNode *next;
@@ -200,6 +167,30 @@ const char *pop(StackNode **stack) {
     return path;
 }
 
+char* urlencode(char* originalText)
+{
+    // allocate memory for the worst possible case (all characters need to be encoded)
+    char *encodedText = (char *)malloc(sizeof(char)*strlen(originalText)*3+1);
+
+    const char *hex = "0123456789abcdef";
+
+    int pos = 0;
+    for (int i = 0; i < strlen(originalText); i++) {
+        if (('a' <= originalText[i] && originalText[i] <= 'z')
+            || ('A' <= originalText[i] && originalText[i] <= 'Z')
+            || ('0' <= originalText[i] && originalText[i] <= '9')) {
+                encodedText[pos++] = originalText[i];
+            } else {
+                encodedText[pos++] = '%';
+                encodedText[pos++] = hex[originalText[i] >> 4];
+                encodedText[pos++] = hex[originalText[i] & 15];
+            }
+    }
+    encodedText[pos] = '\0';
+    return encodedText;
+}
+
+
 void find_games_show_dialog(const char *initial_path) {
     StackNode *stack = NULL;
     push(&stack, initial_path);
@@ -210,8 +201,7 @@ void find_games_show_dialog(const char *initial_path) {
             continue;
         }
 
-        RG_LOGI("find_games_show_dialog with path:");
-        RG_LOGI("%s", path);
+        RG_LOGI("find_games_show_dialog with path: %s", path);
 
         cJSON *files_json = fetch_list_json(RG_FIND_GAMES_API, path);
         if (!files_json) {
@@ -227,10 +217,14 @@ void find_games_show_dialog(const char *initial_path) {
         const cJSON *files = cJSON_GetObjectItemCaseSensitive(files_json, "files");
         const cJSON *file;
         cJSON_ArrayForEach(file, files) {
-            RG_LOGI("found file!");
+            char full_path[RG_PATH_MAX];
+
             cJSON *name = cJSON_GetObjectItemCaseSensitive(file, "name");
             cJSON *size = cJSON_GetObjectItemCaseSensitive(file, "size");
             cJSON *isdir = cJSON_GetObjectItemCaseSensitive(file, "is_dir");
+
+            snprintf(full_path, sizeof(full_path), "%s/%s", path, name->valuestring);
+            RG_LOGI("Found entry with full_path: %s", full_path);
 
             if (cJSON_IsString(name) && (name->valuestring != NULL))
                 printf("%s,", name->valuestring);
@@ -238,14 +232,13 @@ void find_games_show_dialog(const char *initial_path) {
                 printf("%d,", size->valueint);
             if (cJSON_IsTrue(isdir)) {
                 printf("true\n");
-                char full_path[1024];
-                snprintf(full_path, sizeof(full_path), "%s/%s", path, name->valuestring);
                 push(&stack, full_path);
             } else {
                 printf("false\n");
-                RG_LOGI("TODO: download file: %s/%s", path, name->valuestring);
-	        //snprintf(status_msg, sizeof(status_msg), "Found %s/%s", path, name->valuestring);
-                //rg_gui_draw_dialog(status_msg, NULL, 0);
+                char full_url[RG_PATH_MAX];
+                char* full_path_without_first_slash = full_path + 1; // remove first character (/)
+                snprintf(full_url, sizeof(full_url), "%s/%s", RG_FIND_GAMES_DOWNLOAD, urlencode(full_path_without_first_slash));
+                download_file(full_url, full_path);
             }
         }
 

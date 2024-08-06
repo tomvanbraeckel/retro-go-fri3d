@@ -197,7 +197,7 @@ void find_games_task(void *args)
     snprintf(status_msg, sizeof(status_msg), "Finding games...");
     rg_gui_draw_dialog(status_msg, NULL, 0);
 
-    find_games_show_dialog("/");
+    find_games_show_dialog(RG_STORAGE_ROOT);
 
     RG_LOGI("Finished finding games!");
     snprintf(status_msg, sizeof(status_msg), "Finished finding games!");
