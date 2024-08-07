@@ -190,24 +190,29 @@ static rg_gui_event_t updater_cb(rg_gui_option_t *option, rg_gui_event_t event)
 
 void find_games_task(void *args)
 {
-    RG_LOGI("Launching find_games_task, this can take several minutes if there are lots of games...");
-    rg_task_delay(500); // wait for the main dialog to close
+    char *folder = (char*)args;
+    char status_msg[RG_PATH_MAX];
 
-    gui.find_games_lock = true;
+    gui_redraw(); // clear main menu
 
-    char status_msg[50];
-    snprintf(status_msg, sizeof(status_msg), "Finding games...");
+    snprintf(status_msg, sizeof(status_msg), "Finding games in remote %s", folder);
+    RG_LOGI(status_msg);
     rg_gui_draw_dialog(status_msg, NULL, 0);
 
-    find_games_show_dialog(RG_BASE_PATH_ROMS);
+    find_games_show_dialog(folder);
 
-    RG_LOGI("Finished finding games!");
-    snprintf(status_msg, sizeof(status_msg), "Finished finding games!");
+    snprintf(status_msg, sizeof(status_msg), "Finished finding games in %s!", folder);
+    RG_LOGI(status_msg);
     rg_gui_draw_dialog(status_msg, NULL, 0);
-    rg_task_delay(2000);
 
-    gui.find_games_lock = false;
+    rg_task_delay(2000); // give some time to read the message
+
+    gui.find_games_lock = false; // release the GUI
     finding_games = 0; // enable menu entry again
+
+    RG_LOGI("Free'ing folder as it's malloc'ed by find_games_cb when it starts this task...");
+    free(folder);
+    RG_LOGI("free!");
 }
 
 static rg_gui_event_t find_games_cb(rg_gui_option_t *option, rg_gui_event_t event)
@@ -219,12 +224,40 @@ static rg_gui_event_t find_games_cb(rg_gui_option_t *option, rg_gui_event_t even
     }
     if (event == RG_DIALOG_ENTER)
     {
-        if (rg_gui_confirm("Find games", "Als een andere Retro-Go zijn Wi-Fi hotspot aanzet (via 'Wi-Fi options' -> 'Wi-Fi Access Point') en jij ermee verbindt (via 'Wi-Fi select' -> 'retro-go') dan kan je zoeken naar spelletjes die je nog niet hebt.\n\nWil je beginnen zoeken?", true))
+        if (rg_gui_confirm("Find games", "Als een andere Retro-Go zijn Wi-Fi hotspot aanzet (via 'Wi-Fi options' -> 'Wi-Fi Access Point') en jij ermee verbindt (via 'Wi-Fi select' -> 'retro-go') dan kan je zoeken naar games die je nog niet hebt.\n\nOm te annuleren kan je op de 'RESET' knop drukken.\n\nWil je beginnen zoeken?", true))
         {
-            finding_games = 1; // disable the menu entry
-            rg_task_create("find_games", &find_games_task, NULL, 3 * 1024, RG_TASK_PRIORITY_5, -1);
-            gui_redraw(); // clear main menu
-            return RG_DIALOG_CLOSE; // works okay, with a gui_redraw() and delay(500) and find_games_lock in find_games_task
+            // This list could be dynamically generated based on the enabled applications:
+            const rg_gui_option_t options[] = {
+                {1, "NES:                    ", "/sd/roms/nes",  RG_DIALOG_FLAG_NORMAL, NULL},
+                {2, "GameBoy:                ", "/sd/roms/gb",  RG_DIALOG_FLAG_NORMAL, NULL},
+                {3, "GameBoy Color:          ", "/sd/roms/gbc",  RG_DIALOG_FLAG_NORMAL, NULL},
+                {4, "GameBoy Color GBStudio: ", "/sd/roms/gbc/gbstudio",  RG_DIALOG_FLAG_NORMAL, NULL},
+                {5, "Doom:                   ", "/sd/roms/doom",  RG_DIALOG_FLAG_NORMAL, NULL},
+                RG_DIALOG_SEPARATOR,
+                {6, "Everything:              " , "/sd/roms", RG_DIALOG_FLAG_NORMAL, NULL},
+                {7, "Nothing (Cancel)         " , NULL, RG_DIALOG_FLAG_NORMAL, NULL},
+                RG_DIALOG_END,
+            };
+            int sel = rg_gui_dialog("Choose folder", options, 0);
+            RG_LOGI("find_games_cb got menu entry %d", sel);
+            if (sel != RG_DIALOG_CANCELLED && sel != 7)
+            {
+                finding_games = 1; // disable the menu entry so the user can't start this twice
+                gui.find_games_lock = true; // lock the GUI
+
+                // Duplicate the folder argument because it will be passed to the new task
+                char* folder = malloc(RG_PATH_MAX);
+                if (!folder)
+                {
+                    RG_LOGE("find_games_cb is out of memory!");
+                    return RG_DIALOG_CLOSE;
+                }
+                folder = strndup(options[sel].value, RG_PATH_MAX);
+
+                RG_LOGI("Launching find_games_task for folder '%s', this can take a while...", folder);
+                rg_task_create("find_games", &find_games_task, folder, 3 * 1024, RG_TASK_PRIORITY_5, -1);
+                return RG_DIALOG_CLOSE;
+            }
         }
     }
     return RG_DIALOG_VOID;
