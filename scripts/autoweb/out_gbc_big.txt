@@ -1,0 +1,1187 @@
+{
+	"files":	[{
+			"name":	"roms",
+			"size":	0,
+			"mtime":	1721067376,
+			"is_dir":	true
+		}, {
+			"name":	"retro-go",
+			"size":	0,
+			"mtime":	1721067500,
+			"is_dir":	true
+		}, {
+			"name":	"romart",
+			"size":	0,
+			"mtime":	1721043922,
+			"is_dir":	true
+		}, {
+			"name":	"crash.log",
+			"size":	2395,
+			"mtime":	1721670016,
+			"is_dir":	false
+		}],
+	"success":	true
+}{
+	"files":	[{
+			"name":	"1942 (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Disney's Aladdin (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Walt Disney's Alice in Wonderland (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Aliens - Thanatos Encounter (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Alone in the Dark - The New Nightmare (USA).gbc",
+			"size":	4194304,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Armorines - Project S.W.A.R.M. (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Army Men 2 (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Army Men - Air Combat (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Army Men - Sarge's Heroes 2 (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Army Men (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Asterix & Obelix (Europe).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Asterix - Search for Dogmatix (Europe).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Asteroids (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Azure Dreams (USA) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Ballistic (USA).gbc",
+			"size":	524288,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Batman - Chaos in Gotham (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Battleship - The Classic Naval Combat Game (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"BattleTanx (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Bionic Commando - Elite Forces (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Blade (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Blaster Master - Enemy Below (USA) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Bomberman Max - Blue Champion (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Bomberman Max - Red Challenger (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Bomberman Quest (USA) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Bugs Bunny - Crazy Castle 3 (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Bugs Bunny in Crazy Castle 4 (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Bust-A-Move 4 (USA).gbc",
+			"size":	524288,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Bust-A-Move Millennium (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Cannon Fodder (USA).gbc",
+			"size":	4194304,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Centipede (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Chessmaster, The (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Classic Bubble Bobble (USA) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Conker's Pocket Tales (USA) (SGB Enhanced).gbc",
+			"size":	2097152,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Croc 2 (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Croc (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Cruis'n Exotica (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Crystalis (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Daffy Duck - Fowl Play (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"John Romero's Daikatana (Europe).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Deja Vu I & II (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Dexter's Laboratory - Robot Rampage (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Disney's Donald Duck - Goin' Quackers (USA).gbc",
+			"size":	4194304,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Donkey Kong Country (USA).gbc",
+			"size":	4194304,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Disney's Doug - Doug's Big Game (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Dragon Ball Z - Legendary Super Warriors (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Dragon Dance (USA) (SGB Enhanced).gbc",
+			"size":	262144,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Dragon's Lair (USA).gbc",
+			"size":	4194304,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Dragon Warrior I & II (USA) (SGB Enhanced).gbc",
+			"size":	2097152,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Dragon Warrior III (USA).gbc",
+			"size":	4194304,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Dragon Warrior Monsters 2 - Cobi's Journey (USA) (SGB Enhanced).gbc",
+			"size":	4194304,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Dragon Warrior Monsters 2 - Tara's Adventure (USA) (SGB Enhanced).gbc",
+			"size":	4194304,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Dragon Warrior Monsters (USA) (SGB Enhanced).gbc",
+			"size":	2097152,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Driver - You Are the Wheelman (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Duke Nukem (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Earthworm Jim - Menace 2 the Galaxy (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"ECW Hardcore Revolution (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Disney's The Emperor's New Groove (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"FIFA 2000 (USA) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Frogger 2 - Swampy's Revenge (USA) (Rev-A).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Frogger (USA) (Rev-B).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Galaga - Destination Earth (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Game & Watch Gallery 2 (USA) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Game & Watch Gallery 3 (USA) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Gex 3 - Deep Pocket Gecko (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Gex - Enter the Gecko (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Ghosts 'n Goblins (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Grand Theft Auto 2 (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Grand Theft Auto (USA).gbc",
+			"size":	4194304,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Grinch, The (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Halloween Racer (Europe).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Hamtaro - Ham-Hams Unite! (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Hands of Time (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Harry Potter and the Chamber of Secrets (USA).gbc",
+			"size":	4194304,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Harry Potter and the Sorcerer's Stone (USA).gbc",
+			"size":	4194304,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Harvest Moon 2 GBC (USA) (SGB Enhanced).gbc",
+			"size":	2097152,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Harvest Moon 3 GBC (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Harvest Moon GBC (USA) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Heroes of Might and Magic II (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Heroes of Might and Magic (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Hexcite - The Shapes of Victory (USA) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Hole in One Golf (USA) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Indiana Jones and the Infernal Machine (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"International Superstar Soccer 2000 (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"International Superstar Soccer 99 (USA) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Walt Disney's The Jungle Book - Mowgli's Wild Adventure (USA).gbc",
+			"size":	4194304,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Ken Griffey Jr.'s Slugfest (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Kirby Tilt 'n' Tumble (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Legend of the River King 2 (USA) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Legend of the River King GBC (USA) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Legend of Zelda, The - Link's Awakening DX (USA) (Rev-B) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Legend of Zelda, The - Oracle of Ages (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Legend of Zelda, The - Oracle of Seasons (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"LEGO Racers (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Disney's The Lion King - Simba's Mighty Adventure (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Looney Tunes - Carrot Crazy (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Looney Tunes Collector - Alert! (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Looney Tunes - Twouble! (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Looney Tunes (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Lucky Luke - Desperado Train (Europe).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Lucky Luke (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066384,
+			"is_dir":	false
+		}, {
+			"name":	"Lufia - The Legend Returns (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Madden NFL 2000 (USA) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Madden NFL 2001 (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Madden NFL 2002 (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Magical Drop (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Magical Tetris Challenge (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Magi Nation (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Mario Golf (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Mario Tennis (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Marvin Strikes Back! (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Mat Hoffman's Pro BMX (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Mega Man Xtreme 2 (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Mega Man Xtreme (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Metal Gear Solid (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Metal Walker (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Mickey's Racing Adventure (USA).gbc",
+			"size":	4194304,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Mickey's Speedway USA (USA).gbc",
+			"size":	4194304,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Micro Machines 1 and 2 - Twin Turbo (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Micro Machines V3 (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Midway Presents Arcade Hits - Joust & Defender (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Midway Presents Arcade Hits - Moon Patrol & Spy Hunter (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Missile Command (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Monkey Puncher (Europe) (SGB Enhanced).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Monopoly (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Monster Rancher Battle Card GB (USA) (SGB Enhanced).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Monster Rancher Explorer (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Disney-Pixar Monsters, Inc. (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Mortal Kombat 4 (USA) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Motocross Maniacs 2 (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Mr. Driller (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Mr. Nutz (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Ms. Pac-Man - Special Color Edition (USA) (SGB Enhanced).gbc",
+			"size":	524288,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Mummy, The (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"NASCAR 2000 (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"NBA 3-on-3 Featuring Kobe Bryant (USA) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"NBA Hoopz (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"NBA In the Zone 2000 (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"NBA In the Zone (USA) (Rev-A) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"NBA Jam 2001 (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"NBA Jam 99 (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"NFL Blitz 2001 (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"NHL 2000 (USA) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"NHL Blades of Steel 2000 (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Oddworld Adventures 2 (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Pac-Man - Special Color Edition (USA) (SGB Enhanced).gbc",
+			"size":	262144,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Perfect Dark (USA).gbc",
+			"size":	4194304,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Pocket Bomberman (USA) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Pokemon Crystal Version (USA) (Rev-A).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Pokemon Gold Version (USA) (SGB Enhanced).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Pokemon Pinball (USA) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Pokemon Puzzle Challenge (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Pokemon Silver Version (USA) (SGB Enhanced).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Pokemon Trading Card Game (USA) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Power Quest (USA) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Saban's Power Rangers - Lightspeed Rescue (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Saban's Power Rangers - Time Force (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Prince of Persia (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Project S-11 (USA).gbc",
+			"size":	524288,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Puzzle Master (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Q-bert (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Quest - Brian's Journey (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Rampart (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Rayman 2 - The Great Escape (USA).gbc",
+			"size":	4194304,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Rayman (USA).gbc",
+			"size":	4194304,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Razor Freestyle Scooter (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Resident Evil Gaiden (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Return of the Ninja (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Revelations - The Demon Slayer (USA) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Road Rash (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Roadsters (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Robopon - Sun Version (USA) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"R-Type DX (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Scooby-Doo! Classic Creep Capers (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Shadowgate Classic (USA) (Rev-A).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Shantae (USA).gbc",
+			"size":	4194304,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Smurfs Nightmare, The (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Snoopy Tennis (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Space Invaders (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Space Station Silicon Valley (Europe).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Spawn (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Spider-Man 2 - The Sinister Six (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Spider-Man (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Spy vs. Spy (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Star Wars Episode I - Racer (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Street Fighter Alpha - Warriors' Dreams (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Super Breakout! (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Super Mario Bros. Deluxe (USA) (Rev-B).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Survival Kids (USA) (SGB Enhanced).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"SWIV (Europe).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Disney's Tarzan (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Test Drive Le Mans (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Tetris DX (USA) (SGB Enhanced).gbc",
+			"size":	524288,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Tiny Toon Adventures - Buster Saves the Day (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Toki Tori (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Tom and Jerry in Mouse Attacks! (USA) (Rev-A).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Tom and Jerry (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Tomb Raider - Curse of the Sword (USA).gbc",
+			"size":	4194304,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Tomb Raider (USA).gbc",
+			"size":	4194304,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Tom Clancy's Rainbow Six (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Tony Hawk's Pro Skater 2 (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Tony Hawk's Pro Skater 3 (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Tony Hawk's Pro Skater (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Top Gear Pocket 2 (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Top Gear Pocket (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Disney-Pixar Toy Story Racer (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Turok 2 - Seeds of Evil (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Turok 3 - Shadow of Oblivion (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Turok - Rage Wars (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Uno (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Vigilante 8 (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"V-Rally - Championship Edition (Europe).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Wacky Races (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Wario Land 3 (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Wario Land II (USA) (SGB Enhanced).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Warlocked (USA).gbc",
+			"size":	2097152,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Warriors of Might and Magic (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"WCW Mayhem (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Wendy - Every Witch Way (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Woody Woodpecker Racing (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Worms Armageddon (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"WWF Attitude (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"WWF Betrayal (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"WWF WrestleMania 2000 (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"X-Men - Mutant Academy (USA) (Rev-A).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"X-Men - Mutant Wars (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"X-Men - Wolverine's Rage (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Xtreme Sports (USA).gbc",
+			"size":	4194304,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Yars' Revenge (USA).gbc",
+			"size":	1048576,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Yu-Gi-Oh! Dark Duel Stories (USA).gbc",
+			"size":	4194304,
+			"mtime":	1721066386,
+			"is_dir":	false
+		}, {
+			"name":	"Hacks",
+			"size":	0,
+			"mtime":	1721066386,
+			"is_dir":	true
+		}, {
+			"name":	"Homebrew & Unlicensed",
+			"size":	0,
+			"mtime":	1721066386,
+			"is_dir":	true
+		}, {
+			"name":	"Unreleased",
+			"size":	0,
+			"mtime":	1721066386,
+			"is_dir":	true
+		}],
+	"success":	true
+}

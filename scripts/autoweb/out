@@ -1,0 +1,1917 @@
+{
+	"files":	[{
+			"name":	"roms",
+			"size":	0,
+			"mtime":	1721067376,
+			"is_dir":	true
+		}, {
+			"name":	"retro-go",
+			"size":	0,
+			"mtime":	1721067500,
+			"is_dir":	true
+		}, {
+			"name":	"romart",
+			"size":	0,
+			"mtime":	1721043922,
+			"is_dir":	true
+		}, {
+			"name":	"crash.log",
+			"size":	2395,
+			"mtime":	1721670016,
+			"is_dir":	false
+		}],
+	"success":	true
+}{
+	"files":	[{
+			"name":	"Adventure Island II - Aliens in Paradise (USA).gb",
+			"size":	262144,
+			"mtime":	1721066412,
+			"is_dir":	false
+		}, {
+			"name":	"Adventure Island (USA).gb",
+			"size":	131072,
+			"mtime":	1721066412,
+			"is_dir":	false
+		}, {
+			"name":	"Adventures of Lolo (Europe) (SGB Enhanced).gb",
+			"size":	262144,
+			"mtime":	1721066414,
+			"is_dir":	false
+		}, {
+			"name":	"Adventures of Star Saver, The (USA).gb",
+			"size":	131072,
+			"mtime":	1721066414,
+			"is_dir":	false
+		}, {
+			"name":	"Aerostar (USA).gb",
+			"size":	131072,
+			"mtime":	1721066414,
+			"is_dir":	false
+		}, {
+			"name":	"Disney's Aladdin (USA) (SGB Enhanced).gb",
+			"size":	262144,
+			"mtime":	1721066414,
+			"is_dir":	false
+		}, {
+			"name":	"Alfred Chicken (USA).gb",
+			"size":	131072,
+			"mtime":	1721066414,
+			"is_dir":	false
+		}, {
+			"name":	"Alleyway (USA).gb",
+			"size":	32768,
+			"mtime":	1721066414,
+			"is_dir":	false
+		}, {
+			"name":	"All-Star Baseball 99 (USA).gb",
+			"size":	524288,
+			"mtime":	1721066414,
+			"is_dir":	false
+		}, {
+			"name":	"Amazing Penguin (USA).gb",
+			"size":	65536,
+			"mtime":	1721066414,
+			"is_dir":	false
+		}, {
+			"name":	"Amazing Tater (USA).gb",
+			"size":	65536,
+			"mtime":	1721066414,
+			"is_dir":	false
+		}, {
+			"name":	"Arcade Classic No. 1 - Asteroids & Missile Command (USA) (SGB Enhanced).gb",
+			"size":	131072,
+			"mtime":	1721066414,
+			"is_dir":	false
+		}, {
+			"name":	"Arcade Classic No. 2 - Centipede & Millipede (USA) (SGB Enhanced).gb",
+			"size":	131072,
+			"mtime":	1721066414,
+			"is_dir":	false
+		}, {
+			"name":	"Arcade Classic No. 3 - Galaga & Galaxian (USA) (SGB Enhanced).gb",
+			"size":	131072,
+			"mtime":	1721066414,
+			"is_dir":	false
+		}, {
+			"name":	"Arcade Classic No. 4 - Defender & Joust (USA) (SGB Enhanced).gb",
+			"size":	131072,
+			"mtime":	1721066414,
+			"is_dir":	false
+		}, {
+			"name":	"Arcade Classics - Super Breakout & Battlezone (USA) (SGB Enhanced).gb",
+			"size":	262144,
+			"mtime":	1721066414,
+			"is_dir":	false
+		}, {
+			"name":	"Asterix & Obelix (Europe) (SGB Enhanced).gb",
+			"size":	262144,
+			"mtime":	1721066416,
+			"is_dir":	false
+		}, {
+			"name":	"Asterix (Europe).gb",
+			"size":	131072,
+			"mtime":	1721066416,
+			"is_dir":	false
+		}, {
+			"name":	"Asteroids (USA).gb",
+			"size":	32768,
+			"mtime":	1721066416,
+			"is_dir":	false
+		}, {
+			"name":	"Atomic Punk (USA).gb",
+			"size":	131072,
+			"mtime":	1721066416,
+			"is_dir":	false
+		}, {
+			"name":	"Avenging Spirit (USA).gb",
+			"size":	262144,
+			"mtime":	1721066416,
+			"is_dir":	false
+		}, {
+			"name":	"Balloon Kid (USA).gb",
+			"size":	131072,
+			"mtime":	1721066416,
+			"is_dir":	false
+		}, {
+			"name":	"Bases Loaded (USA).gb",
+			"size":	131072,
+			"mtime":	1721066416,
+			"is_dir":	false
+		}, {
+			"name":	"Batman - Return of the Joker (USA).gb",
+			"size":	131072,
+			"mtime":	1721066416,
+			"is_dir":	false
+		}, {
+			"name":	"Batman - The Animated Series (USA).gb",
+			"size":	131072,
+			"mtime":	1721066416,
+			"is_dir":	false
+		}, {
+			"name":	"Batman - The Video Game (USA).gb",
+			"size":	131072,
+			"mtime":	1721066416,
+			"is_dir":	false
+		}, {
+			"name":	"Battle Arena Toshinden (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066416,
+			"is_dir":	false
+		}, {
+			"name":	"Battle of Olympus, The (Europe).gb",
+			"size":	262144,
+			"mtime":	1721066418,
+			"is_dir":	false
+		}, {
+			"name":	"Battleship - The Classic Naval Combat Game (USA).gb",
+			"size":	65536,
+			"mtime":	1721066418,
+			"is_dir":	false
+		}, {
+			"name":	"Battletoads & Double Dragon - The Ultimate Team (USA).gb",
+			"size":	262144,
+			"mtime":	1721066418,
+			"is_dir":	false
+		}, {
+			"name":	"Battletoads in Ragnarok's World (USA).gb",
+			"size":	131072,
+			"mtime":	1721066418,
+			"is_dir":	false
+		}, {
+			"name":	"Battletoads (USA).gb",
+			"size":	131072,
+			"mtime":	1721066418,
+			"is_dir":	false
+		}, {
+			"name":	"Battle Unit Zeoth (USA).gb",
+			"size":	131072,
+			"mtime":	1721066418,
+			"is_dir":	false
+		}, {
+			"name":	"Beavis and Butt-Head (USA).gb",
+			"size":	524288,
+			"mtime":	1721066418,
+			"is_dir":	false
+		}, {
+			"name":	"Bill Elliott's NASCAR Fast Tracks (USA).gb",
+			"size":	131072,
+			"mtime":	1721066418,
+			"is_dir":	false
+		}, {
+			"name":	"Bionic Battler (USA).gb",
+			"size":	65536,
+			"mtime":	1721066418,
+			"is_dir":	false
+		}, {
+			"name":	"Bionic Commando (USA).gb",
+			"size":	262144,
+			"mtime":	1721066418,
+			"is_dir":	false
+		}, {
+			"name":	"Black Bass - Lure Fishing (USA).gb",
+			"size":	262144,
+			"mtime":	1721066420,
+			"is_dir":	false
+		}, {
+			"name":	"Blades of Steel (USA).gb",
+			"size":	131072,
+			"mtime":	1721066420,
+			"is_dir":	false
+		}, {
+			"name":	"Blaster Master Boy (USA).gb",
+			"size":	131072,
+			"mtime":	1721066420,
+			"is_dir":	false
+		}, {
+			"name":	"Bomberman GB (USA) (SGB Enhanced).gb",
+			"size":	262144,
+			"mtime":	1721066420,
+			"is_dir":	false
+		}, {
+			"name":	"Bomb Jack (Europe).gb",
+			"size":	32768,
+			"mtime":	1721066420,
+			"is_dir":	false
+		}, {
+			"name":	"Bonk's Adventure (USA).gb",
+			"size":	262144,
+			"mtime":	1721066420,
+			"is_dir":	false
+		}, {
+			"name":	"Bonk's Revenge (USA) (SGB Enhanced).gb",
+			"size":	262144,
+			"mtime":	1721066420,
+			"is_dir":	false
+		}, {
+			"name":	"Boulder Dash (Europe).gb",
+			"size":	65536,
+			"mtime":	1721066420,
+			"is_dir":	false
+		}, {
+			"name":	"Boxxle II (USA).gb",
+			"size":	32768,
+			"mtime":	1721066420,
+			"is_dir":	false
+		}, {
+			"name":	"Boxxle (USA) (Rev-A).gb",
+			"size":	32768,
+			"mtime":	1721066420,
+			"is_dir":	false
+		}, {
+			"name":	"Brain Drain (USA) (SGB Enhanced).gb",
+			"size":	131072,
+			"mtime":	1721066420,
+			"is_dir":	false
+		}, {
+			"name":	"BreakThru! (USA).gb",
+			"size":	131072,
+			"mtime":	1721066420,
+			"is_dir":	false
+		}, {
+			"name":	"Bubble Bobble Part 2 (USA).gb",
+			"size":	131072,
+			"mtime":	1721066420,
+			"is_dir":	false
+		}, {
+			"name":	"Bubble Bobble (USA).gb",
+			"size":	131072,
+			"mtime":	1721066422,
+			"is_dir":	false
+		}, {
+			"name":	"Bubble Ghost (USA).gb",
+			"size":	32768,
+			"mtime":	1721066422,
+			"is_dir":	false
+		}, {
+			"name":	"Bugs Bunny Crazy Castle 2, The (USA).gb",
+			"size":	131072,
+			"mtime":	1721066422,
+			"is_dir":	false
+		}, {
+			"name":	"Bugs Bunny Crazy Castle, The (USA).gb",
+			"size":	65536,
+			"mtime":	1721066422,
+			"is_dir":	false
+		}, {
+			"name":	"Burai Fighter Deluxe (USA).gb",
+			"size":	65536,
+			"mtime":	1721066422,
+			"is_dir":	false
+		}, {
+			"name":	"BurgerTime Deluxe (USA).gb",
+			"size":	65536,
+			"mtime":	1721066422,
+			"is_dir":	false
+		}, {
+			"name":	"Bust-A-Move 2 - Arcade Edition (USA).gb",
+			"size":	131072,
+			"mtime":	1721066422,
+			"is_dir":	false
+		}, {
+			"name":	"Bust-A-Move 3 DX (Europe).gb",
+			"size":	131072,
+			"mtime":	1721066422,
+			"is_dir":	false
+		}, {
+			"name":	"Buster Bros. (USA).gb",
+			"size":	131072,
+			"mtime":	1721066422,
+			"is_dir":	false
+		}, {
+			"name":	"Castle Quest (Europe).gb",
+			"size":	131072,
+			"mtime":	1721066422,
+			"is_dir":	false
+		}, {
+			"name":	"Castlevania II - Belmont's Revenge (USA).gb",
+			"size":	131072,
+			"mtime":	1721066422,
+			"is_dir":	false
+		}, {
+			"name":	"Castlevania Legends (USA) (SGB Enhanced).gb",
+			"size":	262144,
+			"mtime":	1721066422,
+			"is_dir":	false
+		}, {
+			"name":	"Castlevania - The Adventure (USA).gb",
+			"size":	65536,
+			"mtime":	1721066422,
+			"is_dir":	false
+		}, {
+			"name":	"Catrap (USA).gb",
+			"size":	32768,
+			"mtime":	1721066422,
+			"is_dir":	false
+		}, {
+			"name":	"Championship Pool (USA).gb",
+			"size":	131072,
+			"mtime":	1721066422,
+			"is_dir":	false
+		}, {
+			"name":	"Chase H.Q. (USA).gb",
+			"size":	131072,
+			"mtime":	1721066424,
+			"is_dir":	false
+		}, {
+			"name":	"Choplifter III (Europe).gb",
+			"size":	131072,
+			"mtime":	1721066424,
+			"is_dir":	false
+		}, {
+			"name":	"Choplifter II (USA).gb",
+			"size":	131072,
+			"mtime":	1721066424,
+			"is_dir":	false
+		}, {
+			"name":	"College Slam (USA).gb",
+			"size":	524288,
+			"mtime":	1721066424,
+			"is_dir":	false
+		}, {
+			"name":	"Contra - The Alien Wars (USA) (SGB Enhanced).gb",
+			"size":	131072,
+			"mtime":	1721066424,
+			"is_dir":	false
+		}, {
+			"name":	"Cool Ball (USA).gb",
+			"size":	32768,
+			"mtime":	1721066424,
+			"is_dir":	false
+		}, {
+			"name":	"Cool Spot (USA).gb",
+			"size":	131072,
+			"mtime":	1721066424,
+			"is_dir":	false
+		}, {
+			"name":	"Cosmo Tank (USA).gb",
+			"size":	131072,
+			"mtime":	1721066424,
+			"is_dir":	false
+		}, {
+			"name":	"Cyraid (USA).gb",
+			"size":	65536,
+			"mtime":	1721066424,
+			"is_dir":	false
+		}, {
+			"name":	"Daedalian Opus (USA).gb",
+			"size":	32768,
+			"mtime":	1721066424,
+			"is_dir":	false
+		}, {
+			"name":	"Daffy Duck (USA) (SGB Enhanced).gb",
+			"size":	262144,
+			"mtime":	1721066424,
+			"is_dir":	false
+		}, {
+			"name":	"Disney's Darkwing Duck (USA).gb",
+			"size":	131072,
+			"mtime":	1721066424,
+			"is_dir":	false
+		}, {
+			"name":	"Dead Heat Scramble (USA).gb",
+			"size":	65536,
+			"mtime":	1721066424,
+			"is_dir":	false
+		}, {
+			"name":	"Desert Strike - Return to the Gulf (USA) (SGB Enhanced).gb",
+			"size":	262144,
+			"mtime":	1721066426,
+			"is_dir":	false
+		}, {
+			"name":	"Dexterity (USA).gb",
+			"size":	65536,
+			"mtime":	1721066426,
+			"is_dir":	false
+		}, {
+			"name":	"Dig Dug (USA).gb",
+			"size":	131072,
+			"mtime":	1721066426,
+			"is_dir":	false
+		}, {
+			"name":	"Donkey Kong Land 2 (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066426,
+			"is_dir":	false
+		}, {
+			"name":	"Donkey Kong Land III (USA) (Rev-A) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066426,
+			"is_dir":	false
+		}, {
+			"name":	"Donkey Kong Land (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066426,
+			"is_dir":	false
+		}, {
+			"name":	"Donkey Kong (USA) (Rev-A) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066428,
+			"is_dir":	false
+		}, {
+			"name":	"Double Dragon 3 - The Arcade Game (USA).gb",
+			"size":	131072,
+			"mtime":	1721066428,
+			"is_dir":	false
+		}, {
+			"name":	"Double Dragon II (USA).gb",
+			"size":	131072,
+			"mtime":	1721066428,
+			"is_dir":	false
+		}, {
+			"name":	"Double Dragon (USA).gb",
+			"size":	131072,
+			"mtime":	1721066428,
+			"is_dir":	false
+		}, {
+			"name":	"Double Dribble - 5-on-5 (USA).gb",
+			"size":	131072,
+			"mtime":	1721066428,
+			"is_dir":	false
+		}, {
+			"name":	"Dr. Franken II (USA).gb",
+			"size":	262144,
+			"mtime":	1721066428,
+			"is_dir":	false
+		}, {
+			"name":	"Dr. Franken (USA).gb",
+			"size":	131072,
+			"mtime":	1721066428,
+			"is_dir":	false
+		}, {
+			"name":	"Dr. Mario (USA) (Rev-A).gb",
+			"size":	32768,
+			"mtime":	1721066428,
+			"is_dir":	false
+		}, {
+			"name":	"Disney's DuckTales 2 (USA).gb",
+			"size":	131072,
+			"mtime":	1721066428,
+			"is_dir":	false
+		}, {
+			"name":	"Disney's DuckTales (USA).gb",
+			"size":	65536,
+			"mtime":	1721066428,
+			"is_dir":	false
+		}, {
+			"name":	"Earthworm Jim (USA).gb",
+			"size":	262144,
+			"mtime":	1721066428,
+			"is_dir":	false
+		}, {
+			"name":	"Elevator Action (USA).gb",
+			"size":	65536,
+			"mtime":	1721066428,
+			"is_dir":	false
+		}, {
+			"name":	"F-15 Strike Eagle (USA).gb",
+			"size":	131072,
+			"mtime":	1721066428,
+			"is_dir":	false
+		}, {
+			"name":	"F1 Pole Position (USA).gb",
+			"size":	262144,
+			"mtime":	1721066430,
+			"is_dir":	false
+		}, {
+			"name":	"F-1 Race (USA) (Rev-A).gb",
+			"size":	131072,
+			"mtime":	1721066430,
+			"is_dir":	false
+		}, {
+			"name":	"Faceball 2000 (USA).gb",
+			"size":	131072,
+			"mtime":	1721066430,
+			"is_dir":	false
+		}, {
+			"name":	"Felix the Cat (USA).gb",
+			"size":	131072,
+			"mtime":	1721066430,
+			"is_dir":	false
+		}, {
+			"name":	"Ferrari Grand Prix Challenge (USA).gb",
+			"size":	131072,
+			"mtime":	1721066430,
+			"is_dir":	false
+		}, {
+			"name":	"FIFA 98 - Road to World Cup (Europe) (Rev-A) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066430,
+			"is_dir":	false
+		}, {
+			"name":	"FIFA Soccer 97 (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066430,
+			"is_dir":	false
+		}, {
+			"name":	"Fighting Simulator - 2-in-1 Flying Warriors (USA).gb",
+			"size":	131072,
+			"mtime":	1721066430,
+			"is_dir":	false
+		}, {
+			"name":	"Final Fantasy Adventure (USA).gb",
+			"size":	262144,
+			"mtime":	1721066430,
+			"is_dir":	false
+		}, {
+			"name":	"Final Fantasy Legend III (USA).gb",
+			"size":	262144,
+			"mtime":	1721066430,
+			"is_dir":	false
+		}, {
+			"name":	"Final Fantasy Legend II (USA).gb",
+			"size":	262144,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Final Fantasy Legend, The (USA).gb",
+			"size":	131072,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Fire Fighter (Europe).gb",
+			"size":	131072,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Fish Dude (USA).gb",
+			"size":	65536,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Flash, The (USA).gb",
+			"size":	131072,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Flintstones, The - King Rock Treasure Island (USA).gb",
+			"size":	131072,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Flipull (USA).gb",
+			"size":	32768,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Fortified Zone (USA).gb",
+			"size":	131072,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Frogger (USA).gb",
+			"size":	131072,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Game & Watch Gallery (USA) (Rev-A) (SGB Enhanced).gb",
+			"size":	262144,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Gargoyle's Quest (USA).gb",
+			"size":	131072,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Gauntlet II (USA).gb",
+			"size":	262144,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Gear Works (USA).gb",
+			"size":	131072,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Ghostbusters II (USA).gb",
+			"size":	131072,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Golf (USA).gb",
+			"size":	131072,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Gradius - The Interstellar Assault (USA).gb",
+			"size":	262144,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Great Greed (USA).gb",
+			"size":	262144,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"HAL Wrestling (USA).gb",
+			"size":	131072,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Hammerin' Harry - Ghost Building Company (Europe).gb",
+			"size":	262144,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Harvest Moon GB (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Hatris (USA).gb",
+			"size":	65536,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Heiankyo Alien (USA).gb",
+			"size":	32768,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"High Speed II - The Getaway (USA).gb",
+			"size":	262144,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"High Stakes Gambling (USA).gb",
+			"size":	131072,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Hit the Ice (USA).gb",
+			"size":	131072,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Hook (USA).gb",
+			"size":	131072,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Disney's The Hunchback of Notre Dame - 5 Foolishly Fun Topsy Turvy Games (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Hunt for Red October, The (USA).gb",
+			"size":	131072,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Hyper Lode Runner (USA) (Rev-A).gb",
+			"size":	32768,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"International Superstar Soccer (USA) (SGB Enhanced).gb",
+			"size":	262144,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"In Your Face (USA).gb",
+			"size":	131072,
+			"mtime":	1721066432,
+			"is_dir":	false
+		}, {
+			"name":	"Iron Man and X-O Manowar in Heavy Metal (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"Ishido - The Way of Stones (USA).gb",
+			"size":	65536,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"Jack Nicklaus Golf (USA).gb",
+			"size":	131072,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"James Bond 007 (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"Jetsons, The - Robot Panic (USA).gb",
+			"size":	131072,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"Jimmy Connors Tennis (USA).gb",
+			"size":	65536,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"Joe & Mac (USA).gb",
+			"size":	262144,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"Disney's The Jungle Book (USA).gb",
+			"size":	131072,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"Jungle Strike - The Sequel to Desert Strike (USA).gb",
+			"size":	262144,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"Jurassic Park Part 2 - The Chaos Continues (USA).gb",
+			"size":	262144,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"Jurassic Park (USA).gb",
+			"size":	262144,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"Ken Griffey Jr. Presents Major League Baseball (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"Kid Dracula (USA).gb",
+			"size":	262144,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"Kid Icarus - Of Myths and Monsters (USA).gb",
+			"size":	131072,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"Killer Instinct (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"Kingdom Crusade (USA).gb",
+			"size":	131072,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"King of Fighters 95, The (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"King of Fighters, The - Heat of Battle (Europe) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"Kirby's Block Ball (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"Kirby's Dream Land 2 (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"Kirby's Dream Land (USA).gb",
+			"size":	262144,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"Kirby's Pinball Land (USA).gb",
+			"size":	262144,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"Kirby's Star Stacker (USA) (SGB Enhanced).gb",
+			"size":	262144,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"Klax (USA).gb",
+			"size":	65536,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"Knight Quest (USA).gb",
+			"size":	131072,
+			"mtime":	1721066434,
+			"is_dir":	false
+		}, {
+			"name":	"Kung-Fu Master (USA).gb",
+			"size":	65536,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Kwirk - He's A-maze-ing! (USA).gb",
+			"size":	32768,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Lamborghini American Challenge (USA).gb",
+			"size":	131072,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Legend of the River King GB (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Legend of Zelda, The - Link's Awakening (USA) (Rev-B).gb",
+			"size":	524288,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Lemmings 2 - The Tribes (Europe).gb",
+			"size":	524288,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Lemmings (USA).gb",
+			"size":	131072,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Lion King, The (USA).gb",
+			"size":	524288,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Disney's The Little Mermaid (USA).gb",
+			"size":	131072,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Lock 'n' Chase (USA).gb",
+			"size":	65536,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Looney Tunes (USA).gb",
+			"size":	131072,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Loopz (USA).gb",
+			"size":	32768,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Lost World, The - Jurassic Park (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Lucky Luke (Europe).gb",
+			"size":	262144,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Lucle (Europe).gb",
+			"size":	524288,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Madden NFL 95 (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Madden NFL 96 (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Madden NFL 97 (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Marble Madness (USA).gb",
+			"size":	262144,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Mario's Picross (USA) (SGB Enhanced).gb",
+			"size":	262144,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Maru's Mission (USA).gb",
+			"size":	131072,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Maui Mallard in Cold Shadow (USA).gb",
+			"size":	262144,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Megalit (USA).gb",
+			"size":	65536,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Mega Man - Dr. Wily's Revenge (USA).gb",
+			"size":	262144,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Mega Man III (USA).gb",
+			"size":	262144,
+			"mtime":	1721066436,
+			"is_dir":	false
+		}, {
+			"name":	"Mega Man II (USA).gb",
+			"size":	262144,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Mega Man IV (USA).gb",
+			"size":	524288,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Mega Man V (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Mercenary Force (USA).gb",
+			"size":	131072,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Metal Masters (USA).gb",
+			"size":	131072,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Metroid II - Return of Samus (USA).gb",
+			"size":	262144,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Mickey Mouse - Magic Wands! (USA) (SGB Enhanced).gb",
+			"size":	131072,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Mickey's Dangerous Chase (USA).gb",
+			"size":	131072,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Mickey's Ultimate Challenge (USA).gb",
+			"size":	262144,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Micro Machines 2 - Turbo Tournament (Europe).gb",
+			"size":	524288,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Micro Machines (USA).gb",
+			"size":	262144,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Mighty Morphin Power Rangers - The Movie (USA) (SGB Enhanced).gb",
+			"size":	262144,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Mighty Morphin Power Rangers (USA) (SGB Enhanced).gb",
+			"size":	262144,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Milon's Secret Castle (USA).gb",
+			"size":	131072,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Miner 2049er Starring Bounty Bob (USA).gb",
+			"size":	65536,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Missile Command (USA).gb",
+			"size":	32768,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Mole Mania (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Monopoly (USA).gb",
+			"size":	131072,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Monster Max (Europe).gb",
+			"size":	262144,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Monster Truck Wars (USA).gb",
+			"size":	131072,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Mortal Kombat 3 (USA).gb",
+			"size":	524288,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Mortal Kombat II (USA).gb",
+			"size":	262144,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Mortal Kombat (USA).gb",
+			"size":	262144,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Motocross Maniacs (USA).gb",
+			"size":	32768,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Mr. Chin's Gourmet Paradise (USA).gb",
+			"size":	65536,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Mr. Do! (USA).gb",
+			"size":	65536,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Mr. Nutz (Europe).gb",
+			"size":	262144,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Ms. Pac-Man (USA).gb",
+			"size":	65536,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Mysterium (USA).gb",
+			"size":	131072,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Mystical Ninja Starring Goemon (USA) (SGB Enhanced).gb",
+			"size":	262144,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"NBA All-Star Challenge 2 (USA).gb",
+			"size":	131072,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"NBA All-Star Challenge (USA).gb",
+			"size":	65536,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"NBA Jam - Tournament Edition (USA).gb",
+			"size":	524288,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"NBA Jam (USA).gb",
+			"size":	262144,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"NBA Live 96 (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Nemesis (USA).gb",
+			"size":	131072,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"NFL Quarterback Club 96 (USA).gb",
+			"size":	262144,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Nigel Mansell's World Championship Racing (USA).gb",
+			"size":	131072,
+			"mtime":	1721066438,
+			"is_dir":	false
+		}, {
+			"name":	"Ninja Boy 2 (USA).gb",
+			"size":	262144,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Ninja Boy (USA).gb",
+			"size":	65536,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Ninja Gaiden Shadow (USA).gb",
+			"size":	131072,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Ninja Taro (USA).gb",
+			"size":	131072,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Nintendo World Cup (USA).gb",
+			"size":	131072,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Nobunaga's Ambition (USA).gb",
+			"size":	131072,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Oddworld Adventures (USA).gb",
+			"size":	524288,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Olympic Summer Games (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Operation C (USA).gb",
+			"size":	131072,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Pac-Attack (USA) (SGB Enhanced).gb",
+			"size":	131072,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Pac-In-Time (USA) (SGB Enhanced).gb",
+			"size":	262144,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Pac-Man (USA).gb",
+			"size":	65536,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Paperboy 2 (USA).gb",
+			"size":	262144,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Paperboy (USA).gb",
+			"size":	65536,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Parasol Stars - Rainbow Islands II (Europe).gb",
+			"size":	131072,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Parodius (Europe).gb",
+			"size":	262144,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Penguin Wars (USA).gb",
+			"size":	65536,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"PGA European Tour (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"PGA Tour 96 (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Pinball Dreams (USA).gb",
+			"size":	131072,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Pinball Fantasies (USA).gb",
+			"size":	262144,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Pipe Dream (USA).gb",
+			"size":	32768,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Pokemon Blue Version (USA) (SGB Enhanced).gb",
+			"size":	1048576,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Pokemon Red Version (USA) (SGB Enhanced).gb",
+			"size":	1048576,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Pokemon Yellow Version - Special Pikachu Edition (USA) (SGB Enhanced).gb",
+			"size":	1048576,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Popeye 2 (USA).gb",
+			"size":	131072,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Pop'n TwinBee (Europe).gb",
+			"size":	131072,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Power Racer (USA).gb",
+			"size":	65536,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Primal Rage (USA).gb",
+			"size":	262144,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Prince of Persia (USA).gb",
+			"size":	131072,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Pyramids of Ra (USA).gb",
+			"size":	65536,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Q-bert (USA).gb",
+			"size":	65536,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Qix (USA).gb",
+			"size":	65536,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Quarth (USA).gb",
+			"size":	65536,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Race Drivin' (USA).gb",
+			"size":	131072,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Radar Mission (USA).gb",
+			"size":	131072,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Rampart (USA).gb",
+			"size":	131072,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Real Ghostbusters, The (USA).gb",
+			"size":	131072,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"David Crane's The Rescue of Princess Blobette (USA).gb",
+			"size":	65536,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Revenge of the 'Gator (USA).gb",
+			"size":	65536,
+			"mtime":	1721066440,
+			"is_dir":	false
+		}, {
+			"name":	"Road Rash (USA).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"RoboCop (USA).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Rod Land (Europe).gb",
+			"size":	65536,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Rolan's Curse 2 (USA).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Rolan's Curse (USA).gb",
+			"size":	65536,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"R-Type II (Europe).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"R-Type (USA).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Samurai Shodown (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Sea Battle (Europe).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Sensible Soccer - European Champions (Europe).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Serpent (USA).gb",
+			"size":	32768,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Shanghai (USA).gb",
+			"size":	32768,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Shaq-Fu (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Side Pocket (USA).gb",
+			"size":	65536,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Skate or Die - Bad 'n Rad (USA).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Smurfs, The (USA) (Rev-A) (SGB Enhanced).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Smurfs Travel the World, The (Europe).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Snoopy's Magic Show (USA).gb",
+			"size":	65536,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Snow Brothers (USA).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Solar Striker (USA).gb",
+			"size":	65536,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Solitaire FunPak (USA).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Solomon's Club (USA).gb",
+			"size":	65536,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Space Invaders (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Spanky's Quest (USA).gb",
+			"size":	65536,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Speedy Gonzales (USA).gb",
+			"size":	262144,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Sports Illustrated - Championship Football & Baseball (USA).gb",
+			"size":	524288,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Sports Illustrated - Golf Classic (USA) (SGB Enhanced).gb",
+			"size":	262144,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Star Hawk (Europe).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Star Trek - 25th Anniversary (USA).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Star Trek - The Next Generation (USA).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Star Wars - The Empire Strikes Back (USA).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Star Wars (USA) (Rev-A).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Stop That Roach! (USA).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Street Fighter II - The World Warrior (USA) (Rev-A) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Street Racer (USA).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Sumo Fighter (USA).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Super Battletank - War in the Gulf (USA).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Super Black Bass (USA).gb",
+			"size":	524288,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Super Chase H.Q. (USA).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Super Hunchback (USA).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Super Mario Land 2 - 6 Golden Coins (USA) (Rev-B).gb",
+			"size":	524288,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Super Mario Land 3 - Wario Land (USA).gb",
+			"size":	524288,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Super Mario Land (USA) (Rev-A).gb",
+			"size":	65536,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Super Off Road (USA).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Super R.C. Pro-Am (USA).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Super Scrabble (USA).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Super Star Wars - Return of the Jedi (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Sword of Hope II, The (USA).gb",
+			"size":	262144,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Sword of Hope, The (USA).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Tail 'Gator (USA).gb",
+			"size":	65536,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Disney's TaleSpin (USA).gb",
+			"size":	131072,
+			"mtime":	1721066442,
+			"is_dir":	false
+		}, {
+			"name":	"Tamagotchi (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Taz-Mania (USA).gb",
+			"size":	262144,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Tecmo Bowl (USA).gb",
+			"size":	262144,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Teenage Mutant Ninja Turtles - Fall of the Foot Clan (USA).gb",
+			"size":	131072,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Teenage Mutant Ninja Turtles II - Back from the Sewers (USA).gb",
+			"size":	262144,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Teenage Mutant Ninja Turtles III - Radical Rescue (USA).gb",
+			"size":	131072,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Tennis (USA).gb",
+			"size":	32768,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Tesserae (USA).gb",
+			"size":	32768,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Tetris 2 (USA) (Rev-A) (SGB Enhanced).gb",
+			"size":	131072,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Tetris Attack (USA) (Rev-A) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Tetris Blast (USA) (SGB Enhanced).gb",
+			"size":	131072,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Tetris Plus (USA) (SGB Enhanced).gb",
+			"size":	262144,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Tetris (USA) (Rev-A).gb",
+			"size":	32768,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Tintin in Tibet (Europe) (SGB Enhanced).gb",
+			"size":	262144,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Tintin - Prisoners of the Sun (Europe).gb",
+			"size":	262144,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Tiny Toon Adventures 2 - Montana's Movie Madness (USA).gb",
+			"size":	131072,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Tiny Toon Adventures - Babs' Big Break (USA).gb",
+			"size":	131072,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Tiny Toon Adventures - Wacky Sports Challenge (USA).gb",
+			"size":	131072,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Tom and Jerry - Frantic Antics! (USA).gb",
+			"size":	131072,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Tom and Jerry (USA).gb",
+			"size":	131072,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Top Rank Tennis (USA).gb",
+			"size":	262144,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Disney's Toy Story (USA) (Rev-A) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Track & Field (USA).gb",
+			"size":	131072,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Trax (USA).gb",
+			"size":	131072,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Trip World (Europe).gb",
+			"size":	262144,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"True Lies (USA).gb",
+			"size":	262144,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Tumble Pop (USA).gb",
+			"size":	131072,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Turok - Battle of the Bionosaurs (USA).gb",
+			"size":	262144,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Turrican (USA).gb",
+			"size":	131072,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Ultima - Runes of Virtue II (USA).gb",
+			"size":	262144,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Ultima - Runes of Virtue (USA).gb",
+			"size":	131072,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Universal Soldier (USA).gb",
+			"size":	262144,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Urban Strike - The Sequel to Jungle Strike (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Vegas Stakes (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"V-Rally - Championship Edition (Europe).gb",
+			"size":	262144,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Wario Blast Featuring Bomberman! (USA) (SGB Enhanced).gb",
+			"size":	262144,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Wario Land II (USA) (SGB Enhanced).gb",
+			"size":	1048576,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"Wave Race (USA).gb",
+			"size":	131072,
+			"mtime":	1721066444,
+			"is_dir":	false
+		}, {
+			"name":	"WCW - The Main Event (USA).gb",
+			"size":	131072,
+			"mtime":	1721066446,
+			"is_dir":	false
+		}, {
+			"name":	"Who Framed Roger Rabbit (USA).gb",
+			"size":	131072,
+			"mtime":	1721066446,
+			"is_dir":	false
+		}, {
+			"name":	"Wild Snake (USA) (SGB Enhanced).gb",
+			"size":	65536,
+			"mtime":	1721066446,
+			"is_dir":	false
+		}, {
+			"name":	"Winter Olympic Games - Lillehammer '94 (USA).gb",
+			"size":	131072,
+			"mtime":	1721066446,
+			"is_dir":	false
+		}, {
+			"name":	"Wizards & Warriors X - Fortress of Fear (USA).gb",
+			"size":	65536,
+			"mtime":	1721066446,
+			"is_dir":	false
+		}, {
+			"name":	"Wordtris (USA).gb",
+			"size":	131072,
+			"mtime":	1721066446,
+			"is_dir":	false
+		}, {
+			"name":	"Word Zap (USA).gb",
+			"size":	65536,
+			"mtime":	1721066446,
+			"is_dir":	false
+		}, {
+			"name":	"World Cup 98 (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066446,
+			"is_dir":	false
+		}, {
+			"name":	"World Heroes 2 Jet (USA) (SGB Enhanced).gb",
+			"size":	524288,
+			"mtime":	1721066446,
+			"is_dir":	false
+		}, {
+			"name":	"Worms (Europe).gb",
+			"size":	262144,
+			"mtime":	1721066446,
+			"is_dir":	false
+		}, {
+			"name":	"WWF King of the Ring (USA).gb",
+			"size":	131072,
+			"mtime":	1721066446,
+			"is_dir":	false
+		}, {
+			"name":	"WWF Superstars 2 (USA).gb",
+			"size":	131072,
+			"mtime":	1721066446,
+			"is_dir":	false
+		}, {
+			"name":	"WWF Superstars (USA).gb",
+			"size":	131072,
+			"mtime":	1721066446,
+			"is_dir":	false
+		}, {
+			"name":	"WWF War Zone (USA).gb",
+			"size":	262144,
+			"mtime":	1721066446,
+			"is_dir":	false
+		}, {
+			"name":	"Xenon 2 - Megablast (USA).gb",
+			"size":	131072,
+			"mtime":	1721066446,
+			"is_dir":	false
+		}, {
+			"name":	"Yoshi's Cookie (USA).gb",
+			"size":	131072,
+			"mtime":	1721066446,
+			"is_dir":	false
+		}, {
+			"name":	"Yoshi (USA).gb",
+			"size":	65536,
+			"mtime":	1721066446,
+			"is_dir":	false
+		}, {
+			"name":	"Zen - Intergalactic Ninja (USA).gb",
+			"size":	131072,
+			"mtime":	1721066446,
+			"is_dir":	false
+		}, {
+			"name":	"Zool - Ninja of the ''Nth'' Dimension (USA).gb",
+			"size":	131072,
+			"mtime":	1721066446,
+			"is_dir":	false
+		}, {
+			"name":	"Zoop (USA).gb",
+			"size":	65536,
+			"mtime":	1721066446,
+			"is_dir":	false
+		}, {
+			"name":	"Hacks",
+			"size":	0,
+			"mtime":	1721066450,
+			"is_dir":	true
+		}, {
+			"name":	"Homebrew & Unlicensed",
+			"size":	0,
+			"mtime":	1721066450,
+			"is_dir":	true
+		}, {
+			"name":	"Unreleased",
+			"size":	0,
+			"mtime":	1721066450,
+			"is_dir":	true
+		}],
+	"success":	true
+}
