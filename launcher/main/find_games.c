@@ -52,7 +52,7 @@ static bool download_file(const char *url, const char *filename)
         return false;
     }
 
-    sprintf(buffer, "File: %s", filename);
+    snprintf(buffer, RECEIVEBUFFER, "File: %s", filename);
     rg_gui_draw_dialog(buffer, NULL, 0);
     int content_length = req->content_length;
 
@@ -114,7 +114,7 @@ static cJSON *fetch_list_json(const char *url, const char *path)
     json = cJSON_Parse(buffer);
 
 cleanup_buffer:
-    free(buffer); // what if buffer was not initialized because rg_network_http_open() failed?
+    free(buffer);
 cleanup_http_open:
     rg_network_http_close(req);
 cleanup_post_data:
