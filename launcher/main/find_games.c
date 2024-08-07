@@ -13,6 +13,7 @@
 #include <cJSON.h>
 
 #define NAMELENGTH 64
+#define RECEIVEBUFFER 64 * 1024
 
 char status_msg[255];
 
@@ -42,7 +43,7 @@ static bool download_file(const char *url, const char *filename)
     int len;
 
     RG_LOGI("Downloading: '%s' to '%s'", url, filename);
-    rg_gui_draw_dialog("Connecting...", NULL, 0);
+    //rg_gui_draw_dialog("Connecting...", NULL, 0);
 
     if (!(req = rg_network_http_open(url, NULL)))
     {
@@ -50,7 +51,7 @@ static bool download_file(const char *url, const char *filename)
         return false;
     }
 
-    if (!(buffer = malloc(16 * 1024)))
+    if (!(buffer = malloc(RECEIVEBUFFER)))
     {
         rg_network_http_close(req);
         rg_gui_alert("Download failed!", "Out of memory!");
@@ -65,18 +66,14 @@ static bool download_file(const char *url, const char *filename)
         return false;
     }
 
-    rg_gui_draw_dialog("Receiving file...", NULL, 0);
+    sprintf(buffer, "File: %s", filename);
+    rg_gui_draw_dialog(buffer, NULL, 0);
     int content_length = req->content_length;
 
-    while ((len = rg_network_http_read(req, buffer, 16 * 1024)) > 0)
+    while ((len = rg_network_http_read(req, buffer, RECEIVEBUFFER)) > 0)
     {
         received += len;
         written += fwrite(buffer, 1, len, fp);
-        if (content_length>0)
-            sprintf(buffer, "Received %d / %d of %s", received, content_length, filename);
-        else
-            sprintf(buffer, "Received %d bytes of %s", received, filename);
-        rg_gui_draw_dialog(buffer, NULL, 0);
         if (received != written)
             break; // No point in continuing
     }
@@ -210,6 +207,9 @@ void find_games_show_dialog(const char *initial_path) {
             continue;
         }
 
+        RG_LOGI("Creating folder: '%s'", path);
+        rg_storage_mkdir(path);
+
         //char *string = cJSON_Print(files_json);
         //RG_LOGI("okay, files_json is: %s\n", string);
         //free(string); // Free the printed JSON string
@@ -235,10 +235,15 @@ void find_games_show_dialog(const char *initial_path) {
                 push(&stack, full_path);
             } else {
                 printf("false\n");
-                char full_url[RG_PATH_MAX];
-                char* full_path_without_first_slash = full_path + 1; // remove first character (/)
-                snprintf(full_url, sizeof(full_url), "%s/%s", RG_FIND_GAMES_DOWNLOAD, urlencode(full_path_without_first_slash));
-                download_file(full_url, full_path);
+                rg_stat_t info = rg_storage_stat(full_path);
+                if (info.exists && (info.size == size->valueint)) { // also check that it's not a directory? info.is_dir?
+                    RG_LOGI("Skipping download because file already exists and is correct size!");
+                } else {
+                    char full_url[RG_PATH_MAX];
+                    char* full_path_without_first_slash = full_path + 1; // remove first character (/), otherwise the HTTP download fails
+                    snprintf(full_url, sizeof(full_url), "%s/%s", RG_FIND_GAMES_DOWNLOAD, urlencode(full_path_without_first_slash));
+                    download_file(full_url, full_path);
+                }
             }
         }
 
@@ -246,29 +251,7 @@ void find_games_show_dialog(const char *initial_path) {
         free((void *)path); // Free the duplicated path
     }
 
-    gui_redraw();
+    // is this necessary? gui_redraw();
 }
 
 #endif
-
-    /*
-    if (releases_count > 0)
-    {
-        rg_gui_option_t options[releases_count + 1];
-        rg_gui_option_t *opt = options;
-
-        for (int i = 0; i < releases_count; ++i)
-            *opt++ = (rg_gui_option_t){(intptr_t)&releases[i], releases[i].name, NULL, 1, &view_release_cb};
-        *opt++ = (rg_gui_option_t)RG_DIALOG_END;
-
-        rg_gui_dialog("Available Releases", options, 0);
-    }
-    else
-    {
-        rg_gui_alert("Available Releases", "Received empty list!");
-    }
-
-    for (int i = 0; i < releases_count; ++i)
-        free(releases[i].assets);
-    free(releases);
-    */
