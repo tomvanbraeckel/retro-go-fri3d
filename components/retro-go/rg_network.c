@@ -90,8 +90,8 @@ static void network_event_handler(void *arg, esp_event_base_t event_base, int32_
             RG_LOGI("Connected! IP: %s, RSSI: %d", network.ip_addr, network.rssi);
             rg_system_event(RG_EVENT_NETWORK_CONNECTED, NULL);
 
-            esp_sntp_stop();
-            esp_sntp_init();
+            //esp_sntp_stop();
+            //esp_sntp_init();
         }
         else if (event_id == IP_EVENT_AP_STAIPASSIGNED)
         {
@@ -255,10 +255,10 @@ bool rg_network_init(void)
     TRY(esp_wifi_init(&cfg));
     TRY(esp_wifi_set_storage(WIFI_STORAGE_RAM));
 
-    // Setup SNTP client but don't query it yet
-    esp_sntp_setoperatingmode(SNTP_OPMODE_POLL);
-    esp_sntp_setservername(0, "pool.ntp.org");
-    // esp_sntp_init();
+    // Setup SNTP client
+    // esp_sntp_setoperatingmode(SNTP_OPMODE_POLL);
+    // esp_sntp_setservername(0, "pool.ntp.org");
+    // esp_sntp_init(); // don't query it yet
 
     // Tell rg_network_get_info() that we're enabled but not yet connected
     network.state = RG_NETWORK_DISCONNECTED;
