@@ -223,7 +223,8 @@ static rg_gui_event_t find_games_cb(rg_gui_option_t *option, rg_gui_event_t even
         {
             finding_games = 1; // disable the menu entry
             rg_task_create("find_games", &find_games_task, NULL, 3 * 1024, RG_TASK_PRIORITY_5, -1);
-            return RG_DIALOG_CLOSE; // works okay, with a gui_redraw() and delay(500) and a find_games_lock in find_games_task...
+            gui_redraw(); // clear main menu
+            return RG_DIALOG_CLOSE; // works okay, with a gui_redraw() and delay(500) and find_games_lock in find_games_task
         }
     }
     return RG_DIALOG_VOID;
