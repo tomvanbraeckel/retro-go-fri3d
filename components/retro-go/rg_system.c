@@ -764,7 +764,7 @@ void rg_system_switch_app(const char *partition, const char *name, const char *a
 
     if (partition == RG_APP_FACTORY) {
         RG_LOGW("Fri3d Camp 2024 Badge has no factory partition, switching to OTA (0 or 1) partition!");
-        rg_system_boot_micropython();
+        rg_boot_fri3d_app();
     }
 
     if (app.initialized)
