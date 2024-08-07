@@ -219,15 +219,12 @@ static rg_gui_event_t find_games_cb(rg_gui_option_t *option, rg_gui_event_t even
     }
     if (event == RG_DIALOG_ENTER)
     {
-	// TODO: explain what will happen and ask confirmation
-        //gui_redraw(); // clear main menu
-        finding_games = 1;
-        rg_task_create("find_games", &find_games_task, NULL, 3 * 1024, RG_TASK_PRIORITY_5, -1);
-        gui_redraw(); // clear main menu - doing this will keep the parent dialog up, weird...
-        //return RG_DIALOG_CANCELLED; // menu stays open (unless B is pressed) so dangerous if the user presses A again, it will redownload again...
-        //return RG_DIALOG_CLOSE; weird that it closes the dialog, yes, but then rg_gui_draw_dialog() flashes up, same for when finished...
-        return RG_DIALOG_CLOSE; // works okay now, with a gui_redraw() and delay(500) and a find_games_lock in find_games_task...
-        //return RG_DIALOG_VOID; // at least without the delay, it closes and doesnt show any dialog anymore...
+        if (rg_gui_confirm("Find games", "Als een andere Retro-Go zijn Wi-Fi hotspot aanzet (via 'Wi-Fi options' -> 'Wi-Fi Access Point') en jij ermee verbindt (via 'Wi-Fi select' -> 'retro-go') dan kan je zoeken naar spelletjes die je nog niet hebt.\n\nWil je beginnen zoeken?", true))
+        {
+            finding_games = 1; // disable the menu entry
+            rg_task_create("find_games", &find_games_task, NULL, 3 * 1024, RG_TASK_PRIORITY_5, -1);
+            return RG_DIALOG_CLOSE; // works okay, with a gui_redraw() and delay(500) and a find_games_lock in find_games_task...
+        }
     }
     return RG_DIALOG_VOID;
 }
