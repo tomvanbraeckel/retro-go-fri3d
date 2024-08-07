@@ -246,16 +246,19 @@ static rg_gui_event_t find_games_cb(rg_gui_option_t *option, rg_gui_event_t even
                 gui.find_games_lock = true; // lock the GUI
 
                 // Duplicate the folder argument because it will be passed to the new task
-                char* folder = malloc(RG_PATH_MAX);
+                char* folder = strndup(options[sel].value, RG_PATH_MAX);
                 if (!folder)
                 {
                     RG_LOGE("find_games_cb is out of memory!");
                     return RG_DIALOG_CLOSE;
                 }
-                folder = strndup(options[sel].value, RG_PATH_MAX);
 
                 RG_LOGI("Launching find_games_task for folder '%s', this can take a while...", folder);
-                rg_task_create("find_games", &find_games_task, folder, 3 * 1024, RG_TASK_PRIORITY_5, -1);
+                if (rg_task_create("find_games", &find_games_task, folder, 3 * 1024, RG_TASK_PRIORITY_5, -1) != true)
+                {
+                    RG_LOGE("find_games_cb failed to create task!");
+                    free(folder); // Ensure we free memory if task creation fails
+                }
                 return RG_DIALOG_CLOSE;
             }
         }

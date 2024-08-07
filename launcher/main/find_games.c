@@ -17,20 +17,6 @@
 
 char status_msg[255];
 
-typedef struct
-{
-    char name[NAMELENGTH];
-    char url[256];
-} asset_t;
-
-typedef struct
-{
-    char name[NAMELENGTH];
-    char date[32];
-    asset_t *assets;
-    size_t assets_count;
-} release_t;
-
 static bool download_file(const char *url, const char *filename)
 {
     RG_ASSERT(url && filename, "bad param");
