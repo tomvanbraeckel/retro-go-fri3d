@@ -322,7 +322,6 @@ try_again:
     }
 
     req->status_code = esp_http_client_get_status_code(http_client);
-    RG_LOGI("HTTP request received status code: %d", req->status_code);
     req->content_length = esp_http_client_get_content_length(http_client);
     RG_LOGI("HTTP request got status code: %d and content length: %d", req->status_code, req->content_length);
     req->client = (void *)http_client;
