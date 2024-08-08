@@ -1,6 +1,10 @@
 # Fri3d-specific info
 
-See [the Fri3d 2024 target docs](components/retro-go/targets/fri3d-2024/README.md) for implementation details.
+See [the Fri3d 2024 target docs](components/retro-go/targets/fri3d-2024/docs) for implementation details.
+
+# Building
+
+Use ESP-IDF 5.2.2 and see [BUILDING.md](BUILDING.md) for details. No patches needed.
 
 # Flashing
 
