@@ -41,7 +41,7 @@ static bool download_file(const char *url, const char *filename)
     int len;
 
     RG_LOGI("Downloading: '%s' to '%s'", url, filename);
-    rg_gui_draw_dialog("Connecting...", NULL, 0);
+    rg_gui_draw_message("Connecting...");
 
     if (!(req = rg_network_http_open(url, NULL)))
     {
@@ -64,15 +64,14 @@ static bool download_file(const char *url, const char *filename)
         return false;
     }
 
-    rg_gui_draw_dialog("Receiving file...", NULL, 0);
+    rg_gui_draw_message("Receiving file...");
     int content_length = req->content_length;
 
     while ((len = rg_network_http_read(req, buffer, 16 * 1024)) > 0)
     {
         received += len;
         written += fwrite(buffer, 1, len, fp);
-        sprintf(buffer, "Received %d / %d", received, content_length);
-        rg_gui_draw_dialog(buffer, NULL, 0);
+        rg_gui_draw_message("Received %d / %d", received, content_length);
         if (received != written)
             break; // No point in continuing
     }
@@ -103,18 +102,27 @@ static cJSON *fetch_json(const char *url)
     cJSON *json = NULL;
 
     if (!(req = rg_network_http_open(url, NULL)))
+    {
+        RG_LOGW("Could not open releases URL '%s', aborting update check.", url);
         goto cleanup;
+    }
 
     size_t buffer_length = RG_MAX(256 * 1024, req->content_length);
 
     if (!(buffer = calloc(1, buffer_length + 1)))
+    {
+        RG_LOGE("Out of memory, aborting update check!");
         goto cleanup;
+    }
 
     if (rg_network_http_read(req, buffer, buffer_length) < 16)
+    {
+        RG_LOGW("Read from releases URL '%s' returned (almost) no bytes, aborting update check.", url);
         goto cleanup;
+    }
 
     if (!(json = cJSON_Parse(buffer)))
-        goto cleanup;
+        RG_LOGW("Could not parse JSON received from releases URL '%s'.", url);
 
 cleanup:
     rg_network_http_close(req);
