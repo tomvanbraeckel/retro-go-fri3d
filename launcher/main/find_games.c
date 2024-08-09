@@ -149,7 +149,7 @@ const char *pop(StackNode **stack) {
     return path;
 }
 
-char* urlencode(char* originalText)
+char* urlencode_without_free(char* originalText)
 {
     // allocate memory for the worst possible case (all characters need to be encoded)
     char *encodedText = (char *)malloc(sizeof(char)*strlen(originalText)*3+1);
@@ -233,7 +233,7 @@ void find_games(const char *initial_path, const char* ip) {
                 } else {
                     char full_url[RG_PATH_MAX];
                     char* full_path_without_first_slash = full_path + 1; // remove first character (/), otherwise the HTTP download fails
-                    char* encoded_url = urlencode(full_path_without_first_slash);
+                    char* encoded_url = urlencode_without_free(full_path_without_first_slash);
                     if (encoded_url) {
                         snprintf(full_url, sizeof(full_url), "%s%s/%s", RG_FIND_GAMES_PREFIX, ip, encoded_url);
                         download_file(full_url, full_path);
