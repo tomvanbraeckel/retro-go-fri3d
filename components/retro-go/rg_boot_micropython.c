@@ -5,6 +5,15 @@
 #include <esp_ota_ops.h>
 #endif
 
+void rg_mark_app_valid_cancel_rollback() {
+    RG_LOGI("Marking this partition as valid so it doesn't rollback...");
+    if (esp_ota_mark_app_valid_cancel_rollback()) {
+        RG_LOGI("Marked as valid so it doesn't rollback.");
+    } else {
+        RG_LOGW("Failed to mark as valid, so it might rollback!");
+    }
+}
+
 int32_t read_nvs_boot_partition() {
     nvs_handle_t my_handle;
     esp_err_t ret;

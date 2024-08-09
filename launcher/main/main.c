@@ -453,6 +453,8 @@ void app_main(void)
     // stop working. Lowering CONFIG_SPIRAM_MALLOC_ALWAYSINTERNAL and manually using rg_alloc to do internal allocs when
     // needed is a better solution, but that would have to be done for every app. This is a good workaround for now.
     heap_caps_malloc_extmem_enable(1024);
+
+    rg_mark_app_valid_cancel_rollback(); // Mark this partition as valid so it doesn't rollback
 #endif
 
     retro_loop();
