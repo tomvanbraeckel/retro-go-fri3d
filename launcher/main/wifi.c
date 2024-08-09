@@ -147,7 +147,7 @@ void wifi_show_dialog(void)
         {0, "Wi-Fi Access Point", NULL, RG_DIALOG_FLAG_NORMAL, &wifi_access_point_cb},
         RG_DIALOG_SEPARATOR,
         {0, "File server" ,  "-", RG_DIALOG_FLAG_NORMAL, &webui_switch_cb},
-        {0, "Time sync  " , "On", RG_DIALOG_FLAG_DISABLED, NULL},
+        // disabled because unused: {0, "Time sync  " , "On", RG_DIALOG_FLAG_DISABLED, NULL},
         RG_DIALOG_SEPARATOR,
         {1, "Network   " ,  "-", RG_DIALOG_FLAG_MESSAGE, &wifi_status_cb},
         {2, "IP address" ,  "-", RG_DIALOG_FLAG_MESSAGE, &wifi_status_cb},

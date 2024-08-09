@@ -15,8 +15,11 @@
 #include "wifi.h"
 #include "webui.h"
 #include "updater.h"
+#include "find_games.h"
 
 static rg_app_t *app;
+
+int finding_games = 0;
 
 static rg_gui_event_t toggle_tab_cb(rg_gui_option_t *option, rg_gui_event_t event)
 {
@@ -184,6 +187,85 @@ static rg_gui_event_t updater_cb(rg_gui_option_t *option, rg_gui_event_t event)
     }
     return RG_DIALOG_VOID;
 }
+
+void find_games_task(void *args)
+{
+    char *folder = (char*)args;
+    char status_msg[RG_PATH_MAX];
+
+    gui_redraw(); // clear main menu
+
+    snprintf(status_msg, sizeof(status_msg), "Finding games in remote %s", folder);
+    RG_LOGI(status_msg);
+    rg_gui_draw_dialog(status_msg, NULL, 0);
+
+    find_games(folder, "192.168.4.1");
+    find_games(folder, "192.168.126.169");
+
+    snprintf(status_msg, sizeof(status_msg), "Finished finding games in %s!", folder);
+    RG_LOGI(status_msg);
+    rg_gui_draw_dialog(status_msg, NULL, 0);
+
+    rg_task_delay(2000); // give some time to read the message
+
+    gui.find_games_lock = false; // release the GUI
+    finding_games = 0; // enable menu entry again
+
+    RG_LOGI("Free'ing folder as it's malloc'ed by find_games_cb when it starts this task...");
+    free(folder);
+    RG_LOGI("free!");
+}
+
+static rg_gui_event_t find_games_cb(rg_gui_option_t *option, rg_gui_event_t event)
+{
+    if (rg_network_get_info().state != RG_NETWORK_CONNECTED || finding_games == 1)
+    {
+        option->flags = RG_DIALOG_FLAG_DISABLED;
+        return RG_DIALOG_VOID;
+    }
+    if (event == RG_DIALOG_ENTER)
+    {
+        if (rg_gui_confirm("Find games", "Als een andere Retro-Go zijn Wi-Fi hotspot aanzet (via 'Wi-Fi options' -> 'Wi-Fi Access Point') en jij ermee verbindt (via 'Wi-Fi select' -> 'retro-go') dan kan je zoeken naar games die je nog niet hebt.\n\nOm te annuleren kan je op de 'RESET' knop drukken.\n\nWil je beginnen zoeken?", true))
+        {
+            // This list could be dynamically generated based on the enabled applications:
+            const rg_gui_option_t options[] = {
+                {1, "NES:                    ", "/sd/roms/nes",  RG_DIALOG_FLAG_NORMAL, NULL},
+                {2, "GameBoy:                ", "/sd/roms/gb",  RG_DIALOG_FLAG_NORMAL, NULL},
+                {3, "GameBoy Color:          ", "/sd/roms/gbc",  RG_DIALOG_FLAG_NORMAL, NULL},
+                {4, "GameBoy Color GBStudio: ", "/sd/roms/gbc/gbstudio",  RG_DIALOG_FLAG_NORMAL, NULL},
+                {5, "Doom:                   ", "/sd/roms/doom",  RG_DIALOG_FLAG_NORMAL, NULL},
+                RG_DIALOG_SEPARATOR,
+                {6, "Everything:              " , "/sd/roms", RG_DIALOG_FLAG_NORMAL, NULL},
+                {7, "Nothing (Cancel)         " , NULL, RG_DIALOG_FLAG_NORMAL, NULL},
+                RG_DIALOG_END,
+            };
+            int sel = rg_gui_dialog("Choose folder", options, 0);
+            RG_LOGI("find_games_cb got menu entry %d", sel);
+            if (sel != RG_DIALOG_CANCELLED && sel != 7)
+            {
+                finding_games = 1; // disable the menu entry so the user can't start this twice
+                gui.find_games_lock = true; // lock the GUI
+
+                // Duplicate the folder argument because it will be passed to the new task
+                char* folder = strndup(options[sel].value, RG_PATH_MAX);
+                if (!folder)
+                {
+                    RG_LOGE("find_games_cb is out of memory!");
+                    return RG_DIALOG_CLOSE;
+                }
+
+                RG_LOGI("Launching find_games_task for folder '%s', this can take a while...", folder);
+                if (rg_task_create("find_games", &find_games_task, folder, 3 * 1024, RG_TASK_PRIORITY_5, -1) != true)
+                {
+                    RG_LOGE("find_games_cb failed to create task!");
+                    free(folder); // Ensure we free memory if task creation fails
+                }
+                return RG_DIALOG_CLOSE;
+            }
+        }
+    }
+    return RG_DIALOG_VOID;
+}
 #endif
 
 static rg_gui_event_t prebuild_cache_cb(rg_gui_option_t *option, rg_gui_event_t event)
@@ -204,6 +286,7 @@ static void show_about_menu(void)
     const rg_gui_option_t options[] = {
         {0, "Build CRC cache", NULL, RG_DIALOG_FLAG_NORMAL, &prebuild_cache_cb},
     #ifdef RG_ENABLE_NETWORKING
+        {0, "Find games", NULL, RG_DIALOG_FLAG_NORMAL, &find_games_cb},
         {0, "Check for updates", NULL, RG_DIALOG_FLAG_NORMAL, &updater_cb},
     #endif
         RG_DIALOG_END,
@@ -243,6 +326,11 @@ static void retro_loop(void)
             rg_gui_draw_message("HTTP Server Busy...");
             redraw_pending = true;
             rg_task_delay(100);
+            continue;
+        } else if (gui.find_games_lock) {
+            //rg_gui_draw_dialog("Busy finding games...", NULL, 0);
+            redraw_pending = true;
+            rg_task_delay(1000);
             continue;
         }
 

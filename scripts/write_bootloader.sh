@@ -1,0 +1,1 @@
+esptool.py -p /dev/ttyUSB1 -b 460800 --before default_reset --after hard_reset --chip esp32  write_flash --flash_mode dio --flash_size detect --flash_freq 80m 0x1000 launcher/build/bootloader/bootloader.bin

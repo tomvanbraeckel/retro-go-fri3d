@@ -1,0 +1,1 @@
+esptool.py erase_region 0x1d000 0x2000

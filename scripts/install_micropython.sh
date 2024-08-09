@@ -1,0 +1,1 @@
+/home/user/.espressif/python_env/idf5.2_py3.9_env/bin/python3 /home/user/sources/esp-idf/components/esptool_py/esptool/esptool.py write_flash --flash_size detect 0x30000 /home/user/sources/badge_2024_micropython/ports/esp32/build-FRI3D_BADGE_2022/micropython.bin 0x430000 /home/user/sources/badge_2024_micropython/ports/esp32/build-FRI3D_BADGE_2022/micropython.bin
