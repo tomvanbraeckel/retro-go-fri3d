@@ -201,6 +201,7 @@ void find_games_task(void *args)
     //find_games(folder, "192.168.126.169");
 
     rg_gui_draw_message("Finished finding games in %s!", folder);
+    rg_task_delay(2000);
 
     gui.find_games_lock = false; // release the GUI
     finding_games = 0; // enable menu entry again
@@ -230,7 +231,7 @@ static rg_gui_event_t find_games_cb(rg_gui_option_t *option, rg_gui_event_t even
                 {6, "GBC GBStudio ", "roms/gbc/gbstudio",  RG_DIALOG_FLAG_NORMAL, NULL},
                 {7, "Doom         ", "roms/doom",  RG_DIALOG_FLAG_NORMAL, NULL},
                 RG_DIALOG_SEPARATOR,
-                {8, "Everything   ", "roms", RG_DIALOG_FLAG_NORMAL, NULL},
+                {8, "Everything   ", "roms/", RG_DIALOG_FLAG_NORMAL, NULL},
                 {9, "Nothing (Cancel)" , NULL, RG_DIALOG_FLAG_NORMAL, NULL},
                 RG_DIALOG_END,
             };
