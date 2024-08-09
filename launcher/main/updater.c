@@ -29,7 +29,7 @@ typedef struct
     size_t assets_count;
 } release_t;
 
-static bool download_file(const char *url, const char *filename)
+bool download_file(const char *url, const char *filename)
 {
     RG_ASSERT(url && filename, "bad param");
 

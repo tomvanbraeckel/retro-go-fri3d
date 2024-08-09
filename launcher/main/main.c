@@ -223,21 +223,21 @@ static rg_gui_event_t find_games_cb(rg_gui_option_t *option, rg_gui_event_t even
         {
             // This list could be dynamically generated based on the enabled applications:
             const rg_gui_option_t options[] = {
-                {1, "NES          ", "roms/nes",  RG_DIALOG_FLAG_NORMAL, NULL},
-                {2, "NES Best     ", "roms/nes/best",  RG_DIALOG_FLAG_NORMAL, NULL},
-                {3, "GameBoy      ", "roms/gb",  RG_DIALOG_FLAG_NORMAL, NULL},
-                {4, "GameBoy Color", "roms/gbc",  RG_DIALOG_FLAG_NORMAL, NULL},
-                {5, "GBC Best     ", "roms/gbc/best",  RG_DIALOG_FLAG_NORMAL, NULL},
-                {6, "GBC GBStudio ", "roms/gbc/gbstudio",  RG_DIALOG_FLAG_NORMAL, NULL},
-                {7, "Doom         ", "roms/doom",  RG_DIALOG_FLAG_NORMAL, NULL},
+                {0, "NES          ", "roms/nes",  RG_DIALOG_FLAG_NORMAL, NULL},
+                {1, "NES Best     ", "roms/nes/best",  RG_DIALOG_FLAG_NORMAL, NULL},
+                {2, "GameBoy      ", "roms/gb",  RG_DIALOG_FLAG_NORMAL, NULL},
+                {3, "GameBoy Color", "roms/gbc",  RG_DIALOG_FLAG_NORMAL, NULL},
+                {4, "GBC Best     ", "roms/gbc/best",  RG_DIALOG_FLAG_NORMAL, NULL},
+                {5, "GBC GBStudio ", "roms/gbc/gbstudio",  RG_DIALOG_FLAG_NORMAL, NULL},
+                {6, "Doom         ", "roms/doom",  RG_DIALOG_FLAG_NORMAL, NULL},
                 RG_DIALOG_SEPARATOR,
-                {8, "Everything   ", "roms/", RG_DIALOG_FLAG_NORMAL, NULL},
-                {9, "Nothing (Cancel)" , NULL, RG_DIALOG_FLAG_NORMAL, NULL},
+                {7, "Everything   ", "roms/", RG_DIALOG_FLAG_NORMAL, NULL},
+                {8, "Nothing (Cancel)" , NULL, RG_DIALOG_FLAG_NORMAL, NULL},
                 RG_DIALOG_END,
             };
             int sel = rg_gui_dialog("Choose folder", options, 0);
             RG_LOGI("find_games_cb got menu entry %d", sel);
-            if (sel != RG_DIALOG_CANCELLED && sel != 9)
+            if (sel != RG_DIALOG_CANCELLED && sel != 8)
             {
                 finding_games = 1; // disable the menu entry so the user can't start this twice
 

@@ -1,5 +1,6 @@
 #include <rg_system.h>
 #include "gui.h"
+#include "updater.h"
 
 #ifdef RG_ENABLE_NETWORKING
 
@@ -16,10 +17,10 @@
 #include <cJSON.h>
 
 #define NAMELENGTH 64
-#define RECEIVEBUFFER 64 * 1024
 
 char status_msg[255];
 
+/*
 static bool download_file(const char *url, const char *filename)
 {
     RG_ASSERT(url && filename, "bad param");
@@ -38,7 +39,7 @@ static bool download_file(const char *url, const char *filename)
         return false;
     }
 
-    if (!(buffer = malloc(RECEIVEBUFFER)))
+    if (!(buffer = malloc(16 * 1024)))
     {
         rg_network_http_close(req);
         rg_gui_alert("Download failed!", "Out of memory!");
@@ -57,7 +58,7 @@ static bool download_file(const char *url, const char *filename)
     rg_gui_draw_dialog(buffer, NULL, 0);
     int content_length = req->content_length;
 
-    while ((len = rg_network_http_read(req, buffer, RECEIVEBUFFER)) > 0)
+    while ((len = rg_network_http_read(req, buffer, 16 * 1024)) > 0)
     {
         received += len;
         written += fwrite(buffer, 1, len, fp);
@@ -78,6 +79,7 @@ static bool download_file(const char *url, const char *filename)
 
     return true;
 }
+*/
 
 static cJSON *fetch_list_json(const char *url, const char *path)
 {
