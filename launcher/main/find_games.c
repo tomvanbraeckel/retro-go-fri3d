@@ -32,8 +32,6 @@ static bool download_file(const char *url, const char *filename)
     int len;
 
     RG_LOGI("Downloading: '%s' to '%s'", url, filename);
-    //rg_gui_draw_dialog("Connecting...", NULL, 0);
-
     if (!(req = rg_network_http_open(url, NULL)))
     {
         rg_gui_alert("Download failed!", "Connection failed!");
@@ -86,7 +84,6 @@ static cJSON *fetch_list_json(const char *url, const char *path)
     RG_ASSERT(url, "bad param");
 
     RG_LOGI("Fetching: '%s'", url);
-    //rg_gui_draw_hourglass();
 
     rg_http_req_t *req = NULL;
     char *buffer = NULL;
@@ -111,7 +108,6 @@ static cJSON *fetch_list_json(const char *url, const char *path)
     if (rg_network_http_read(req, buffer, buffer_length) < 16)
         goto cleanup_buffer;
 
-    //RG_LOGI("Got file listing: '%s'", buffer);
     RG_LOGI("Got file listing...");
 
     json = cJSON_Parse(buffer);
@@ -157,6 +153,10 @@ char* urlencode(char* originalText)
 {
     // allocate memory for the worst possible case (all characters need to be encoded)
     char *encodedText = (char *)malloc(sizeof(char)*strlen(originalText)*3+1);
+    if (!encodedText) {
+        RG_LOGW("Could not allocate memory for urlencode!");
+        goto bailout;
+    }
 
     const char *hex = "0123456789abcdef";
 
@@ -173,6 +173,7 @@ char* urlencode(char* originalText)
             }
     }
     encodedText[pos] = '\0';
+bailout:
     return encodedText;
 }
 
@@ -232,8 +233,12 @@ void find_games(const char *initial_path, const char* ip) {
                 } else {
                     char full_url[RG_PATH_MAX];
                     char* full_path_without_first_slash = full_path + 1; // remove first character (/), otherwise the HTTP download fails
-                    snprintf(full_url, sizeof(full_url), "%s%s/%s", RG_FIND_GAMES_PREFIX, ip, urlencode(full_path_without_first_slash));
-                    download_file(full_url, full_path);
+                    char* encoded_url = urlencode(full_path_without_first_slash);
+                    if (encoded_url) {
+                        snprintf(full_url, sizeof(full_url), "%s%s/%s", RG_FIND_GAMES_PREFIX, ip, encoded_url);
+                        download_file(full_url, full_path);
+                        free(encoded_url);
+                    }
                 }
             }
         }
