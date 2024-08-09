@@ -3,6 +3,9 @@
 
 #ifdef RG_ENABLE_NETWORKING
 
+#define RG_FIND_GAMES_PREFIX "http://"
+#define RG_FIND_GAMES_API_SUFFIX "/api"
+
 #define RG_FIND_GAMES_DOWNLOAD "http://192.168.4.1"
 //#define RG_FIND_GAMES_API "http://192.168.1.16/api"
 #define RG_FIND_GAMES_API "http://192.168.4.1/api"
@@ -173,10 +176,12 @@ char* urlencode(char* originalText)
     return encodedText;
 }
 
-
-void find_games_show_dialog(const char *initial_path) {
+void find_games(const char *initial_path, const char* ip) {
     StackNode *stack = NULL;
     push(&stack, initial_path);
+
+    char[50] list_api_url;
+    snprintf(list_api_url, sizeof(list_api_url), "%s%s%s", RG_FIND_GAMES_PREFIX, ip, RG_FIND_GAMES_API_SUFFIX);
 
     while (stack != NULL) {
         const char *path = pop(&stack);
@@ -186,7 +191,7 @@ void find_games_show_dialog(const char *initial_path) {
 
         RG_LOGI("find_games_show_dialog with path: %s", path);
 
-        cJSON *files_json = fetch_list_json(RG_FIND_GAMES_API, path);
+        cJSON *files_json = fetch_list_json(list_api_url, path);
         if (!files_json) {
             rg_gui_alert("File listing failed", "Make sure you are connected to a retro-go device's hotspot.");
             free((void *)path); // Free the duplicated path
@@ -227,7 +232,7 @@ void find_games_show_dialog(const char *initial_path) {
                 } else {
                     char full_url[RG_PATH_MAX];
                     char* full_path_without_first_slash = full_path + 1; // remove first character (/), otherwise the HTTP download fails
-                    snprintf(full_url, sizeof(full_url), "%s/%s", RG_FIND_GAMES_DOWNLOAD, urlencode(full_path_without_first_slash));
+                    snprintf(full_url, sizeof(full_url), "%s%s/%s", RG_FIND_GAMES_PREFIX, ip, urlencode(full_path_without_first_slash));
                     download_file(full_url, full_path);
                 }
             }

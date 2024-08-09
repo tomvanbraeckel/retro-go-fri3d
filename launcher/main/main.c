@@ -199,7 +199,8 @@ void find_games_task(void *args)
     RG_LOGI(status_msg);
     rg_gui_draw_dialog(status_msg, NULL, 0);
 
-    find_games_show_dialog(folder);
+    find_games(folder, "192.168.4.1");
+    find_games(folder, "192.168.126.169");
 
     snprintf(status_msg, sizeof(status_msg), "Finished finding games in %s!", folder);
     RG_LOGI(status_msg);
