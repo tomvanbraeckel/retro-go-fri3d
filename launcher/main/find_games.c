@@ -180,7 +180,7 @@ void find_games(const char *initial_path, const char* ip) {
     StackNode *stack = NULL;
     push(&stack, initial_path);
 
-    char[50] list_api_url;
+    char list_api_url[50];
     snprintf(list_api_url, sizeof(list_api_url), "%s%s%s", RG_FIND_GAMES_PREFIX, ip, RG_FIND_GAMES_API_SUFFIX);
 
     while (stack != NULL) {

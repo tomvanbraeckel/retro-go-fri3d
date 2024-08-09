@@ -33,7 +33,7 @@ extern "C" {
 #include "rg_gui.h"
 #include "rg_i2c.h"
 #include "rg_utils.h"
-#include "rg_boot_micropython.h"
+#include "rg_boot_fri3d_app.h"
 
 #ifdef RG_ENABLE_NETPLAY
 #include "rg_netplay.h"
