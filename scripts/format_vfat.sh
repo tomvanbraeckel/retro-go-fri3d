@@ -5,6 +5,6 @@
 
 #esptool.py erase_region 0x410000 1024000
 
-esptool.py erase_region 0xAB0000 40960
+esptool.py erase_region 0x990000 40960 ; picocom -b 115200 /dev/ttyACM0
 
 #esptool.py erase_region 0xAB0000 5570560
