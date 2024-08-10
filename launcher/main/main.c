@@ -251,7 +251,7 @@ static rg_gui_event_t find_games_cb(rg_gui_option_t *option, rg_gui_event_t even
                 snprintf(folder, folderlength, "%s/%s", "/sd", options[sel].value);
 
                 RG_LOGI("Launching find_games_task for folder '%s', this can take a while...", folder);
-                if (rg_task_create("find_games", &find_games_task, folder, 6 * 1024, RG_TASK_PRIORITY_5, -1) != true)
+                if (rg_task_create("find_games", &find_games_task, folder, 8 * 1024, RG_TASK_PRIORITY_5, -1) != true)
                 {
                     RG_LOGE("find_games_cb failed to create task!");
                     free(folder); // Ensure we free memory if task creation fails

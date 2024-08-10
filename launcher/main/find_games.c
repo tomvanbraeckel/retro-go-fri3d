@@ -16,71 +16,6 @@
 #include <string.h>
 #include <cJSON.h>
 
-#define NAMELENGTH 64
-
-char status_msg[255];
-
-/*
-static bool download_file(const char *url, const char *filename)
-{
-    RG_ASSERT(url && filename, "bad param");
-
-    rg_http_req_t *req = NULL;
-    FILE *fp = NULL;
-    void *buffer = NULL;
-    int received = 0;
-    int written = 0;
-    int len;
-
-    RG_LOGI("Downloading: '%s' to '%s'", url, filename);
-    if (!(req = rg_network_http_open(url, NULL)))
-    {
-        rg_gui_alert("Download failed!", "Connection failed!");
-        return false;
-    }
-
-    if (!(buffer = malloc(16 * 1024)))
-    {
-        rg_network_http_close(req);
-        rg_gui_alert("Download failed!", "Out of memory!");
-        return false;
-    }
-
-    if (!(fp = fopen(filename, "wb")))
-    {
-        rg_network_http_close(req);
-        free(buffer);
-        rg_gui_alert("Download failed!", "File open failed!");
-        return false;
-    }
-
-    snprintf(buffer, RECEIVEBUFFER, "File: %s", filename);
-    rg_gui_draw_dialog(buffer, NULL, 0);
-    int content_length = req->content_length;
-
-    while ((len = rg_network_http_read(req, buffer, 16 * 1024)) > 0)
-    {
-        received += len;
-        written += fwrite(buffer, 1, len, fp);
-        if (received != written)
-            break; // No point in continuing
-    }
-
-    rg_network_http_close(req);
-    free(buffer);
-    fclose(fp);
-
-    if (received != written || (received != content_length && content_length != -1))
-    {
-        rg_storage_delete(filename);
-        rg_gui_alert("Download failed!", "Read/write error!");
-        return false;
-    }
-
-    return true;
-}
-*/
-
 static cJSON *fetch_list_json(const char *url, const char *path)
 {
     RG_ASSERT(url, "bad param");
@@ -183,7 +118,7 @@ void find_games(const char *initial_path, const char* ip) {
     StackNode *stack = NULL;
     push(&stack, initial_path);
 
-    char list_api_url[50];
+    char list_api_url[50]; // http://192.168.4.1/api
     snprintf(list_api_url, sizeof(list_api_url), "%s%s%s", RG_FIND_GAMES_PREFIX, ip, RG_FIND_GAMES_API_SUFFIX);
 
     while (stack != NULL) {
@@ -238,8 +173,8 @@ void find_games(const char *initial_path, const char* ip) {
                     RG_LOGI("Skipping download because file already exists and is correct size!");
                 } else {
                     RG_LOGI("File to download has size: %d", (size->valueint));
-                    uint64_t freespace = rg_storage_get_free_space(full_path);
-                    printf("Free space: %" PRIu32 "%" PRIu32 "\n", (long int)(freespace >> 32), (long int)freespace);
+                    int64_t freespace = rg_storage_get_free_space(full_path);
+                    RG_LOGI("Free space: %ld\n", (long int)freespace);
                     if (freespace < 2*(size->valueint)) {
                         RG_LOGW("Storage too full, skipping!");
                         continue;
