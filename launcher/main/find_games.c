@@ -211,7 +211,7 @@ void find_games(const char *initial_path, const char* ip) {
         const cJSON *files = cJSON_GetObjectItemCaseSensitive(files_json, "files");
         const cJSON *file;
         cJSON_ArrayForEach(file, files) {
-            char full_path[RG_PATH_MAX];
+            char full_path[RG_PATH_MAX*2];
 
             cJSON *name = cJSON_GetObjectItemCaseSensitive(file, "name");
             cJSON *size = cJSON_GetObjectItemCaseSensitive(file, "size");

@@ -211,7 +211,7 @@ void find_games_task(void *args)
 
 static rg_gui_event_t find_games_cb(rg_gui_option_t *option, rg_gui_event_t event)
 {
-    if (rg_network_get_info().state != RG_NETWORK_CONNECTED || finding_games == 1)
+    if (finding_games == 1)
     {
         option->flags = RG_DIALOG_FLAG_DISABLED;
         return RG_DIALOG_VOID;
@@ -219,8 +219,12 @@ static rg_gui_event_t find_games_cb(rg_gui_option_t *option, rg_gui_event_t even
     if (event == RG_DIALOG_ENTER)
     {
         //if (rg_gui_confirm("Find games", "Als een andere badge Retro-Go zijn Wi-Fi hotspot aanzet...", true))
-        if (rg_gui_confirm("Find games", "Als een andere badge zijn hotspot aanzet ('Wi-Fi options' - 'Wi-Fi Access Point') en jij verbindt via 'Wi-Fi select' - 'retro-go', kan je zoeken naar games die je nog niet hebt.", true))
+        if (rg_gui_confirm("Find games", "Als een andere badge zijn hotspot aanzet ('Wi-Fi options' - 'Wi-Fi Access Point') en jij verbindt via 'Wi-Fi select' - 'retro-go-channel-...', kan je zoeken naar games die je nog niet hebt.", true))
         {
+            if (rg_network_get_info().state != RG_NETWORK_CONNECTED) {
+                rg_gui_alert("Not connected!", "Je moet verbinden met de hotspot van een andere badge via 'Wi-Fi select' - 'retro-go-channel-...'");
+                return RG_DIALOG_CLOSE;
+            }
             // This list could be dynamically generated based on the enabled applications:
             const rg_gui_option_t options[] = {
                 {0, "NES          ", "roms/nes",  RG_DIALOG_FLAG_NORMAL, NULL},
@@ -230,14 +234,14 @@ static rg_gui_event_t find_games_cb(rg_gui_option_t *option, rg_gui_event_t even
                 {4, "GBC Best     ", "roms/gbc/best",  RG_DIALOG_FLAG_NORMAL, NULL},
                 {5, "GBC GBStudio ", "roms/gbc/gbstudio",  RG_DIALOG_FLAG_NORMAL, NULL},
                 {6, "Doom         ", "roms/doom",  RG_DIALOG_FLAG_NORMAL, NULL},
-                RG_DIALOG_SEPARATOR,
-                {7, "Everything   ", "roms/", RG_DIALOG_FLAG_NORMAL, NULL},
-                {8, "Nothing (Cancel)" , NULL, RG_DIALOG_FLAG_NORMAL, NULL},
+                RG_DIALOG_SEPARATOR, // option 7
+                {8, "Everything   ", "roms/", RG_DIALOG_FLAG_NORMAL, NULL},
+                {9, "Nothing (Cancel)" , NULL, RG_DIALOG_FLAG_NORMAL, NULL},
                 RG_DIALOG_END,
             };
             int sel = rg_gui_dialog("Choose folder", options, 0);
             RG_LOGI("find_games_cb got menu entry %d", sel);
-            if (sel != RG_DIALOG_CANCELLED && sel != 8)
+            if (sel != RG_DIALOG_CANCELLED && sel != 9)
             {
                 finding_games = 1; // disable the menu entry so the user can't start this twice
 
@@ -247,7 +251,7 @@ static rg_gui_event_t find_games_cb(rg_gui_option_t *option, rg_gui_event_t even
                 snprintf(folder, folderlength, "%s/%s", "/sd", options[sel].value);
 
                 RG_LOGI("Launching find_games_task for folder '%s', this can take a while...", folder);
-                if (rg_task_create("find_games", &find_games_task, folder, 10 * 1024, RG_TASK_PRIORITY_5, -1) != true)
+                if (rg_task_create("find_games", &find_games_task, folder, 6 * 1024, RG_TASK_PRIORITY_5, -1) != true)
                 {
                     RG_LOGE("find_games_cb failed to create task!");
                     free(folder); // Ensure we free memory if task creation fails

@@ -283,6 +283,7 @@ rg_http_req_t *rg_network_http_open(const char *url, const rg_http_cfg_t *cfg)
     size_t write_content_length = 0; // use 0 for read-only connections and use the actual length for writes such as POST requests
     esp_http_client_config_t http_config = {.url = url, .buffer_size = 1024, .buffer_size_tx = 1024};
     esp_http_client_handle_t http_client = esp_http_client_init(&http_config);
+    esp_http_client_set_timeout_ms(http_client, 30 * 1000);
 
     if (cfg && cfg->post_data)
     {
