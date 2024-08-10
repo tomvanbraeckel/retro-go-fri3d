@@ -136,13 +136,13 @@ static rg_gui_event_t wifi_access_point_cb(rg_gui_option_t *option, rg_gui_event
             {
                 rg_network_wifi_stop();
                 rg_wifi_config_t wifi_config = {
-                    .ssid = "retro-go-channel-1",
+                    .ssid = "retro-go",
                     .password = "retro-go",
-                    .channel = 1,
+                    .channel = sel,
                     .ap_mode = true,
                 };
-                //strncpy(wifi_config.ssid, options[sel].label, sizeof(wifi_config.ssid) - 1);
-                //wifi_config.ssid[sizeof(wifi_config.ssid) - 1] = '\0';  // Ensure null-termination
+                strncpy(wifi_config.ssid, options[sel].label, sizeof(wifi_config.ssid) - 1);
+                wifi_config.ssid[sizeof(wifi_config.ssid) - 1] = '\0';  // Ensure null-termination
                 rg_network_wifi_set_config(&wifi_config);
                 wifi_toggle_interactive(true);
             }

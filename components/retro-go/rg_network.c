@@ -134,12 +134,9 @@ bool rg_network_wifi_load_config(int slot)
 
     if ((ptr = rg_settings_get_string(NS_WIFI, key_ssid, NULL)))
         memccpy(config.ssid, ptr, 0, RG_MAX_SSID_LENGTH), free(ptr);
-    RG_LOGW("ssid: %s", config.ssid);
     if ((ptr = rg_settings_get_string(NS_WIFI, key_password, NULL)))
         memccpy(config.password, ptr, 0, 64), free(ptr);
-    RG_LOGW("pwd: %s", config.password);
     config.channel = rg_settings_get_number(NS_WIFI, key_channel, 0);
-    RG_LOGW("channel: %d", config.channel);
     config.ap_mode = rg_settings_get_number(NS_WIFI, key_mode, 0);
 
     if (!config.ssid[0])
@@ -191,11 +188,8 @@ bool rg_network_wifi_start(void)
     else
     {
         memcpy(config.sta.ssid, wifi_config.ssid, RG_MAX_SSID_LENGTH);
-        RG_LOGW("config.sta.ssid: %s", config.sta.ssid);
         memcpy(config.sta.password, wifi_config.password, 64);
-        RG_LOGW("config.sta.pwd: %s", config.sta.password);
         config.sta.channel = wifi_config.channel;
-        RG_LOGW("channel: %d", config.sta.channel);
         TRY(esp_wifi_set_mode(WIFI_MODE_STA));
         TRY(esp_wifi_set_config(WIFI_IF_STA, &config));
         TRY(esp_wifi_start());
