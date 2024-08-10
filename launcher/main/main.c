@@ -219,10 +219,10 @@ static rg_gui_event_t find_games_cb(rg_gui_option_t *option, rg_gui_event_t even
     if (event == RG_DIALOG_ENTER)
     {
         //if (rg_gui_confirm("Find games", "Als een andere badge Retro-Go zijn Wi-Fi hotspot aanzet...", true))
-        if (rg_gui_confirm("Find games", "Als een andere badge zijn hotspot aanzet ('Wi-Fi options' - 'Wi-Fi Access Point') en jij verbindt via 'Wi-Fi select' - 'retro-go-channel-...', kan je zoeken naar games die je nog niet hebt.", true))
+        if (rg_gui_confirm("Find games", "Als een andere badge zijn hotspot aanzet (X knop - Wi-Fi options - Wi-Fi Access Point) en jij verbindt via 'Wi-Fi select' - 'retro-go-channel-...' dan kan je zoeken naar games die je nog niet hebt.", true))
         {
             if (rg_network_get_info().state != RG_NETWORK_CONNECTED) {
-                rg_gui_alert("Not connected!", "Je moet verbinden met de hotspot van een andere badge via 'Wi-Fi select' - 'retro-go-channel-...'");
+                rg_gui_alert("Not connected!", "Je moet verbinden met de hotspot van een andere badge via: X knop - Wi-Fi options - Wi-Fi select - retro-go-channel-...");
                 return RG_DIALOG_CLOSE;
             }
             // This list could be dynamically generated based on the enabled applications:
