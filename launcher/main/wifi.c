@@ -14,7 +14,7 @@ static bool webui_enable = false;
 static const char *SETTING_WIFI_ENABLE = "Enable";
 static const char *SETTING_WIFI_SLOT = "Slot";
 static const char *SETTING_WEBUI = "HTTPFileServer";
-static const size_t MAX_AP_LIST = 5;
+static const size_t MAX_AP_LIST = 17;
 
 static void wifi_toggle(bool enable)
 {
@@ -84,7 +84,7 @@ static rg_gui_event_t wifi_select_cb(rg_gui_option_t *option, rg_gui_event_t eve
 
         for (size_t i = 0; i < MAX_AP_LIST; i++)
         {
-            char slot[6];
+            char slot[MAX_AP_LIST+1];
             sprintf(slot, "ssid%d", i);
             char *ap_name = rg_settings_get_string(NS_WIFI, slot, NULL);
             *opt++ = (rg_gui_option_t){i, ap_name ?: "(empty)", NULL, ap_name ? 1 : 0, NULL};
@@ -111,16 +111,42 @@ static rg_gui_event_t wifi_access_point_cb(rg_gui_option_t *option, rg_gui_event
 {
     if (event == RG_DIALOG_ENTER)
     {
-        if (rg_gui_confirm("Wi-Fi AP", "Start access point?\n\nSSID: retro-go\nPassword: retro-go\n\nBrowse: http://192.168.4.1/", true))
+        if (rg_gui_confirm("Wi-Fi AP", "Start access point?\n\nSSID: retro-go-channel-N\nPassword: retro-go\n\nBrowse: http://192.168.4.1/", true))
         {
-            rg_network_wifi_stop();
-            rg_network_wifi_set_config(&(const rg_wifi_config_t){
-                .ssid = "retro-go",
-                .password = "retro-go",
-                .channel = 6,
-                .ap_mode = true,
-            });
-            wifi_toggle_interactive(true);
+            // This list could be dynamically generated based on the enabled applications:
+            const rg_gui_option_t options[] = {
+                {0, "Cancel/Stop", NULL, RG_DIALOG_FLAG_NORMAL, NULL},
+                {1, "retro-go-channel-1", NULL,  RG_DIALOG_FLAG_NORMAL, NULL},
+                {2, "retro-go-channel-2", NULL,  RG_DIALOG_FLAG_NORMAL, NULL},
+                {3, "retro-go-channel-3", NULL,  RG_DIALOG_FLAG_NORMAL, NULL},
+                {4, "retro-go-channel-4", NULL,  RG_DIALOG_FLAG_NORMAL, NULL},
+                {5, "retro-go-channel-5", NULL,  RG_DIALOG_FLAG_NORMAL, NULL},
+                {6, "retro-go-channel-6", NULL,  RG_DIALOG_FLAG_NORMAL, NULL},
+                {7, "retro-go-channel-7", NULL,  RG_DIALOG_FLAG_NORMAL, NULL},
+                {8, "retro-go-channel-8", NULL,  RG_DIALOG_FLAG_NORMAL, NULL},
+                {9, "retro-go-channel-9", NULL,  RG_DIALOG_FLAG_NORMAL, NULL},
+                {10, "retro-go-channel-10", NULL,  RG_DIALOG_FLAG_NORMAL, NULL},
+                {11, "retro-go-channel-11", NULL,  RG_DIALOG_FLAG_NORMAL, NULL},
+                RG_DIALOG_END,
+            };
+            int sel = rg_gui_dialog("Choose SSID name/channel", options, 0);
+            RG_LOGI("Got channel choice: %d", sel);
+
+            if (sel != RG_DIALOG_CANCELLED && sel != 0)
+            {
+                rg_network_wifi_stop();
+                rg_wifi_config_t wifi_config = {
+                    .ssid = "retro-go-channel-1",
+                    .password = "retro-go",
+                    .channel = 1,
+                    .ap_mode = true,
+                };
+                //strncpy(wifi_config.ssid, options[sel].label, sizeof(wifi_config.ssid) - 1);
+                //wifi_config.ssid[sizeof(wifi_config.ssid) - 1] = '\0';  // Ensure null-termination
+                rg_network_wifi_set_config(&wifi_config);
+                wifi_toggle_interactive(true);
+            }
+
         }
         return RG_DIALOG_REDRAW;
     }

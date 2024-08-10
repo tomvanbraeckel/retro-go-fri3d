@@ -6,9 +6,11 @@
 #define RG_EVENT_NETWORK_DISCONNECTED (RG_EVENT_TYPE_NETWORK | 1)
 #define RG_EVENT_NETWORK_CONNECTED    (RG_EVENT_TYPE_NETWORK | 2)
 
+#define RG_MAX_SSID_LENGTH 32 // from official Wi-Fi specification
+
 typedef struct
 {
-    char ssid[32];
+    char ssid[RG_MAX_SSID_LENGTH];
     char password[64];
     int channel;
     bool ap_mode;
