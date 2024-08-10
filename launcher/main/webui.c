@@ -164,13 +164,16 @@ static esp_err_t http_download_handler(httpd_req_t *req)
     RG_LOGI("Serving file: %s", filename);
 
     gui.http_lock = true;
-RG_LOGI("locked");
     rg_stat_t info = rg_storage_stat(filename);
-    RG_LOGI("stat ok");
 
     if (!(info.is_dir) && (fp = fopen(filename, "rb")))
     {
-        RG_LOGI("open ok");
+        /* adding Content-Length works great for wget and curl but the ESP-IDF HTTP client seems to hang because of it:
+        char content_length_str[20];
+        snprintf(content_length_str, sizeof(content_length_str), "%zu", info.size);
+        httpd_resp_set_hdr(req, "Content-Length", content_length_str);
+        */
+
         if (rg_extension_match(filename, "json log txt"))
             httpd_resp_set_type(req, "text/plain");
         else if (rg_extension_match(filename, "png") == 0)
@@ -180,41 +183,22 @@ RG_LOGI("locked");
         else
             httpd_resp_set_type(req, "application/binary");
 
-        RG_LOGI("content-length");
-
-        char content_size_str[12];  // Enough to hold a 32-bit integer and the null terminator
-        RG_LOGI("content-length1");
-        sprintf(content_size_str, "%d", info.size);
-        RG_LOGI("content-length2");
-        httpd_resp_set_hdr(req, "Content-Length", content_size_str);
-        RG_LOGI("content-length3");
-
         for (size_t len; (len = fread(http_buffer, 1, 0x8000, fp));)
         {
-            RG_LOGI("chunk");
             httpd_resp_send_chunk(req, http_buffer, len);
-            RG_LOGI("chunk1");
             rg_task_yield();
-            RG_LOGI("chunk2");
         }
-        RG_LOGI("chunk done");
 
         httpd_resp_send_chunk(req, NULL, 0);
-        RG_LOGI("closing");
         fclose(fp);
-                RG_LOGI("closed");
     }
     else
     {
-        RG_LOGI("404");
         httpd_resp_send_404(req);
     }
-    RG_LOGI("before free");
     free(filename);
-    RG_LOGI("before unlock");
 
     gui.http_lock = false;
-    RG_LOGI("after unlock");
 
     return ESP_OK;
 }

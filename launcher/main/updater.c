@@ -71,7 +71,10 @@ bool download_file(const char *url, const char *filename)
     {
         received += len;
         written += fwrite(buffer, 1, len, fp);
-        rg_gui_draw_message("Received %d / %d", received, content_length);
+        if (content_length > 0)
+            rg_gui_draw_message("%d / %d bytes", received, content_length);
+        else
+            rg_gui_draw_message("%d bytes", received);
         if (received != written)
             break; // No point in continuing
     }
