@@ -233,7 +233,7 @@ void find_games(const char *initial_path, const char* ip) {
                 if (info.exists && (info.size == size->valueint)) { // also check that it's not a directory? info.is_dir?
                     RG_LOGI("Skipping download because file already exists and is correct size!");
                 } else {
-                    char full_url[RG_PATH_MAX];
+                    char full_url[RG_PATH_MAX*2]; // needs more than RG_PATH_MAX because of the http://......./ prefix
                     char* full_path_without_first_slash = full_path + 1; // remove first character (/), otherwise the HTTP download fails
                     char* encoded_url = urlencode_without_free(full_path_without_first_slash);
                     if (encoded_url) {
