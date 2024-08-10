@@ -393,7 +393,7 @@ bool rg_storage_scandir(const char *path, rg_scandir_cb_t *callback, void *arg, 
     return true;
 }
 
-int64_t rg_storage_get_free_space(const char *path)
+uint64_t rg_storage_get_free_space(const char *path)
 {
     // Here we should translate the provided VFS path to the matching filesystem driver and drive
     // But we don't. Instead we just assume it's drive 0 of the fatfs driver. Yay laziness.

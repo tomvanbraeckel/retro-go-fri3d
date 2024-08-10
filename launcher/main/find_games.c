@@ -238,8 +238,8 @@ void find_games(const char *initial_path, const char* ip) {
                     RG_LOGI("Skipping download because file already exists and is correct size!");
                 } else {
                     RG_LOGI("File to download has size: %d", (size->valueint));
-                    int64_t freespace = rg_storage_get_free_space(full_path);
-                    printf("Free space: %" PRId32 "%" PRId32 "\n", (long int)(freespace >> 32), (long int)freespace);
+                    uint64_t freespace = rg_storage_get_free_space(full_path);
+                    printf("Free space: %" PRIu32 "%" PRIu32 "\n", (long int)(freespace >> 32), (long int)freespace);
                     if (freespace < 2*(size->valueint)) {
                         RG_LOGW("Storage too full, skipping!");
                         continue;
