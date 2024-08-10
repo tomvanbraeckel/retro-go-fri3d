@@ -220,10 +220,14 @@ void find_games(const char *initial_path, const char* ip) {
             snprintf(full_path, sizeof(full_path), "%s/%s", path, name->valuestring);
             RG_LOGI("Found entry with full_path: %s", full_path);
 
-            if (cJSON_IsString(name) && (name->valuestring != NULL))
-                printf("%s,", name->valuestring);
-            if (cJSON_IsNumber(size))
-                printf("%d,", size->valueint);
+            if (!(cJSON_IsString(name) && (name->valuestring != NULL)) || !cJSON_IsNumber(size) || !cJSON_IsBool(isdir))
+            {
+                RG_LOGW("Invalid JSON received, skipping...");
+                continue;
+            }
+
+            printf("%s,", name->valuestring);
+            printf("%d,", size->valueint);
             if (cJSON_IsTrue(isdir)) {
                 printf("true\n");
                 push(&stack, full_path);
@@ -233,6 +237,13 @@ void find_games(const char *initial_path, const char* ip) {
                 if (info.exists && (info.size == size->valueint)) { // also check that it's not a directory? info.is_dir?
                     RG_LOGI("Skipping download because file already exists and is correct size!");
                 } else {
+                    RG_LOGI("File to download has size: %d", (size->valueint));
+                    int64_t freespace = rg_storage_get_free_space(full_path);
+                    printf("Free space: %" PRId32 "%" PRId32 "\n", (long int)(freespace >> 32), (long int)freespace);
+                    if (freespace < 2*(size->valueint)) {
+                        RG_LOGW("Storage too full, skipping!");
+                        continue;
+                    }
                     char full_url[RG_PATH_MAX*2]; // needs more than RG_PATH_MAX because of the http://......./ prefix
                     char* full_path_without_first_slash = full_path + 1; // remove first character (/), otherwise the HTTP download fails
                     char* encoded_url = urlencode_without_free(full_path_without_first_slash);
