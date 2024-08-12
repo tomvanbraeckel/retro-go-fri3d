@@ -115,7 +115,7 @@ static rg_gui_event_t wifi_access_point_cb(rg_gui_option_t *option, rg_gui_event
         {
             // This list could be dynamically generated based on the enabled applications:
             const rg_gui_option_t options[] = {
-                {0, "Cancel/Stop", NULL, RG_DIALOG_FLAG_NORMAL, NULL},
+                {0, "Cancel - Go Back", NULL, RG_DIALOG_FLAG_NORMAL, NULL},
                 {1, "retro-go-channel-1", NULL,  RG_DIALOG_FLAG_NORMAL, NULL},
                 {2, "retro-go-channel-2", NULL,  RG_DIALOG_FLAG_NORMAL, NULL},
                 {3, "retro-go-channel-3", NULL,  RG_DIALOG_FLAG_NORMAL, NULL},
