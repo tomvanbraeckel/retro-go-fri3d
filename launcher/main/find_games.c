@@ -127,7 +127,7 @@ void find_games(const char *initial_path, const char* ip) {
             goto continue_without_cleanup;
         }
 
-        RG_LOGI("find_games_show_dialog with path: %s", path);
+        RG_LOGI("find_games checking path: %s", path);
 
         cJSON *files_json = fetch_list_json(list_api_url, path);
         if (!files_json) {
@@ -138,10 +138,11 @@ void find_games(const char *initial_path, const char* ip) {
         RG_LOGI("Creating folder: '%s'", path);
         rg_storage_mkdir(path);
 
+        /*
         char *string = cJSON_Print(files_json);
-        //RG_LOGI("okay, files_json is: %s\n", string); // this only prints part?!
-        printf("printf files_json is: %s\n", string); // this only prints part?!
+        printf("printf files_json is: %s\n", string); // use printf because RG_LOGI() truncates the output
         free(string); // Free the printed JSON string
+        */
 
         const cJSON *files = cJSON_GetObjectItemCaseSensitive(files_json, "files");
         const cJSON *file;
