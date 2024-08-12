@@ -161,35 +161,42 @@ void find_games(const char *initial_path, const char* ip) {
             snprintf(full_path, sizeof(full_path), "%s/%s", path, name->valuestring);
             RG_LOGI("Found entry with full_path: %s", full_path);
 
-            printf("%s,", name->valuestring);
-            printf("%d,", size->valueint);
-            if (cJSON_IsTrue(isdir)) {
-                printf("true\n");
-                push(&stack, full_path);
+            if (strlen(full_path) > 128) {
+                // Dirty workaround, I know, but what else can you do after spending a whole day trying to determine the cause of a crash!
+                // It usually only happens inside a huge "collections" folder and for long filenames:
+                // /sd/roms/gbc/collection/Hacks/Pokemon Blue Version - Colorization (Pokemon Blue Version modification) (1.2) 012345678901234567890123456789.gb
+                RG_LOGW("Skipping paths longer than 128 bytes because they seem to cause undetermined crashes...");
             } else {
-                printf("false\n");
-                rg_stat_t info = rg_storage_stat(full_path);
-                if (info.exists && (info.size == size->valueint)) { // also check that it's not a directory? info.is_dir?
-                    RG_LOGI("Skipping download because file already exists and is correct size!");
+                printf("%s,", name->valuestring);
+                printf("%d,", size->valueint);
+                if (cJSON_IsTrue(isdir)) {
+                    printf("true\n");
+                    push(&stack, full_path);
                 } else {
-                    RG_LOGI("File to download has size: %d", (size->valueint));
-                    int64_t freespace = rg_storage_get_free_space(full_path);
-                    RG_LOGI("Free space: %lu\n", (unsigned long int)freespace);
-                    if (freespace < 2*(size->valueint)) {
-                        RG_LOGW("Storage too full, skipping!");
-                        goto continue_cleanup_files_json;
-                    }
-                    char full_url[RG_PATH_MAX*3]; // needs more than RG_PATH_MAX because of the http://......./ prefix
-                    char* full_path_without_first_slash = full_path + 1; // remove first character (/), otherwise the HTTP download fails
-                    char* encoded_url = urlencode_without_free(full_path_without_first_slash);
-                    if (encoded_url) {
-                        snprintf(full_url, sizeof(full_url), "%s%s/%s", RG_FIND_GAMES_PREFIX, ip, encoded_url);
-                        download_file(full_url, full_path);
-                        free(encoded_url);
-                    }
-                }
-            }
-        }
+                    printf("false\n");
+                    rg_stat_t info = rg_storage_stat(full_path);
+                    if (info.exists && (info.size == size->valueint)) { // also check that it's not a directory? info.is_dir?
+                        RG_LOGI("Skipping download because file already exists and is correct size!");
+                    } else {
+                        RG_LOGI("File to download has size: %d", (size->valueint));
+                        int64_t freespace = rg_storage_get_free_space(full_path);
+                        RG_LOGI("Free space: %lu\n", (unsigned long int)freespace);
+                        if (freespace < 2*(size->valueint)) {
+                            RG_LOGW("Storage too full, skipping!");
+                        } else {
+                            char full_url[RG_PATH_MAX*3]; // needs more than RG_PATH_MAX because of the http://......./ prefix
+                            char* full_path_without_first_slash = full_path + 1; // remove first character (/), otherwise the HTTP download fails
+                            char* encoded_url = urlencode_without_free(full_path_without_first_slash);
+                            if (encoded_url) {
+                                snprintf(full_url, sizeof(full_url), "%s%s/%s", RG_FIND_GAMES_PREFIX, ip, encoded_url);
+                                download_file(full_url, full_path);
+                                free(encoded_url);
+                            }
+                        } // free space check
+                    } // file exists check
+                } // is file or directory check
+            } // strlen(full_path) check
+        } // cJSON_ArrayForEach
 
 continue_cleanup_files_json:
         cJSON_Delete(files_json);
