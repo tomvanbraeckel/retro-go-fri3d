@@ -124,42 +124,42 @@ void find_games(const char *initial_path, const char* ip) {
     while (stack != NULL) {
         const char *path = pop(&stack);
         if (path == NULL) {
-            continue;
+            goto continue_without_cleanup;
         }
 
         RG_LOGI("find_games_show_dialog with path: %s", path);
 
         cJSON *files_json = fetch_list_json(list_api_url, path);
         if (!files_json) {
-            rg_gui_alert("File listing failed", "Make sure you are connected to a retro-go device's hotspot.");
-            free((void *)path); // Free the duplicated path
-            continue;
+            rg_gui_alert("File listing failed", "Make sure you are connected to a retro-go device's hotspot.");            
+            goto continue_cleanup_path;
         }
 
         RG_LOGI("Creating folder: '%s'", path);
         rg_storage_mkdir(path);
 
-        //char *string = cJSON_Print(files_json);
-        //RG_LOGI("okay, files_json is: %s\n", string);
-        //free(string); // Free the printed JSON string
+        char *string = cJSON_Print(files_json);
+        //RG_LOGI("okay, files_json is: %s\n", string); // this only prints part?!
+        printf("printf files_json is: %s\n", string); // this only prints part?!
+        free(string); // Free the printed JSON string
 
         const cJSON *files = cJSON_GetObjectItemCaseSensitive(files_json, "files");
         const cJSON *file;
         cJSON_ArrayForEach(file, files) {
-            char full_path[RG_PATH_MAX*2];
+            char full_path[RG_PATH_MAX*3];
 
             cJSON *name = cJSON_GetObjectItemCaseSensitive(file, "name");
             cJSON *size = cJSON_GetObjectItemCaseSensitive(file, "size");
             cJSON *isdir = cJSON_GetObjectItemCaseSensitive(file, "is_dir");
 
-            snprintf(full_path, sizeof(full_path), "%s/%s", path, name->valuestring);
-            RG_LOGI("Found entry with full_path: %s", full_path);
-
             if (!(cJSON_IsString(name) && (name->valuestring != NULL)) || !cJSON_IsNumber(size) || !cJSON_IsBool(isdir))
             {
                 RG_LOGW("Invalid JSON received, skipping...");
-                continue;
+                goto continue_cleanup_files_json;
             }
+
+            snprintf(full_path, sizeof(full_path), "%s/%s", path, name->valuestring);
+            RG_LOGI("Found entry with full_path: %s", full_path);
 
             printf("%s,", name->valuestring);
             printf("%d,", size->valueint);
@@ -174,12 +174,12 @@ void find_games(const char *initial_path, const char* ip) {
                 } else {
                     RG_LOGI("File to download has size: %d", (size->valueint));
                     int64_t freespace = rg_storage_get_free_space(full_path);
-                    RG_LOGI("Free space: %ld\n", (long int)freespace);
+                    RG_LOGI("Free space: %lu\n", (unsigned long int)freespace);
                     if (freespace < 2*(size->valueint)) {
                         RG_LOGW("Storage too full, skipping!");
-                        continue;
+                        goto continue_cleanup_files_json;
                     }
-                    char full_url[RG_PATH_MAX*2]; // needs more than RG_PATH_MAX because of the http://......./ prefix
+                    char full_url[RG_PATH_MAX*3]; // needs more than RG_PATH_MAX because of the http://......./ prefix
                     char* full_path_without_first_slash = full_path + 1; // remove first character (/), otherwise the HTTP download fails
                     char* encoded_url = urlencode_without_free(full_path_without_first_slash);
                     if (encoded_url) {
@@ -191,11 +191,14 @@ void find_games(const char *initial_path, const char* ip) {
             }
         }
 
+continue_cleanup_files_json:
         cJSON_Delete(files_json);
+continue_cleanup_path:
         free((void *)path); // Free the duplicated path
+continue_without_cleanup:
     }
 
-    // is this necessary? gui_redraw();
+    RG_LOGI("find_games returning");
 }
 
 #endif

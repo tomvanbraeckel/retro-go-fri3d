@@ -402,7 +402,7 @@ int64_t rg_storage_get_free_space(const char *path)
     FATFS *fatfs;
     if (f_getfree("0:", &nclst, &fatfs) == FR_OK)
     {
-        return (int64_t)nclst * fatfs->csize * fatfs->ssize;
+        return (int64_t)(nclst * fatfs->csize * fatfs->ssize);
     }
 #endif
 
