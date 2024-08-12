@@ -198,10 +198,8 @@ void find_games_task(void *args)
     rg_gui_draw_message("Finding games in remote %s", folder);
 
     find_games(folder, "192.168.4.1");
-    //find_games(folder, "192.168.126.169");
 
-    rg_gui_draw_message("Finished finding games in %s!", folder);
-    rg_task_delay(2000);
+    rg_gui_alert("Finished!", "Finished finding games!");
 
     gui.find_games_lock = false; // release the GUI
     finding_games = 0; // enable menu entry again
