@@ -264,92 +264,56 @@ bool rg_storage_mkdir(const char *dir)
 
 static int delete_cb(const rg_scandir_t *file, void *arg)
 {
-    rg_storage_delete(file->path);
+    delete_context_t *ctx = (delete_context_t *)arg;
+
+    if (file->is_dir) {
+        // Push directory onto the stack for later deletion
+        if (ctx->stack_size >= ctx->stack_capacity) {
+            ctx->stack_capacity *= 2;
+            ctx->dir_stack = realloc(ctx->dir_stack, sizeof(char *) * ctx->stack_capacity);
+            if (!ctx->dir_stack) {
+                return RG_SCANDIR_STOP; // Stop on memory allocation failure
+            }
+        }
+        ctx->dir_stack[ctx->stack_size++] = strdup(file->path);
+    } else {
+        // Delete the file
+        remove(file->path);
+    }
+
     return RG_SCANDIR_CONTINUE;
 }
 
-// This is a reworked version of the upstream rg_storage_delete() that avoids recursion and
-// overflowing the stack for large directory trees, like the ones created by MicroPython.
+// Using recursion is certainly more elegant, but it overflows the limited stack size
+// for large directory trees, like the ones created by MicroPython...
 bool rg_storage_delete(const char *path)
 {
     CHECK_PATH(path);
 
-    // Allocate a stack for directories to be deleted
-    char **dir_stack = NULL;
-    size_t stack_size = 0;
-    size_t stack_capacity = 0;
-
-    // Push the initial path onto the stack
-    dir_stack = malloc(sizeof(char *) * (stack_capacity = 16));  // Initial capacity
-    if (!dir_stack) {
+    // Initialize the context for managing the stack of directories
+    delete_context_t ctx = {0};
+    ctx.dir_stack = malloc(sizeof(char *) * 16);  // Initial capacity
+    if (!ctx.dir_stack) {
         return false;
     }
-    dir_stack[stack_size++] = strdup(path);  // Duplicate the path
+    ctx.stack_capacity = 16;
+    ctx.stack_size = 0;
+
+    // Push the initial path onto the stack
+    ctx.dir_stack[ctx.stack_size++] = strdup(path);
 
     bool success = true;
 
-    while (stack_size > 0) {
+    while (ctx.stack_size > 0) {
         // Pop a directory from the stack
-        char *current_path = dir_stack[--stack_size];
+        char *current_path = ctx.dir_stack[--ctx.stack_size];
 
-        // Try to remove the directory or file
-        if (remove(current_path) == 0) {
-            free(current_path);
-            continue;
-        }
-
-        DIR *dir = opendir(current_path);
-        if (!dir) {
-            free(current_path);
+        // Scan the directory
+        if (!rg_storage_scandir(current_path, delete_cb, &ctx, 0)) {
             success = false;
-            continue;
         }
 
-        struct dirent *ent;
-        rg_scandir_t file_info;
-
-        strcat(strcpy(file_info.path, current_path), "/");
-        file_info.basename = file_info.path + strlen(current_path) + 1;
-        file_info.dirname = current_path;
-
-        while ((ent = readdir(dir))) {
-            if (ent->d_name[0] == '.' && (!ent->d_name[1] || ent->d_name[1] == '.')) {
-                // Skip self and parent
-                continue;
-            }
-
-            snprintf(file_info.basename, RG_PATH_MAX - (file_info.basename - file_info.path), "%s", ent->d_name);
-
-            struct stat statbuf;
-            if (stat(file_info.path, &statbuf) == 0) {
-                file_info.is_file = S_ISREG(statbuf.st_mode);
-                file_info.is_dir = S_ISDIR(statbuf.st_mode);
-                file_info.size = statbuf.st_size;
-                file_info.mtime = statbuf.st_mtime;
-
-                if (file_info.is_dir) {
-                    // Push directory onto the stack for later deletion
-                    if (stack_size >= stack_capacity) {
-                        stack_capacity *= 2;
-                        dir_stack = realloc(dir_stack, sizeof(char *) * stack_capacity);
-                        if (!dir_stack) {
-                            closedir(dir);
-                            free(current_path);
-                            success = false;
-                            goto cleanup;
-                        }
-                    }
-                    dir_stack[stack_size++] = strdup(file_info.path);
-                } else {
-                    // Delete the file
-                    remove(file_info.path);
-                }
-            }
-        }
-
-        closedir(dir);
-
-        // Try to remove the directory again, now that it's empty
+        // Try to remove the directory itself now that it's empty
         if (rmdir(current_path) != 0) {
             success = false;
         }
@@ -357,14 +321,15 @@ bool rg_storage_delete(const char *path)
         free(current_path);
     }
 
-cleanup:
-    for (size_t i = 0; i < stack_size; ++i) {
-        free(dir_stack[i]);
+    // Cleanup the context
+    for (size_t i = 0; i < ctx.stack_size; ++i) {
+        free(ctx.dir_stack[i]);
     }
-    free(dir_stack);
+    free(ctx.dir_stack);
 
     return success;
 }
+
 rg_stat_t rg_storage_stat(const char *path)
 {
     rg_stat_t ret = {0};

@@ -42,6 +42,12 @@ enum
     RG_SCANDIR_STOP = 0,
 };
 
+typedef struct {
+    char **dir_stack;
+    size_t stack_size;
+    size_t stack_capacity;
+} delete_context_t;
+
 typedef struct
 {
     const char *basename;
