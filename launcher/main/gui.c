@@ -573,8 +573,14 @@ void gui_load_preview(tab_t *tab)
         else if (type == 0x3) // Game cover (based on filename)
         {
             path_len = snprintf(path, RG_PATH_MAX, "%s/%s", app->paths.covers, file->name);
-            if (path_len < RG_PATH_MAX - 3) // Don't bother if we already have an overflow
-                strcpy(path + path_len - strlen(rg_extension(file->name) ?: ""), "png");
+            if (path_len < RG_PATH_MAX - 4) // Don't bother if we already have an overflow
+            {
+                const char * ext = rg_extension(file->name);
+                char * to_add = "png";
+                if (!ext)
+                    to_add = ".png";
+                strcpy(path + path_len - strlen(ext ?: ""), to_add);
+            }
         }
         else if (type == 0x4 && file->saves > 0) // Save state screenshot (png)
         {
