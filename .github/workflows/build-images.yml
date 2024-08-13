@@ -1,0 +1,13 @@
+name: Build Release Images
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        required: true
+        description: Tag to build for
+
+jobs:
+  build_fox:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Starting automatic release build"
