@@ -1440,7 +1440,7 @@ void rg_gui_about_menu(const rg_gui_option_t *extra_options)
 void rg_gui_debug_menu(const rg_gui_option_t *extra_options)
 {
     char screen_res[20], source_res[20], scaled_res[20];
-    char stack_hwm[20], heap_free[20], block_free[20];
+    char stack_hwm[20], heap_free[20], block_free[20], storage_free[20];
     char local_time[32], timezone[32], uptime[20];
     char battery_info[25], frame_time[32];
     char app_name[32], network_str[64];
@@ -1452,6 +1452,7 @@ void rg_gui_debug_menu(const rg_gui_option_t *extra_options)
         {0, "Stack HWM ", stack_hwm,    RG_DIALOG_FLAG_NORMAL, NULL},
         {0, "Heap free ", heap_free,    RG_DIALOG_FLAG_NORMAL, NULL},
         {0, "Block free", block_free,   RG_DIALOG_FLAG_NORMAL, NULL},
+        {0, "Disk free >", storage_free, RG_DIALOG_FLAG_NORMAL, NULL}, // it underreports (for large micro SD cards), hence the >
         {0, "App name  ", app_name,     RG_DIALOG_FLAG_NORMAL, NULL},
         {0, "Network   ", network_str,  RG_DIALOG_FLAG_NORMAL, NULL},
         {0, "Local time", local_time,   RG_DIALOG_FLAG_NORMAL, NULL},
@@ -1492,6 +1493,19 @@ void rg_gui_debug_menu(const rg_gui_option_t *extra_options)
     snprintf(stack_hwm, 20, "%d", stats.freeStackMain);
     snprintf(heap_free, 20, "%d+%d", stats.freeMemoryInt, stats.freeMemoryExt);
     snprintf(block_free, 20, "%d+%d", stats.freeBlockInt, stats.freeBlockExt);
+    int64_t freespace = rg_storage_get_free_space("/sd");    // BUG: somehow this returns only 1.42GB for a 32GB micro SD card?! For the internal flash, it works fine.
+    if (freespace > 0) {
+        uint32_t msb = (uint32_t)((freespace >> 32) & 0xFFFFFFFF);
+        uint32_t lsb = (uint32_t)(freespace & 0xFFFFFFFF);
+        RG_LOGI("storage_free: %lu%08lu", msb, lsb);
+        if (msb) {
+            snprintf(storage_free, 20, "%lu%08lu", msb, lsb);
+        } else {
+            snprintf(storage_free, 20, "%lu", lsb);
+        }
+    } else {
+        snprintf(storage_free, 20, "(unsupported)");
+    }
     snprintf(uptime, 20, "%ds", (int)(rg_system_timer() / 1000000));
     rg_battery_t battery;
     if (rg_input_read_battery_raw(&battery))
