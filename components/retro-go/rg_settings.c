@@ -43,13 +43,13 @@ static cJSON *json_root(const char *name, bool set_dirty)
             if (strcmp(name, "wifi") == 0) {
                 content = "{\n\"Enable\": 0,\n\"ssid\": \"fri3d-badge\",\n\"password\": \"badge2024\",\n\"ssid0\": \"Zie /retro-go/config/wifi.json\",\n\"password0\": \"voorbeeld\",\n\"ssid1\": \"See /retro-go/config/wifi.json\",\n\"password1\": \"example\",\n\"ssid2\": \"retro-go\",\n\"password2\": \"retro-go\",\n\"ssid3\": \"retro-go-channel-1\",\n\"password3\": \"retro-go\",\n\"ssid4\": \"retro-go-channel-2\",\n\"password4\": \"retro-go\",\n\"ssid5\": \"retro-go-channel-3\",\n\"password5\": \"retro-go\",\n\"ssid6\": \"retro-go-channel-4\",\n\"password6\": \"retro-go\",\n\"ssid7\": \"retro-go-channel-5\",\n\"password7\": \"retro-go\",\n\"ssid8\": \"retro-go-channel-6\",\n\"password8\": \"retro-go\",\n\"ssid9\": \"retro-go-channel-7\",\n\"password9\": \"retro-go\",\n\"ssid10\": \"retro-go-channel-8\",\n\"password10\": \"retro-go\",\n\"ssid11\": \"retro-go-channel-9\",\n\"password11\": \"retro-go\",\n\"ssid12\": \"retro-go-channel-10\",\n\"password12\": \"retro-go\",\n\"ssid13\": \"retro-go-channel-11\",\n\"password13\": \"retro-go\",\n\"Slot\": -1\n}";
             } else if (strcmp(name, "gb") == 0) {
-                content = "{\n\"Palette\": 35\n}";
+                content = "{\n\"Palette\": 35\n}"; // GBC palette looks very nice
             } else if (strcmp(name, "global") == 0) {
                 content = "{\n\"FontType\":        5,\n\"Theme\":  null,\n\"DiskActivity\":        1,\n\"Timezone\":       \"UTC-01:00\",\n\"Migration\":  1390,\n\"AudioDriver\":  \"buzzer\",\n\"AudioDevice\":  0\n}";
             } else if (strcmp(name, "launcher") == 0) {
                 content = "{\n\"SelectedTab\":     2,\n\"StartScreen\":    1,\n\"ShowPreview\":    1,\n\"ScrollMode\":     0,\n\"ColorTheme\":     1,\n\"StartupMode\":    0,\n\"HiddenTabs\":     \"\",\n\"HideTab.nes\": 0,\n\"HideTab.gb\":       0,\n\"HideTab.gbc\":    0,\n\"HideTab.doom\":   0,\n\"HideTab.favorite\":       0,\n\"HideTab.recent\": 0\n}";
             } else if (strcmp(name, "doom") == 0) {
-                content = "{\n\"Gamma\":   1\n}";
+                content = "{\n\"Gamma\":   1\n}"; // Make it a bit brighter; easier to see in daylight, it's a dark game
             } else {
                 RG_LOGW("Unrecognized config name, not writing default.");
             }
