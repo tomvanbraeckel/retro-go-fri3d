@@ -150,6 +150,30 @@ static uint32_t crc_read_file(retro_file_t *file, bool interactive)
     if (file == NULL)
         return 0;
 
+    if (rg_extension_match(get_file_path(file), "zip")) {
+        if (file->app->crc_offset == 0) {
+            RG_LOGI("crc_read_file encountered a zipfile, reading CRC from zip...");
+            crc_tmp = rg_storage_unzip_file_checksum(get_file_path(file));
+        } else {
+            RG_LOGI("CRC offset != 0, can't read it from zip file header, need to unzip entire file!");
+            void *data;
+            size_t size;
+            if (!rg_storage_unzip_file(get_file_path(file), NULL, &data, &size, RG_FILE_ALIGN_8KB)) {
+                RG_LOGW("ROM file unzipping failed!");
+                return 0;
+            } else {
+                RG_LOGI("Unzipped successfully, calculating CRC32 with offset %d", file->app->crc_offset);
+                data += file->app->crc_offset;
+                size -= file->app->crc_offset;
+                crc_tmp = rg_crc32(crc_tmp, data, size);
+                RG_LOGI("CRC32: %X", (unsigned int)crc_tmp);
+                data -= file->app->crc_offset; // restore pointer for free
+                free(data);
+            }
+        }
+        return crc_tmp;
+    }
+
     if ((fp = fopen(get_file_path(file), "rb")))
     {
         fseek(fp, file->app->crc_offset, SEEK_SET);
@@ -299,14 +323,7 @@ void crc_cache_prebuild(void)
             if ((file->checksum = crc_cache_lookup(file)))
                 continue;
 
-            if (rg_extension_match(get_file_path(file), "zip")) {
-                RG_LOGI("crc_cache_prebuild encountered a zipfile, reading CRC from zip...");
-                file->checksum = rg_storage_unzip_file_checksum(get_file_path(file));
-            } else {
-                file->checksum = crc_read_file(file, true);
-            }
-
-            if (file->checksum)
+            if ((file->checksum = crc_read_file(file, true)))
                 crc_cache_update(file);
         }
 
@@ -523,14 +540,7 @@ bool application_get_file_crc32(retro_file_t *file)
         gui_set_status(tab, NULL, "CRC32...");
         gui_redraw(); // gui_draw_status(tab);
 
-        if (rg_extension_match(get_file_path(file), "zip")) {
-            RG_LOGI("application_get_file_crc32 encountered a zipfile, reading CRC from zip...");
-            crc_tmp = rg_storage_unzip_file_checksum(get_file_path(file));
-        } else {
-            crc_tmp = crc_read_file(file, true);
-        }
-
-        if (crc_tmp)
+        if ((crc_tmp = crc_read_file(file, true)))
         {
             file->checksum = crc_tmp;
             crc_cache_update(file);
