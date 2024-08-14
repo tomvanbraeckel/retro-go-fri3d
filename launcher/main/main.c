@@ -228,25 +228,26 @@ static rg_gui_event_t find_games_cb(rg_gui_option_t *option, rg_gui_event_t even
                 {0, "NES          ", "roms/nes",  RG_DIALOG_FLAG_NORMAL, NULL},
                 {1, "NES Best     ", "roms/nes/best",  RG_DIALOG_FLAG_NORMAL, NULL},
                 {2, "GameBoy      ", "roms/gb",  RG_DIALOG_FLAG_NORMAL, NULL},
-                {3, "GameBoy Color", "roms/gbc",  RG_DIALOG_FLAG_NORMAL, NULL},
-                {4, "GBC Best     ", "roms/gbc/best",  RG_DIALOG_FLAG_NORMAL, NULL},
-                {5, "GBC GBStudio ", "roms/gbc/gbstudio",  RG_DIALOG_FLAG_NORMAL, NULL},
-                {6, "Doom         ", "roms/doom",  RG_DIALOG_FLAG_NORMAL, NULL},
-                RG_DIALOG_SEPARATOR, // option 7
-                {8, "Everything   ", "roms/", RG_DIALOG_FLAG_NORMAL, NULL},
-                {9, "Nothing (Cancel)" , NULL, RG_DIALOG_FLAG_NORMAL, NULL},
+                {3, "GameBoy Best ", "roms/gb/best",  RG_DIALOG_FLAG_NORMAL, NULL},
+                {4, "GameBoy Color", "roms/gbc",  RG_DIALOG_FLAG_NORMAL, NULL},
+                {5, "GBC Best     ", "roms/gbc/best",  RG_DIALOG_FLAG_NORMAL, NULL},
+                {6, "GBC GBStudio ", "roms/gbc/gbstu",  RG_DIALOG_FLAG_NORMAL, NULL},
+                {7, "Doom         ", "roms/doom",  RG_DIALOG_FLAG_NORMAL, NULL},
+                RG_DIALOG_SEPARATOR, // option 8
+                {9, "Everything   ", "roms/", RG_DIALOG_FLAG_NORMAL, NULL},
+                {10, "Nothing (Cancel)" , NULL, RG_DIALOG_FLAG_NORMAL, NULL},
                 RG_DIALOG_END,
             };
             int sel = rg_gui_dialog("Choose folder", options, 0);
             RG_LOGI("find_games_cb got menu entry %d", sel);
-            if (sel != RG_DIALOG_CANCELLED && sel != 9)
+            if (sel != RG_DIALOG_CANCELLED && sel != 10)
             {
                 finding_games = 1; // disable the menu entry so the user can't start this twice
 
                 // Add /sd to the folder:
-                int folderlength = strlen("/sd/") + strlen(options[sel].value) + 1;
+                int folderlength = strlen(RG_STORAGE_ROOT) + strlen(options[sel].value) + 1;
                 char * folder = malloc(folderlength);
-                snprintf(folder, folderlength, "%s/%s", "/sd", options[sel].value);
+                snprintf(folder, folderlength, "%s/%s", RG_STORAGE_ROOT, options[sel].value);
 
                 RG_LOGI("Launching find_games_task for folder '%s', this can take a while...", folder);
                 if (rg_task_create("find_games", &find_games_task, folder, 16 * 1024, RG_TASK_PRIORITY_5, -1) != true)
