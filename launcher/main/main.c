@@ -244,8 +244,8 @@ static rg_gui_event_t find_games_cb(rg_gui_option_t *option, rg_gui_event_t even
             {
                 finding_games = 1; // disable the menu entry so the user can't start this twice
 
-                // Add /sd to the folder:
-                int folderlength = strlen(RG_STORAGE_ROOT) + strlen(options[sel].value) + 1;
+                // Add "/sd" + "/" + "roms/gb/best" + 0x00 to the folder:
+                int folderlength = strlen(RG_STORAGE_ROOT) + 1 + strlen(options[sel].value) + 1;
                 char * folder = malloc(folderlength);
                 snprintf(folder, folderlength, "%s/%s", RG_STORAGE_ROOT, options[sel].value);
 
