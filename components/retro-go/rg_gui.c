@@ -1493,7 +1493,7 @@ void rg_gui_debug_menu(const rg_gui_option_t *extra_options)
     snprintf(stack_hwm, 20, "%d", stats.freeStackMain);
     snprintf(heap_free, 20, "%d+%d", stats.freeMemoryInt, stats.freeMemoryExt);
     snprintf(block_free, 20, "%d+%d", stats.freeBlockInt, stats.freeBlockExt);
-    int64_t freespace = rg_storage_get_free_space("/sd");    // BUG: somehow this returns only 1.42GB for a 32GB micro SD card?! For the internal flash, it works fine.
+    int64_t freespace = rg_storage_get_free_space(RG_STORAGE_ROOT);    // BUG: somehow this returns only 1.42GB for a 32GB micro SD card?! For the internal flash, it works fine.
     if (freespace > 0) {
         uint32_t msb = (uint32_t)((freespace >> 32) & 0xFFFFFFFF);
         uint32_t lsb = (uint32_t)(freespace & 0xFFFFFFFF);
