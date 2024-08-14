@@ -562,6 +562,46 @@ typedef struct __attribute__((packed))
     // uint8_t compressed_data[];
 } zip_header_t;
 
+uint32_t rg_storage_unzip_file_checksum(const char *zip_path)
+{
+#if RG_ZIP_SUPPORT
+    CHECK_PATH(zip_path);
+
+    zip_header_t header = {0};
+    int header_pos = 0;
+
+    FILE *fp = fopen(zip_path, "rb");
+    if (!fp)
+    {
+        RG_LOGE("Fopen failed (%d): '%s'", errno, zip_path);
+        return false;
+    }
+
+    // Very inefficient, we should read a block at a time and search it for a header. But I'm lazy.
+    // Thankfully the header is usually found on the very first read :)
+    for (header_pos = 0; !feof(fp) && header_pos < 0x10000; ++header_pos)
+    {
+        fseek(fp, header_pos, SEEK_SET);
+        fread(&header, sizeof(header), 1, fp);
+        if (header.magic == ZIP_MAGIC)
+            break;
+    }
+
+    if (header.magic != ZIP_MAGIC)
+    {
+        RG_LOGE("No valid header found: '%s'", zip_path);
+        fclose(fp);
+        return false;
+    }
+
+    fclose(fp);
+    return header.checksum;
+#else
+    RG_LOGE("ZIP support hasn't been enabled!");
+    return false;
+#endif
+}
+
 bool rg_storage_unzip_file(const char *zip_path, const char *filter, void **data_out, size_t *data_len, uint32_t flags)
 {
 #if RG_ZIP_SUPPORT

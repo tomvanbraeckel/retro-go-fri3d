@@ -516,7 +516,14 @@ bool application_get_file_crc32(retro_file_t *file)
         gui_set_status(tab, NULL, "CRC32...");
         gui_redraw(); // gui_draw_status(tab);
 
-        if ((crc_tmp = crc_read_file(file, true)))
+        if (rg_extension_match(get_file_path(file), "zip")) {
+            RG_LOGI("application_get_file_crc32 encountered a zipfile, reading CRC from zip...");
+            crc_tmp = rg_storage_unzip_file_checksum(get_file_path(file));
+        } else {
+            crc_tmp = crc_read_file(file, true);
+        }
+
+        if (crc_tmp)
         {
             file->checksum = crc_tmp;
             crc_cache_update(file);
