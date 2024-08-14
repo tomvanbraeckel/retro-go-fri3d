@@ -8,7 +8,6 @@
 #define RG_FIND_GAMES_API_SUFFIX "/api"
 
 #define RG_FIND_GAMES_DOWNLOAD "http://192.168.4.1"
-//#define RG_FIND_GAMES_API "http://192.168.1.16/api"
 #define RG_FIND_GAMES_API "http://192.168.4.1/api"
 
 #include <esp_http_client.h>
