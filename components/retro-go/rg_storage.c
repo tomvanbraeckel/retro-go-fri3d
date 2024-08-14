@@ -586,15 +586,14 @@ uint32_t rg_storage_unzip_file_checksum(const char *zip_path)
         if (header.magic == ZIP_MAGIC)
             break;
     }
+    fclose(fp);
 
     if (header.magic != ZIP_MAGIC)
     {
         RG_LOGE("No valid header found: '%s'", zip_path);
-        fclose(fp);
         return false;
     }
 
-    fclose(fp);
     return header.checksum;
 #else
     RG_LOGE("ZIP support hasn't been enabled!");
