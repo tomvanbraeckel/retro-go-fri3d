@@ -562,7 +562,7 @@ typedef struct __attribute__((packed))
     // uint8_t compressed_data[];
 } zip_header_t;
 
-uint32_t rg_storage_unzip_file_checksum(const char *zip_path)
+uint32_t rg_storage_crc_from_zip(const char *zip_path)
 {
 #if RG_ZIP_SUPPORT
     CHECK_PATH(zip_path);

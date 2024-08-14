@@ -153,7 +153,7 @@ static uint32_t crc_read_file(retro_file_t *file, bool interactive)
     if (rg_extension_match(get_file_path(file), "zip")) {
         if (file->app->crc_offset == 0) {
             RG_LOGI("crc_read_file encountered a zipfile, reading CRC from zip...");
-            crc_tmp = rg_storage_unzip_file_checksum(get_file_path(file));
+            crc_tmp = rg_storage_crc_from_zip(get_file_path(file));
         } else {
             RG_LOGI("CRC offset != 0, can't read it from zip file header, need to unzip entire file!");
             void *data;
