@@ -8,9 +8,11 @@ Use ESP-IDF 5.2.2 and see [BUILDING.md](BUILDING.md) for details. No patches nee
 
 # Flashing
 
-Use https://github.com/cheops/fri3d-ota (links to https://fri3d-flasher.vercel.app/ ) to flash the latest release file called "[all-in-one_for_webflasher_OVERWRITES_EVERYTHING.zip](https://github.com/tomvanbraeckel/retro-go-fri3d/releases)".
+See [the official Fri3d Camp 2024 badge reset documentation](https://fri3dcamp.github.io/badge_2024/reset/).
 
-The online flasher app works with chrome based browsers (Chrome, Edge) (not Firefox, Safari).
+It uses [an esptool.js-based web flasher](https://github.com/DrSkunk/fri3d-web-flasher) hosted at https://fri3d-flasher.vercel.app/ to flash the latest release file called `full_webflasher_*.zip` from the [latest release](https://github.com/Fri3dCamp/badge_retro-go/releases).
+
+The web flasher works with chrome based browsers like Chrome and Edge, not Firefox or Safari.
 
 You might need to put the badge in DOWNLOAD mode manually:
 - PRESS + HOLD the START button
@@ -20,7 +22,7 @@ You might need to put the badge in DOWNLOAD mode manually:
 
 Now the device should boot into the Fri3d App, based on ESP-IDF.
 
-Then choose "Retro-Go Gaming" in the menu to boot into retro-go-fri3d.
+Then choose "Retro-Go Gaming" in the menu to boot into Retro-Go.
 
 That's it!
 
