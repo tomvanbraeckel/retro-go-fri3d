@@ -299,7 +299,14 @@ void crc_cache_prebuild(void)
             if ((file->checksum = crc_cache_lookup(file)))
                 continue;
 
-            if ((file->checksum = crc_read_file(file, true)))
+            if (rg_extension_match(get_file_path(file), "zip")) {
+                RG_LOGI("crc_cache_prebuild encountered a zipfile, reading CRC from zip...");
+                file->checksum = rg_storage_unzip_file_checksum(get_file_path(file));
+            } else {
+                file->checksum = crc_read_file(file, true);
+            }
+
+            if (file->checksum)
                 crc_cache_update(file);
         }
 
