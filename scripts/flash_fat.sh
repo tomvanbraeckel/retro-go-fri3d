@@ -36,6 +36,8 @@
 # this works:
 #esptool.py write_flash --flash_size 16MB 0x2B0000 /home/user/ESP32_NES/FATs/vfs-fat-partition-5376KB-complete.bin
 
-esptool.py write_flash --flash_size 16MB 0x990000 /home/user/ESP32_NES/FATs/vfs-fat-partition-6750208.bin
+#esptool.py write_flash --flash_size 16MB 0x990000 /home/user/ESP32_NES/FATs/vfs-fat-partition-6750208.bin
+
+esptool.py write_flash --flash_size 16MB 0x990000 /home/user/ESP32_NES/releases/1.8/vfs-fat-partition-6750208.bin
 
 picocom -b 115200 /dev/ttyACM0

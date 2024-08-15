@@ -71,11 +71,11 @@
 #endif
 
 #ifndef RG_PROJECT_WEBSITE
-#define RG_PROJECT_WEBSITE "https://github.com/tomvanbraeckel/retro-go-fri3d"
+#define RG_PROJECT_WEBSITE "https://github.com/Fri3dCamp/badge_retro-go"
 #endif
 
 #ifndef RG_PROJECT_RELEASES_URL
-#define RG_PROJECT_RELEASES_URL "https://api.github.com/repos/tomvanbraeckel/retro-go-fri3d/releases"
+#define RG_PROJECT_RELEASES_URL "https://api.github.com/repos/Fri3dCamp/badge_retro-go/releases"
 #endif
 
 #ifndef RG_BUILD_VERSION
