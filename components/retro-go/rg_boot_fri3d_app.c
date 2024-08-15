@@ -19,6 +19,13 @@ int32_t read_nvs_boot_partition() {
     esp_err_t ret;
     int32_t boot_id = -1;
 
+    // Initialize NVS
+    ret = nvs_flash_init();
+    if (ret != ESP_OK) {
+        printf("Failed to init NVS partition: %s\n", esp_err_to_name(ret));
+        goto cleanup_nothing;
+    }
+
     // Open NVS partition 'fri3d.sys'
     ret = nvs_open("fri3d.sys", NVS_READONLY, &my_handle);
     if (ret != ESP_OK) {
@@ -50,10 +57,12 @@ void rg_boot_fri3d_app() {
 
     // Choose the OTA partition that was saved by the main OTA0/1 Fri3d App previously
     int32_t ota_slot = read_nvs_boot_partition();
-    if (ota_slot == 1)
+    if (ota_slot == 1) {
+        RG_LOGW("read_nvs_boot_partition got ota_slot == 1 so finding partition with label 'ota_1'");
         label = "ota_1";
-    else
+    } else {
         RG_LOGW("read_nvs_boot_partition returned %d instead of 0 or 1, defaulting to 0...", (int)ota_slot);
+    }
 
     const esp_partition_t * next_update_partition = esp_partition_find_first(ESP_PARTITION_TYPE_APP, ESP_PARTITION_SUBTYPE_ANY, label);
     if (!next_update_partition)
