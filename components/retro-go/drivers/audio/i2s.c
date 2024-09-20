@@ -15,6 +15,8 @@
 #include <driver/dac.h>
 #endif
 
+// #define PLAY_SINE_AS_TEST 1
+#define NOTE_A 440
 static struct {
     const char *last_error;
     int device;
@@ -22,8 +24,54 @@ static struct {
     bool muted;
 } state;
 
+/* SINE WAVE GENERATION CODE */
+/* From: drivers/audio/buzzer.c */
+#ifdef PLAY_SINE_AS_TEST
+
+#include <math.h>
+
+#define SINE_AMPLITUDE 32767 // audio samples are int16_t, which ranges from -32k to 32k
+
+// Global variables used for sine wave playing:
+int sinePeriod;
+int sinePosition;
+int16_t *sineBuffer;
+
+// Generating the sine wave sample values in realtime (at 32kHz!) is too slow on the ESP32, so precompute it into
+// sineBuffer
+void precompute_sine_wave(int sampleRate)
+{
+    sinePosition = 0;
+    sinePeriod = 11 * sampleRate / NOTE_A; // period is sampleRate / NOTE_A and *11 makes it integer at 32kHz (although
+                                           // that probably doesn't matter much)
+    sineBuffer = malloc(sinePeriod * 2 * sizeof(int16_t)); // Allocate memory for the buffer (2 channels)
+    if (!sineBuffer)
+    {
+        RG_LOGE("could not allocate memory for sineBuffer");
+        return;
+    }
+
+    int32_t phase = 0;
+    int bufferPos = 0;
+    for (int i = 0; i < sinePeriod; i++)
+    {
+        float sample = sinf(phase * M_PI * 2 / sampleRate) * SINE_AMPLITUDE;
+        sineBuffer[bufferPos] = sample;
+        sineBuffer[bufferPos + 1] = sample; // stereo so use same sample for right audio channel
+        phase += NOTE_A;
+        bufferPos += 2;
+    }
+}
+
+#endif
+/* END SINE WAVE GENERATION CODE */
+
+
 static bool driver_init(int device, int sample_rate)
 {
+#ifdef PLAY_SINE_AS_TEST
+    precompute_sine_wave(sample_rate);
+#endif
     state.last_error = NULL;
     state.device = device;
 
@@ -97,17 +145,19 @@ static bool driver_deinit(void)
     {
     #if RG_AUDIO_USE_INT_DAC
         if (RG_AUDIO_USE_INT_DAC & I2S_DAC_CHANNEL_RIGHT_EN)
-            dac_output_disable(DAC_CHANNEL_1);
+            dac_output_disable(DAC_CHAN_0);
         if (RG_AUDIO_USE_INT_DAC & I2S_DAC_CHANNEL_LEFT_EN)
-            dac_output_disable(DAC_CHANNEL_2);
+            dac_output_disable(DAC_CHAN_1);
         dac_i2s_disable();
     #endif
     }
     else if (state.device == 1)
     {
+#if RG_AUDIO_USE_EXT_DAC
         gpio_reset_pin(RG_GPIO_SND_I2S_BCK);
         gpio_reset_pin(RG_GPIO_SND_I2S_DATA);
         gpio_reset_pin(RG_GPIO_SND_I2S_WS);
+#endif
     }
     #ifdef RG_GPIO_SND_AMP_ENABLE
     gpio_reset_pin(RG_GPIO_SND_AMP_ENABLE);
@@ -123,12 +173,22 @@ static bool driver_submit(const rg_audio_frame_t *frames, size_t count)
     size_t pos = 0;
 
     // In speaker mode we use left and right as a differential mono output to increase resolution.
-    bool differential = state.device == 0;
+    // bool differential = state.device == 0;
+    bool differential = 0;
 
     for (size_t i = 0; i < count; ++i)
     {
-        int left = frames[i].left * volume;
-        int right = frames[i].right * volume;
+        int left = (frames[i].left * volume) + 32768;
+        int right = (frames[i].right * volume) + 32768;
+
+#ifdef PLAY_SINE_AS_TEST
+        left = (sineBuffer[sinePosition] * volume) + 32768;
+        right = (sineBuffer[sinePosition + 1] * volume) + 32768;
+        sinePosition += 2; // 2 channels
+        if (sinePosition >= sinePeriod * 2)
+            sinePosition = 0;
+#endif
+
 
         if (differential)
         {

@@ -2,20 +2,20 @@
 #define RG_TARGET_NAME             "FRI3D-2022"
 
 // Storage
-#define RG_STORAGE_DRIVER           4                   // 0 = Host, 1 = SDSPI, 2 = SDMMC, 3 = USB, 4 = Internal Flash
-#define RG_STORAGE_HOST             SPI2_HOST           // Used by SDSPI and SDMMC
-#define RG_STORAGE_SPEED            SDMMC_FREQ_DEFAULT  // Used by SDSPI and SDMMC
+#define RG_STORAGE_DRIVER           1                   // 0 = Host, 1 = SDSPI, 2 = SDMMC, 3 = USB, 4 = Internal Flash
+#define RG_STORAGE_SDSPI_HOST       SPI3_HOST           // Used by SDSPI and SDMMC
+#define RG_STORAGE_SDSPI_SPEED      5000                // Used by SDSPI and SDMMC
 #define RG_STORAGE_ROOT             "/sd"               // Storage mount point
 #define RG_STORAGE_FLASH_PARTITION  "vfs"		// Fallback to internal flash partition
 
 // Audio
 #define RG_AUDIO_USE_BUZZER_PIN     32
-#define RG_AUDIO_USE_INT_DAC        0   // 0 = Disable, 1 = GPIO25, 2 = GPIO26, 3 = Both
+#define RG_AUDIO_USE_INT_DAC        1   // 0 = Disable, 1 = GPIO25, 2 = GPIO26, 3 = Both
 #define RG_AUDIO_USE_EXT_DAC        0   // 0 = Disable, 1 = Enable
 
 // Video
 #define RG_SCREEN_DRIVER            0   // 0 = ILI9341 but also works on ST7789 with below RG_SCREEN_INIT()
-#define RG_SCREEN_HOST              SPI2_HOST
+#define RG_SCREEN_HOST              SPI3_HOST
 #define RG_SCREEN_SPEED             SPI_MASTER_FREQ_40M
 #define RG_SCREEN_WIDTH             240
 #define RG_SCREEN_HEIGHT            240
@@ -58,14 +58,13 @@
 /*
     {RG_KEY_LEFT,  ADC_UNIT_2, ADC_CHANNEL_9, ADC_ATTEN_DB_11, 3072, 4096},\
     {RG_KEY_RIGHT, ADC_UNIT_2, ADC_CHANNEL_9, ADC_ATTEN_DB_11, -1, 1024},\
-*/
 
 #define RG_GAMEPAD_ADC_MAP {\
     {RG_KEY_UP,    ADC_UNIT_1, ADC_CHANNEL_6, ADC_ATTEN_DB_11, 3072, 4096},\
     {RG_KEY_DOWN,  ADC_UNIT_1, ADC_CHANNEL_6, ADC_ATTEN_DB_11, -1, 1024},\
 }
 
-
+*/
 
 // PIN USAGE:
 // IO2: LED.DIN
@@ -88,11 +87,29 @@
 
 // USE:
 // IO34 - 39 = Input only
-#define RG_GAMEPAD_GPIO_MAP {\
-    {RG_KEY_MENU,   GPIO_NUM_13, GPIO_PULLUP_ONLY, 0},\
-    {RG_KEY_START,  GPIO_NUM_27, GPIO_PULLUP_ONLY, 0},\   
-    {RG_KEY_A,      GPIO_NUM_14, GPIO_PULLUP_ONLY, 0},\
-    {RG_KEY_B,      GPIO_NUM_25, GPIO_PULLUP_ONLY, 0},\
+
+/*
+ Start button can be used if buzzer isn't used.  Mapping would be as follows:
+        {RG_KEY_START, GPIO_NUM_32, GPIO_FLOATING,    1},
+
+  Avoid using the Select button as the accelerometer interrupt interferes with is.  Without
+  custom code the Select button is stuck on low.
+
+  In the mapping below, we use the following assignments:
+  Menu = left shoulder button
+  Start = right shoulder button
+*/
+
+#define RG_GAMEPAD_GPIO_MAP                               \
+    {                                                     \
+        {RG_KEY_MENU,  GPIO_NUM_27, GPIO_PULLUP_ONLY, 0}, \
+        {RG_KEY_START, GPIO_NUM_14, GPIO_PULLUP_ONLY, 0}, \
+        {RG_KEY_A,     GPIO_NUM_13, GPIO_PULLUP_ONLY, 0}, \
+        {RG_KEY_B,     GPIO_NUM_12, GPIO_PULLUP_ONLY, 0}, \
+        {RG_KEY_UP,    GPIO_NUM_39, GPIO_PULLUP_ONLY, 0}, \
+        {RG_KEY_DOWN,  GPIO_NUM_15, GPIO_PULLUP_ONLY, 0}, \
+        {RG_KEY_LEFT,  GPIO_NUM_26, GPIO_PULLUP_ONLY, 0}, \
+        {RG_KEY_RIGHT, GPIO_NUM_0,  GPIO_PULLUP_ONLY, 0}, \
 }
 
 /*
@@ -147,8 +164,8 @@ typedef enum
 #define RG_BATTERY_DRIVER           1
 //#define RG_BATTERY_ADC_UNIT         ADC_UNIT_1
 //#define RG_BATTERY_ADC_CHANNEL      ADC_CHANNEL_6
-#define RG_BATTERY_ADC_UNIT         ADC_UNIT_2
-#define RG_BATTERY_ADC_CHANNEL      ADC_CHANNEL_9
+#define RG_BATTERY_ADC_UNIT         ADC_UNIT_1
+#define RG_BATTERY_ADC_CHANNEL      ADC_CHANNEL_7
 #define RG_BATTERY_CALC_PERCENT(raw) (((raw) * 2.f - 3500.f) / (4200.f - 3500.f) * 100.f)
 #define RG_BATTERY_CALC_VOLTAGE(raw) ((raw) * 2.f * 0.001f)
 
@@ -159,6 +176,9 @@ typedef enum
 
 
 // SPI Display
+// Fri3d badge 2022 SPI uses the IOMUX pins for SPI3_HOST, so for "purity" we use SPI3_HOST.
+// SPI2_HOST works as well, pins are then mapped through the GPIO matrix (makes no difference
+// in practice at the speed we're using here).
 #define RG_GPIO_LCD_MISO            GPIO_NUM_19
 #define RG_GPIO_LCD_MOSI            GPIO_NUM_23
 #define RG_GPIO_LCD_CLK             GPIO_NUM_18
@@ -166,8 +186,8 @@ typedef enum
 #define RG_GPIO_LCD_DC              GPIO_NUM_33
 
 // SPI SD Card
-#define RG_GPIO_SDSPI_MISO          GPIO_NUM_8
-#define RG_GPIO_SDSPI_MOSI          GPIO_NUM_6
-#define RG_GPIO_SDSPI_CLK           GPIO_NUM_7
-#define RG_GPIO_SDSPI_CS            GPIO_NUM_14
+#define RG_GPIO_SDSPI_MISO          RG_GPIO_LCD_MISO
+#define RG_GPIO_SDSPI_MOSI          RG_GPIO_LCD_MOSI
+#define RG_GPIO_SDSPI_CLK           RG_GPIO_LCD_CLK
+#define RG_GPIO_SDSPI_CS            GPIO_NUM_4
 
