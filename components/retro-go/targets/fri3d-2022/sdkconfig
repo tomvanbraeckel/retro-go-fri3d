@@ -158,3 +158,6 @@ CONFIG_SPI_FLASH_ENABLE_ENCRYPTED_READ_WRITE=n
 #
 CONFIG_ESP32_WIFI_IRAM_OPT=n
 CONFIG_ESP32_WIFI_RX_IRAM_OPT=n
+
+# esp32-based build for fri3d-2022 takes up more than the 1MB default factory app size, so increase it:
+CONFIG_PARTITION_TABLE_SINGLE_APP_LARGE=y
