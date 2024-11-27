@@ -173,17 +173,17 @@ static bool driver_submit(const rg_audio_frame_t *frames, size_t count)
     size_t pos = 0;
 
     // In speaker mode we use left and right as a differential mono output to increase resolution.
-    // bool differential = state.device == 0;
-    bool differential = 0;
+    bool differential = state.device == 0;
+    // bool differential = 0;
 
     for (size_t i = 0; i < count; ++i)
     {
-        int left = (frames[i].left * volume) + 32768;
-        int right = (frames[i].right * volume) + 32768;
+        int left = (frames[i].left * volume);
+        int right = (frames[i].right * volume);
 
 #ifdef PLAY_SINE_AS_TEST
-        left = (sineBuffer[sinePosition] * volume) + 32768;
-        right = (sineBuffer[sinePosition + 1] * volume) + 32768;
+        left = (sineBuffer[sinePosition] * volume);
+        right = (sineBuffer[sinePosition + 1] * volume);
         sinePosition += 2; // 2 channels
         if (sinePosition >= sinePeriod * 2)
             sinePosition = 0;
@@ -208,11 +208,11 @@ static bool driver_submit(const rg_audio_frame_t *frames, size_t count)
                 left = 0x8000;
                 right = -0x8000 + sample;
             }
+            // On a device with only the right (GPIO25) internal DAC channel connected, the left sample needs to be set,
+            // perhaps due to this swapped channels issue: https://github.com/espressif/esp-idf/issues/3399
+            if (RG_AUDIO_USE_INT_DAC & I2S_DAC_CHANNEL_RIGHT_EN)
+                left = right;
         }
-
-        // Clipping   (not necessary, we have (int16 * vol) and volume is never more than 1.0)
-        // if (left > 32767) left = 32767; else if (left < -32768) left = -32767;
-        // if (right > 32767) right = 32767; else if (right < -32768) right = -32767;
 
         // Queue
         buffer[pos].left = left;
