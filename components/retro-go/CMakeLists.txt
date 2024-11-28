@@ -4,7 +4,7 @@ set(COMPONENT_ADD_INCLUDEDIRS ". libs/netplay libs/lodepng")
 message(STATUS "ESP-IDF version: ${IDF_VER}")
 
 if (IDF_VERSION_MAJOR EQUAL 5)
-    set(COMPONENT_REQUIRES "spi_flash fatfs app_update json nvs_flash esp_adc esp_timer esp_psram esp_wifi esp_http_client")
+    set(COMPONENT_REQUIRES "driver spi_flash fatfs app_update json nvs_flash esp_adc esp_timer esp_psram esp_wifi esp_http_client")
 else() # esp-idf 4.1 - 4.4
     set(COMPONENT_REQUIRES "spi_flash fatfs app_update esp_adc_cal json nvs_flash esp_wifi esp_http_client")
 endif()
